@@ -3,10 +3,7 @@ package UseCaseControllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import sample.Database;
 import sample.LoginManager;
 import sample.Staff;
@@ -25,15 +22,14 @@ public class regAnimalController {
 
     @FXML private Button btnARegister;
     @FXML private Button btnACancel;
-    @FXML private TextField tfieldTag;
     @FXML private TextField tfieldName;
     @FXML private RadioButton toggleMale;
-    @FXML private RadioButton toggleFemale;
     @FXML private RadioButton toggleYes;
-    @FXML private RadioButton toggleNo;
     @FXML private ComboBox comboSpecies;
 
     public void initSessionID(Scene scene, String staffRole) {
+        comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
+        comboSpecies.getSelectionModel().select("Seal");
         this.scene = scene;
         this.staffRole = staffRole;
         try {
@@ -49,7 +45,33 @@ public class regAnimalController {
     }
 
     private void regAnimal(){
+        connection = queries.connection;
+        String txtName = tfieldName.getText();
+        String txtGender;
+        if (toggleMale.isSelected())
+            txtGender = "Male";
+        else
+            txtGender = "Female";
+        Boolean isAdult;
+        if (toggleYes.isSelected())
+            isAdult = true;
+        else
+            isAdult = false;
+        String txtSpecies = comboSpecies.getValue().toString();
 
+        if (queries.regAnimal(txtName, isAdult, txtGender, "Alive", txtSpecies)) {
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal member has been registered.");
+            added.showAndWait();
+        } else {
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal member could not be registered.");
+            added.showAndWait();
+        }
+        try {
+            queries.connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        showMainView();
     }
 
     private void showMainView() {

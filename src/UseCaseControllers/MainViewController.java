@@ -21,6 +21,8 @@ public class MainViewController {
     @FXML private Button btnLogOut;
     @FXML private ImageView imgAddStaff;
     @FXML private Label lblAddStaff;
+    @FXML private ImageView imgRegAnimal;
+    @FXML private Label lblRegAnimal;
 
     @FXML private Pane addStaffPane;
     @FXML private Pane modifyStaffPane;
@@ -61,10 +63,17 @@ public class MainViewController {
         imgAddStaff.setOnMouseClicked(actionEvent -> {
             showAddStaff();
         });
-
         lblAddStaff.setOnMouseClicked(actionEvent -> {
             showAddStaff();
         });
+
+        imgRegAnimal.setOnMouseClicked(actionEvent -> {
+            showRegAnimals();
+        });
+        lblRegAnimal.setOnMouseClicked(actionEvent -> {
+            showRegAnimals();
+        });
+
 
 
         /*searchSong.setOnAction(new EventHandler<ActionEvent>() {
@@ -98,6 +107,21 @@ public class MainViewController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             addStaffController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+
+            controller.initSessionID(scene, staffRole);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showRegAnimals() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/registerAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            regAnimalController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(scene, staffRole);

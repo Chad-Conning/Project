@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.regAnimalController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
@@ -92,47 +79,39 @@
                   <Insets bottom="20.0" top="-10.0" />
                </VBox.margin>
             </Label>
-            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="437.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="417.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
                <children>
-                  <Label fx:id="labelTag" contentDisplay="CENTER" layoutX="5.0" layoutY="34.0" prefHeight="21.0" prefWidth="181.0" text="Tag Number">
+                  <Label fx:id="labelName" contentDisplay="CENTER" layoutX="6.0" layoutY="47.0" prefHeight="21.0" prefWidth="180.0" text="Name">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldTag" alignment="CENTER" layoutX="233.0" layoutY="30.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="labelName" contentDisplay="CENTER" layoutX="5.0" layoutY="86.0" prefHeight="21.0" prefWidth="180.0" text="Name">
+                  <TextField fx:id="tfieldName" alignment="CENTER" layoutX="233.0" layoutY="43.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <Label fx:id="labelGender" contentDisplay="CENTER" layoutX="7.0" layoutY="121.0" prefHeight="21.0" prefWidth="181.0" text="Gender">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldName" alignment="CENTER" layoutX="233.0" layoutY="82.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="labelGender" contentDisplay="CENTER" layoutX="6.0" layoutY="152.0" prefHeight="21.0" prefWidth="181.0" text="Gender">
+                  <Label fx:id="labelEmail" contentDisplay="CENTER" layoutX="6.0" layoutY="191.0" prefHeight="21.0" prefWidth="184.0" text="Adult">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label fx:id="labelEmail" contentDisplay="CENTER" layoutX="4.0" layoutY="222.0" prefHeight="21.0" prefWidth="184.0" text="Email Address">
+                  <Label fx:id="labelStaffType" contentDisplay="CENTER" layoutX="5.0" layoutY="263.0" prefHeight="21.0" prefWidth="184.0" text="Species">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label fx:id="labelStaffType" contentDisplay="CENTER" layoutX="5.0" layoutY="291.0" prefHeight="21.0" prefWidth="184.0" text="Species">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding></Label>
-                  <ComboBox fx:id="comboSpecies" layoutX="233.0" layoutY="287.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" value="Administrative" />
-                  <RadioButton id="radioEmployed" fx:id="toggleMale" layoutX="233.0" layoutY="131.0" mnemonicParsing="false" selected="true" text="Male">
+                  <ComboBox fx:id="comboSpecies" layoutX="233.0" layoutY="259.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" value="Administrative" />
+                  <RadioButton id="radioEmployed" fx:id="toggleMale" layoutX="233.0" layoutY="100.0" mnemonicParsing="false" selected="true" text="Male">
                      <toggleGroup>
                         <ToggleGroup fx:id="employedToggle" />
                      </toggleGroup>
@@ -140,24 +119,24 @@
                         <Font size="15.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton id="radioNotEmployed" fx:id="toggleFemale" layoutX="233.0" layoutY="163.0" mnemonicParsing="false" text="Female" toggleGroup="$employedToggle">
+                  <RadioButton id="radioNotEmployed" fx:id="toggleFemale" layoutX="233.0" layoutY="132.0" mnemonicParsing="false" text="Female" toggleGroup="$employedToggle">
                      <font>
                         <Font size="15.0" />
                      </font></RadioButton>
-                  <Button fx:id="btnSRegister" layoutX="42.0" layoutY="359.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
+                  <Button fx:id="btnARegister" layoutX="41.0" layoutY="333.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
-                  <Button fx:id="btnSCancel" layoutX="308.0" layoutY="359.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Cancel">
+                  <Button fx:id="btnACancel" layoutX="307.0" layoutY="333.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Cancel">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
-                  <RadioButton fx:id="toggleYes" layoutX="233.0" layoutY="201.0" mnemonicParsing="false" text="Yes">
+                  <RadioButton fx:id="toggleYes" layoutX="232.0" layoutY="170.0" mnemonicParsing="false" text="Yes">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="toggleNo" layoutX="233.0" layoutY="236.0" mnemonicParsing="false" text="No">
+                  <RadioButton fx:id="toggleNo" layoutX="233.0" layoutY="205.0" mnemonicParsing="false" text="No">
                      <font>
                         <Font size="15.0" />
                      </font>
