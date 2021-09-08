@@ -1,6 +1,7 @@
 package UseCaseControllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -22,4 +23,9 @@ public class regAnimalController {
     @FXML private RadioButton toggleYes;
     @FXML private RadioButton toggleNo;
     @FXML private ComboBox comboSpecies;
+
+
+    public void initSessionID(Scene scene, String staffRole) {
+
+    }
 }
