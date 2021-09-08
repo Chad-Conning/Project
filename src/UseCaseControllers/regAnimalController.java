@@ -13,6 +13,8 @@ import java.sql.Connection;
 public class regAnimalController {
     Database queries = new Database();
     Connection connection;
+    Scene scene;
+    String staffRole;
 
     @FXML private Button btnARegister;
     @FXML private Button btnACancel;
