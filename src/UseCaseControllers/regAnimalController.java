@@ -33,7 +33,7 @@ public class regAnimalController {
     @FXML private RadioButton toggleNo;
     @FXML private ComboBox comboSpecies;
 
-    public void initSessionID(Scene scene, Staff staffRole) {
+    public void initSessionID(Scene scene, String staffRole) {
         this.scene = scene;
         this.staffRole = staffRole;
         try {
