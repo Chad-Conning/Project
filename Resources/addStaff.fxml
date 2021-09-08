@@ -151,7 +151,7 @@
                      <font>
                         <Font size="15.0" />
                      </font></RadioButton>
-                  <Button fx:id="btnSRegister" layoutX="41.0" layoutY="493.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" styleClass="btn btn-primary" stylesheets="@bootstrap.min.css" text="Register">
+                  <Button fx:id="btnSRegister" layoutX="41.0" layoutY="493.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
