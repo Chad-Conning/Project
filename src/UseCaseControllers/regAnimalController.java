@@ -30,4 +30,8 @@ public class regAnimalController {
     public void initSessionID(Scene scene, String staffRole) {
 
     }
+
+    private void regAnimal(){
+
+    }
 }
