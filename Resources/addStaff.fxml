@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.addStaffController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.addStaffController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
@@ -16,7 +16,7 @@
                      <children>
                         <ImageView fitHeight="105.0" fitWidth="201.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Logo.png" />
+                              <Image url="@logo.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -79,7 +79,7 @@
                   <Insets bottom="20.0" top="-10.0" />
                </VBox.margin>
             </Label>
-            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="513.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="567.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
                <children>
                   <Label fx:id="labelName" contentDisplay="CENTER" layoutX="5.0" layoutY="34.0" prefHeight="21.0" prefWidth="181.0" text="Name">
                      <font>
@@ -88,7 +88,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldName" alignment="CENTER" layoutX="233.0" layoutY="30.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <TextField fx:id="tfieldName" alignment="CENTER" layoutX="233.0" layoutY="30.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter first name" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelSurname" contentDisplay="CENTER" layoutX="5.0" layoutY="86.0" prefHeight="21.0" prefWidth="180.0" text="Surname">
                      <font>
                         <Font size="15.0" />
@@ -96,7 +96,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldSurname" alignment="CENTER" layoutX="233.0" layoutY="82.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <TextField fx:id="tfieldSurname" alignment="CENTER" layoutX="233.0" layoutY="82.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter surname" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelPhone" contentDisplay="CENTER" layoutX="5.0" layoutY="141.0" prefHeight="21.0" prefWidth="181.0" text="Phone Number">
                      <font>
                         <Font size="15.0" />
@@ -104,7 +104,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldPhone" alignment="CENTER" layoutX="233.0" layoutY="137.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <TextField fx:id="tfieldPhone" alignment="CENTER" layoutX="233.0" layoutY="137.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter phone number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelEmail" contentDisplay="CENTER" layoutX="4.0" layoutY="190.0" prefHeight="21.0" prefWidth="184.0" text="Email Address">
                      <font>
                         <Font size="15.0" />
@@ -112,15 +112,15 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldEmail" alignment="CENTER" layoutX="233.0" layoutY="186.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="labelTax" contentDisplay="CENTER" layoutX="5.0" layoutY="246.0" prefHeight="21.0" prefWidth="181.0" text="Tax Number">
+                  <TextField fx:id="tfieldEmail" alignment="CENTER" layoutX="233.0" layoutY="186.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter email address" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <Label fx:id="labelTax" contentDisplay="CENTER" layoutX="5.0" layoutY="247.0" prefHeight="21.0" prefWidth="181.0" text="Tax Number">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldTax" alignment="CENTER" layoutX="233.0" layoutY="243.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <TextField fx:id="tfieldTax" alignment="CENTER" layoutX="233.0" layoutY="243.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter tax number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelStaffType" contentDisplay="CENTER" layoutX="3.0" layoutY="300.0" prefHeight="21.0" prefWidth="184.0" text="Staff Type">
                      <font>
                         <Font size="15.0" />
@@ -128,18 +128,18 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <ComboBox fx:id="comboStaffType" editable="true" layoutX="233.0" layoutY="296.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;"/>
+                  <ComboBox fx:id="comboStaffType" layoutX="233.0" layoutY="296.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" />
                      
 
 
-                  <Label fx:id="labelEmployed" contentDisplay="CENTER" layoutX="1.0" layoutY="368.0" prefHeight="21.0" prefWidth="190.0" text="Employed">
+                  <Label fx:id="labelEmployed" contentDisplay="CENTER" layoutY="436.0" prefHeight="21.0" prefWidth="190.0" text="Employed">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <RadioButton id="radioEmployed" fx:id="toggleGEmp" layoutX="233.0" layoutY="347.0" mnemonicParsing="false" selected="true" text="Employed">
+                  <RadioButton id="radioEmployed" fx:id="toggleGEmp" layoutX="232.0" layoutY="414.0" mnemonicParsing="false" selected="true" text="Employed">
                      <toggleGroup>
                         <ToggleGroup fx:id="employedToggle" />
                      </toggleGroup>
@@ -147,18 +147,24 @@
                         <Font size="15.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton id="radioNotEmployed" fx:id="toggleGNotEmp" layoutX="233.0" layoutY="379.0" mnemonicParsing="false" text="Not Employed" toggleGroup="$employedToggle">
+                  <RadioButton id="radioNotEmployed" fx:id="toggleGNotEmp" layoutX="232.0" layoutY="446.0" mnemonicParsing="false" text="Not Employed" toggleGroup="$employedToggle">
                      <font>
                         <Font size="15.0" />
                      </font></RadioButton>
-                  <Button fx:id="btnSRegister" layoutX="41.0" layoutY="436.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
+                  <Button fx:id="btnSRegister" layoutX="41.0" layoutY="493.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
-                  <Button fx:id="btnSCancel" layoutX="308.0" layoutY="436.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Cancel">
+                  <Button fx:id="btnSCancel" layoutX="308.0" layoutY="493.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Cancel">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
+                  <Label layoutX="41.0" layoutY="358.0" text="Password">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfieldPassword" alignment="CENTER" layoutX="232.0" layoutY="354.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter a password" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                </children></Pane>
          </children>
       </VBox>
