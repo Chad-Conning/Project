@@ -75,6 +75,7 @@ public class addStaffController {
         }
         showMainView();
     }
+
     private void showMainView() {
         try {
             FXMLLoader loader = new FXMLLoader(
