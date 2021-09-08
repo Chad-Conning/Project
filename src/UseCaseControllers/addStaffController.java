@@ -53,7 +53,7 @@ public class addStaffController {
 
     private void addStaff() {
         connection = queries.connection;
-        String txtPassword = "password";
+        String txtPassword = tfieldPassword.getText();
         String txtfName = tfieldName.getText();
         String txtlName = tfieldSurname.getText();
         String txtContact = tfieldPhone.getText();

@@ -16,7 +16,7 @@
                             <children>
                                 <ImageView fitHeight="105.0" fitWidth="201.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@Logo.png" />
+                                        <Image url="@logo.png" />
                                     </image>
                                     <HBox.margin>
                                         <Insets left="10.0" />
