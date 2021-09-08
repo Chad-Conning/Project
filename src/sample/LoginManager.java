@@ -4,7 +4,6 @@ import UseCaseControllers.LoginController;
 import UseCaseControllers.MainViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
