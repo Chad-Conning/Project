@@ -96,7 +96,7 @@ public class MainViewController {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/addStaff.fxml")   // load fxml
             );
-            scene.setRoot((Parent) loader.load());   // create scene for mainView screen
+            scene.setRoot(loader.load());   // create scene for mainView screen
             addStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
 

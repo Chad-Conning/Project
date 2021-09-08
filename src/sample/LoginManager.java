@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 /** Manages control flow for logins */
 public class LoginManager {
 
-    private Scene scene;
+    private final Scene scene;
 
     public LoginManager(Scene scene) {
         this.scene = scene;
@@ -41,9 +41,9 @@ public class LoginManager {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/loginUI.fxml")  // load fxml
             );
-            scene.setRoot((Parent) loader.load());   // create scene for login fxml
+            scene.setRoot(loader.load());   // create scene for login fxml
             LoginController controller =
-                    loader.<LoginController>getController();   // gets the controller specified in the fxml
+                    loader.getController();   // gets the controller specified in the fxml
 
             controller.initManager(this);
         } catch (IOException | SQLException | ClassNotFoundException ex) {
@@ -56,9 +56,9 @@ public class LoginManager {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/LandingPage.fxml")   // load fxml
             );
-            scene.setRoot((Parent) loader.load());   // create scene for mainView screen
+            scene.setRoot(loader.load());   // create scene for mainView screen
             MainViewController controller =
-                    loader.<MainViewController>getController();   // gets the controller specified in the fxml
+                    loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(this, this.scene, staffRole);
         } catch (IOException ex) {

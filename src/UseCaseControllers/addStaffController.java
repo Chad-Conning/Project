@@ -81,9 +81,9 @@ public class addStaffController {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/LandingPage.fxml")   // load fxml
             );
-            scene.setRoot((Parent) loader.load());   // create scene for mainView screen
+            scene.setRoot(loader.load());   // create scene for mainView screen
             MainViewController controller =
-                    loader.<MainViewController>getController();   // gets the controller specified in the fxml
+                    loader.getController();   // gets the controller specified in the fxml
 
             LoginManager loginManager = new LoginManager(scene);
             controller.initSessionID(loginManager, this.scene, staffRole);
