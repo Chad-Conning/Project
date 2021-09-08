@@ -3,7 +3,6 @@ package sample;
 import UseCaseControllers.LoginController;
 import UseCaseControllers.MainViewController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.IOException;
