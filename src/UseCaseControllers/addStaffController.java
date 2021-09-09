@@ -2,22 +2,21 @@ package UseCaseControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 import sample.Database;
 import sample.LoginManager;
-
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.*;
 
 public class addStaffController {
     Database queries = new Database();
@@ -33,7 +32,7 @@ public class addStaffController {
     @FXML private TextField tfieldPassword;
     @FXML private ComboBox comboStaffType;
     String staffRole;
-
+    ValidationSupport validationSupport = new ValidationSupport();
     Scene scene;
 
     public void initSessionID(Scene scene, String staffRole) {
@@ -47,6 +46,7 @@ public class addStaffController {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+        validationControl();
 
         btnSRegister.setOnAction(actionEvent -> addStaff());
 
@@ -55,10 +55,6 @@ public class addStaffController {
 
     private void addStaff() {
         //on action register
-
-        //validation
-        //ValidationSupport validationSupport = new ValidationSupport();
-
 
         connection = queries.connection;
         String txtPassword = tfieldPassword.getText();
@@ -99,4 +95,48 @@ public class addStaffController {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    //validation helper method
+    private void validationControl(){
+        //validation using controlsfx https://jar-download.com/artifacts/org.controlsfx/controlsfx/11.1.0
+        //validationSupport.setErrorDecorationEnabled(false);
+        //validate for empty, validate for correct type(regex) to be implemented
+        //Pattern stringPattern = Pattern.compile("[a-zA-Z]");
+//        String regex = "[a-zA-Z]";
+//        Pattern stringRegex = Pattern.compile(regex);
+        validationSupport.registerValidator(tfieldName, Validator.createEmptyValidator("A name is required")); //if field is blank throws validation error
+        //validationSupport.registerValidator(tfieldName, Validator.createRegexValidator(stringRegex));
+//        isValidName(tfieldName.getText());
+//        validationSupport.registerValidator(tfieldSurname, Validator.createEmptyValidator("A surname is required"));
+//        validationSupport.registerValidator(tfieldPhone, Validator.createEmptyValidator("A phone number is required"));
+//        validationSupport.registerValidator(tfieldEmail, Validator.createEmptyValidator("An email is required"));
+//        validationSupport.registerValidator(tfieldTax, Validator.createEmptyValidator("A tax number is required"));
+
+
+
+    }
+    //string validation
+//    public static boolean isValidName(String name){
+//        // Regex to check valid username.
+//        String regex = "[A-Za-z]";
+//
+//        // Compile the ReGex
+//        Pattern p = Pattern.compile(regex);
+//
+//        // If the username is empty
+//        // return false
+//        if (name == null) {
+//            return false;
+//        }
+//
+//        // Pattern class contains matcher() method
+//        // to find matching between given username
+//        // and regular expression.
+//        Matcher m = p.matcher(name);
+//
+//        // Return if the username
+//        // matched the ReGex
+//        return m.matches();
+//    }
+
 }
