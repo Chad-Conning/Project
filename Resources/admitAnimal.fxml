@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.admitAnimalController">
+   <top>
+      <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox accessibleRole="IMAGE_VIEW" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00A897; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: hidden hidden solid hidden;">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="105.0" fitWidth="201.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <Label fx:id="titleLabel" contentDisplay="CENTER" text="Bay Marine Rescue" textFill="WHITE" translateX="205.0">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="29.0" prefWidth="1205.0">
+               <children>
+                  <MenuBar prefHeight="29.0" prefWidth="153.0" style="-fx-border-color: black; -fx-border-style: hidden solid solid hidden; -fx-border-width: 2;">
+                    <menus>
+                      <Menu fx:id="btnMenuAdd" mnemonicParsing="false" text="Add">
+                           <items>
+                              <MenuItem fx:id="btnMenuAddRegisterA" mnemonicParsing="false" text="Register Animal" />
+                              <MenuItem fx:id="btnMenuAddAdmitA" mnemonicParsing="false" text="Admit Animal" />
+                              <MenuItem fx:id="btnMenuAddAddS" mnemonicParsing="false" text="Add Staff" />
+                              <MenuItem fx:id="btnMenuAddUpdateL" mnemonicParsing="false" text="Update Logbook" />
+                           </items>
+                      </Menu>
+                      <Menu fx:id="btnMenuEdit" mnemonicParsing="false" text="Edit">
+                           <items>
+                              <MenuItem fx:id="btnMenuEditModA" mnemonicParsing="false" text="Modify Animal Status" />
+                              <MenuItem fx:id="btnMenuEditModS" mnemonicParsing="false" text="Modify Staff" />
+                           </items>
+                      </Menu>
+                        <Menu fx:id="btnMenuDisplay" mnemonicParsing="false" text="Display">
+                          <items>
+                            <MenuItem fx:id="btnMenuDisplayAdmis" mnemonicParsing="false" text="View Daily Admissions Report" />
+                              <MenuItem fx:id="btnMenuDisplayLog" mnemonicParsing="false" text="View Daily Logs" />
+                              <MenuItem fx:id="btnMenuDisplayAR" mnemonicParsing="false" text="View Animals Report" />
+                              <MenuItem fx:id="btnMenuDisplayLogsA" mnemonicParsing="false" text="View Logs per animal Report" />
+                              <MenuItem fx:id="btnMenuDisplayS" mnemonicParsing="false" text="View Staff Report" />
+                          </items>
+                        </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="688.0" prefWidth="1205.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="325.0" text="Admit Animal" textAlignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="-10.0" />
+               </VBox.margin>
+            </Label>
+            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="398.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="labelTag" contentDisplay="CENTER" layoutX="5.0" layoutY="34.0" prefHeight="21.0" prefWidth="181.0" text="Tag Number">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <TextField fx:id="tfieldTag" alignment="CENTER" editable="false" layoutX="233.0" layoutY="30.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <Label fx:id="labelName" contentDisplay="CENTER" layoutX="6.0" layoutY="86.0" prefHeight="21.0" prefWidth="180.0" text="Date">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <Label fx:id="labelGender" contentDisplay="CENTER" layoutX="5.0" layoutY="142.0" prefHeight="21.0" prefWidth="181.0" text="Location Retrieved">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <Label fx:id="labelEmail" contentDisplay="CENTER" layoutX="4.0" layoutY="198.0" prefHeight="21.0" prefWidth="184.0" text="Admission Status">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <ComboBox fx:id="comboLocation" layoutX="233.0" layoutY="138.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" value="Administrative" />
+                  <Button fx:id="btnAdmit" layoutX="41.0" layoutY="324.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <Button fx:id="btnACancel" layoutX="308.0" layoutY="324.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Cancel">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <DatePicker fx:id="datePicker" editable="false" layoutX="233.0" layoutY="84.0" prefHeight="25.0" prefWidth="143.0" />
+                  <TextArea fx:id="txtStatus" layoutX="233.0" layoutY="198.0" prefHeight="88.0" prefWidth="185.0" />
+               </children></Pane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
