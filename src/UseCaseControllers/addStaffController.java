@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import sample.Database;
 import sample.LoginManager;
 
+import javax.xml.bind.ValidationEvent;
+import javax.xml.bind.ValidationEventHandler;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -52,6 +54,12 @@ public class addStaffController {
     }
 
     private void addStaff() {
+        //on action register
+
+        //validation
+        //ValidationSupport validationSupport = new ValidationSupport();
+
+
         connection = queries.connection;
         String txtPassword = tfieldPassword.getText();
         String txtfName = tfieldName.getText();
