@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import org.controlsfx.validation.Severity;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import sample.Database;
@@ -99,13 +100,14 @@ public class addStaffController {
     //validation helper method
     private void validationControl(){
         //validation using controlsfx https://jar-download.com/artifacts/org.controlsfx/controlsfx/11.1.0
+        //https://www.tabnine.com/code/java/methods/org.controlsfx.validation.Validator/createRegexValidator
         //validationSupport.setErrorDecorationEnabled(false);
         //validate for empty, validate for correct type(regex) to be implemented
         //Pattern stringPattern = Pattern.compile("[a-zA-Z]");
 //        String regex = "[a-zA-Z]";
 //        Pattern stringRegex = Pattern.compile(regex);
         validationSupport.registerValidator(tfieldName, Validator.createEmptyValidator("A name is required")); //if field is blank throws validation error
-        //validationSupport.registerValidator(tfieldName, Validator.createRegexValidator(stringRegex));
+        //validationSupport.registerValidator(tfieldName, Validator.createRegexValidator());
 //        isValidName(tfieldName.getText());
 //        validationSupport.registerValidator(tfieldSurname, Validator.createEmptyValidator("A surname is required"));
 //        validationSupport.registerValidator(tfieldPhone, Validator.createEmptyValidator("A phone number is required"));
@@ -115,6 +117,17 @@ public class addStaffController {
 
 
     }
+
+//    /**
+//     * Factory method to create a validator, which checks if value exists.
+//     * Error is created if not if value does not exist
+//     * @param message of a error to be created if value is invalid
+//     * @return new validator
+//     */
+//    public static <T> Validator<T> createEmptyValidator(final String message) {
+//        return createEmptyValidator(message, Severity.ERROR);
+//    }
+
     //string validation
 //    public static boolean isValidName(String name){
 //        // Regex to check valid username.
