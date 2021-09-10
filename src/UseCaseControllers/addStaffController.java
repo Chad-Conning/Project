@@ -103,53 +103,16 @@ public class addStaffController {
     private void validationControl(){
         //validation using controlsfx https://jar-download.com/artifacts/org.controlsfx/controlsfx/11.1.0
         //https://www.tabnine.com/code/java/methods/org.controlsfx.validation.Validator/createRegexValidator
-        //validationSupport.setErrorDecorationEnabled(false);
-        //validate for empty, validate for correct type(regex) to be implemented
-        //Pattern stringPattern = Pattern.compile("[a-zA-Z]");
-//        String regex = "[a-zA-Z]";
-//        Pattern stringRegex = Pattern.compile(regex);
-        //validationSupport.registerValidator(tfieldName, Validator.createEmptyValidator("A name is required")); //if field is blank throws validation error
-        //validationSupport.registerValidator(tfieldName, Validator.createRegexValidator());
-//        isValidName(tfieldName.getText());
-//        validationSupport.registerValidator(tfieldSurname, Validator.createEmptyValidator("A surname is required"));
-//        validationSupport.registerValidator(tfieldPhone, Validator.createEmptyValidator("A phone number is required"));
-//        validationSupport.registerValidator(tfieldEmail, Validator.createEmptyValidator("An email is required"));
-//        validationSupport.registerValidator(tfieldTax, Validator.createEmptyValidator("A tax number is required"));
-
         Validator<String> noWhitespaceName
                 = Validator.createRegexValidator("Field cannot contain whitespace", "\\[a-zA-Z]", Severity.ERROR);
         Validator<String> emptyName = Validator.createEmptyValidator("Field cannot be empty");
         validationSupport.registerValidator(tfieldName, Validator.combine(noWhitespaceName, emptyName));
-        validationSupport.registerValidator(tfieldSurname, Validator.combine(noWhitespaceName, emptyName));
-        validationSupport.registerValidator(tfieldPhone, Validator.combine(noWhitespaceName, emptyName));
-        validationSupport.registerValidator(tfieldEmail, Validator.combine(noWhitespaceName, emptyName));
-        validationSupport.registerValidator(tfieldTax, Validator.combine(noWhitespaceName, emptyName));
+//        validationSupport.registerValidator(tfieldSurname, Validator.combine(noWhitespaceName, emptyName));
+//        validationSupport.registerValidator(tfieldPhone, Validator.combine(noWhitespaceName, emptyName));
+//        validationSupport.registerValidator(tfieldEmail, Validator.combine(noWhitespaceName, emptyName));
+//        validationSupport.registerValidator(tfieldTax, Validator.combine(noWhitespaceName, emptyName));
 
     }
 
-
-    //string validation
-//    public static boolean isValidName(String name){
-//        // Regex to check valid username.
-//        String regex = "[A-Za-z]";
-//
-//        // Compile the ReGex
-//        Pattern p = Pattern.compile(regex);
-//
-//        // If the username is empty
-//        // return false
-//        if (name == null) {
-//            return false;
-//        }
-//
-//        // Pattern class contains matcher() method
-//        // to find matching between given username
-//        // and regular expression.
-//        Matcher m = p.matcher(name);
-//
-//        // Return if the username
-//        // matched the ReGex
-//        return m.matches();
-//    }
 
 }
