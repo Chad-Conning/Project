@@ -49,9 +49,10 @@ public class addStaffController {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        validationControl();
+//        validationControl();
 
         btnSRegister.setOnAction(actionEvent -> {
+            validationControl();
             addStaff();
         });
 
