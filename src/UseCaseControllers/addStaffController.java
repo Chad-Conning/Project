@@ -1,5 +1,6 @@
 package UseCaseControllers;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.controlsfx.validation.Severity;
+import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import sample.Database;
@@ -106,7 +108,7 @@ public class addStaffController {
         //Pattern stringPattern = Pattern.compile("[a-zA-Z]");
 //        String regex = "[a-zA-Z]";
 //        Pattern stringRegex = Pattern.compile(regex);
-        validationSupport.registerValidator(tfieldName, Validator.createEmptyValidator("A name is required")); //if field is blank throws validation error
+        //validationSupport.registerValidator(tfieldName, Validator.createEmptyValidator("A name is required")); //if field is blank throws validation error
         //validationSupport.registerValidator(tfieldName, Validator.createRegexValidator());
 //        isValidName(tfieldName.getText());
 //        validationSupport.registerValidator(tfieldSurname, Validator.createEmptyValidator("A surname is required"));
@@ -114,19 +116,17 @@ public class addStaffController {
 //        validationSupport.registerValidator(tfieldEmail, Validator.createEmptyValidator("An email is required"));
 //        validationSupport.registerValidator(tfieldTax, Validator.createEmptyValidator("A tax number is required"));
 
-
+        Validator<String> noWhitespaceName
+                = Validator.createRegexValidator("Field cannot contain whitespace", "\\[a-zA-Z]", Severity.ERROR);
+        Validator<String> emptyName = Validator.createEmptyValidator("Field cannot be empty");
+        validationSupport.registerValidator(tfieldName, Validator.combine(noWhitespaceName, emptyName));
+        validationSupport.registerValidator(tfieldSurname, Validator.combine(noWhitespaceName, emptyName));
+        validationSupport.registerValidator(tfieldPhone, Validator.combine(noWhitespaceName, emptyName));
+        validationSupport.registerValidator(tfieldEmail, Validator.combine(noWhitespaceName, emptyName));
+        validationSupport.registerValidator(tfieldTax, Validator.combine(noWhitespaceName, emptyName));
 
     }
 
-//    /**
-//     * Factory method to create a validator, which checks if value exists.
-//     * Error is created if not if value does not exist
-//     * @param message of a error to be created if value is invalid
-//     * @return new validator
-//     */
-//    public static <T> Validator<T> createEmptyValidator(final String message) {
-//        return createEmptyValidator(message, Severity.ERROR);
-//    }
 
     //string validation
 //    public static boolean isValidName(String name){
