@@ -14,6 +14,8 @@ import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import sample.Database;
 import sample.LoginManager;
+import sample.Staff;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -34,14 +36,14 @@ public class addStaffController {
     @FXML private TextField tfieldTax;
     @FXML private TextField tfieldPassword;
     @FXML private ComboBox comboStaffType;
-    String staffRole;
+    Staff staffUser;
     ValidationSupport validationSupport = new ValidationSupport();
     Scene scene;
 
-    public void initSessionID(Scene scene, String staffRole) {
+    public void initSessionID(Scene scene, Staff staffUser) {
         comboStaffType.getItems().addAll("Administrator", "Admission", "Handler");
         comboStaffType.getSelectionModel().select("Admission");
-        this.staffRole = staffRole;
+        this.staffUser = staffUser;
         this.scene = scene;
         try {
             queries.connectDB();
@@ -97,7 +99,7 @@ public class addStaffController {
                     loader.getController();   // gets the controller specified in the fxml
 
             LoginManager loginManager = new LoginManager(scene);
-            controller.initSessionID(loginManager, this.scene, staffRole);
+            controller.initSessionID(loginManager, this.scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

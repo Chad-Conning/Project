@@ -18,7 +18,7 @@ public class regAnimalController {
     Database queries = new Database();
     Connection connection;
     Scene scene;
-    String staffRole;
+    Staff staffUser;
 
     @FXML private Button btnARegister;
     @FXML private Button btnACancel;
@@ -27,11 +27,11 @@ public class regAnimalController {
     @FXML private RadioButton toggleYes;
     @FXML private ComboBox comboSpecies;
 
-    public void initSessionID(Scene scene, String staffRole) {
+    public void initSessionID(Scene scene, Staff staffUser) {
         comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
         comboSpecies.getSelectionModel().select("Seal");
         this.scene = scene;
-        this.staffRole = staffRole;
+        this.staffUser = staffUser;
         try {
             queries.connectDB();
 
@@ -84,7 +84,7 @@ public class regAnimalController {
                     loader.getController();   // gets the controller specified in the fxml
 
             LoginManager loginManager = new LoginManager(scene);
-            controller.initSessionID(loginManager, this.scene, staffRole);
+            controller.initSessionID(loginManager, this.scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -22,8 +22,8 @@ public class LoginManager {
      * Callback method invoked to notify that a user has been authenticated.
      * Will show the main application screen.
      */
-    public void authenticated(String staffRole) {
-        showMainView(staffRole);
+    public void authenticated(Staff staffUser) {
+        showMainView(staffUser);
     }
 
     /**
@@ -49,7 +49,7 @@ public class LoginManager {
         }
     }
 
-    private void showMainView(String staffRole) {
+    private void showMainView(Staff staffUser) {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/LandingPage.fxml")   // load fxml
@@ -58,7 +58,7 @@ public class LoginManager {
             MainViewController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(this, this.scene, staffRole);
+            controller.initSessionID(this, this.scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

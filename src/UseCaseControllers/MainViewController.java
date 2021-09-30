@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import sample.Database;
 import sample.LoginManager;
+import sample.Staff;
 
 import java.io.IOException;
 import java.sql.*;
@@ -31,25 +32,67 @@ public class MainViewController {
     @FXML private Pane admitAnimalPane;
     @FXML private Pane viewLogsPane;
     @FXML private Pane logbookPane;
-    String staffRole;
+    Staff staffUser;
 
     private Scene scene;
 
-    public void initSessionID(final LoginManager loginManager, Scene scene, String staffRole) {
-        this.staffRole = staffRole;
-        if (staffRole.equals("Handler")) {
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
+        this.staffUser = staffUser;
+        if (!staffUser.getStaffType().equals("Administrator")) {
             addStaffPane.setOpacity(0.4);
+            addStaffPane.setDisable(true);
+
             modifyStaffPane.setOpacity(0.4);
+            modifyStaffPane.setDisable(true);
+
             viewStaffPane.setOpacity(0.4);
+            viewStaffPane.setDisable(true);
+
+            if (staffUser.getStaffType().equals("Handler")) {
+                registerAnimalPane.setOpacity(0.4);
+                registerAnimalPane.setDisable(true);
+
+                admitAnimalPane.setOpacity(0.4);
+                admitAnimalPane.setDisable(true);
+            } else if (staffUser.getStaffType().equals("Admission")) {
+                viewLogsPane.setOpacity(0.4);
+                viewLogsPane.setDisable(true);
+
+                logbookPane.setOpacity(0.4);
+                logbookPane.setDisable(true);
+            }
+        }
+        /*if (staffRole.equals("Handler")) {
+            addStaffPane.setOpacity(0.4);
+            addStaffPane.setDisable(true);
+
+            modifyStaffPane.setOpacity(0.4);
+            modifyStaffPane.setDisable(true);
+
+            viewStaffPane.setOpacity(0.4);
+            viewStaffPane.setDisable(true);
+
             registerAnimalPane.setOpacity(0.4);
+            registerAnimalPane.setDisable(true);
+
             admitAnimalPane.setOpacity(0.4);
+            admitAnimalPane.setDisable(true);
         } else if (staffRole.equals("Admission")) {
             addStaffPane.setOpacity(0.4);
+            addStaffPane.setDisable(true);
+
             modifyStaffPane.setOpacity(0.4);
+            modifyStaffPane.setDisable(true);
+
             viewStaffPane.setOpacity(0.4);
+            viewStaffPane.setDisable(true);
+
             viewLogsPane.setOpacity(0.4);
+            viewLogsPane.setDisable(true);
+
             logbookPane.setOpacity(0.4);
-        }
+            logbookPane.setDisable(true);
+        }*/
 
         this.scene = scene;
         try {
@@ -109,7 +152,7 @@ public class MainViewController {
             addStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(scene, staffRole);
+            controller.initSessionID(scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,7 +167,7 @@ public class MainViewController {
             regAnimalController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(scene, staffRole);
+            controller.initSessionID(scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

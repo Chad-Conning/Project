@@ -20,7 +20,7 @@ public class LoginController {
     @FXML private TextField password;
     @FXML private Button loginButton;
     @FXML private Label errorLbl;
-    String staffRole;
+    Staff staffUser;
 
     public void initManager(final LoginManager loginManager) throws SQLException, ClassNotFoundException {
         errorLbl.setText("");
@@ -29,7 +29,7 @@ public class LoginController {
         loginButton.setOnAction(event -> {
             try {
                 if (authorize()) {
-                    loginManager.authenticated(staffRole);
+                    loginManager.authenticated(staffUser);
                 }
                 else {    // handles incorrect credentials
                     user.setText("");
@@ -57,13 +57,15 @@ public class LoginController {
             emp.setStaffPassword(rs.getString("Password"));
             emp.setStaffType(rs.getString("Staff_Type"));
             if (emp.getStaffID() == parseInt(user.getText()) && emp.getStaffPassword().equals(password.getText())) {
-                if (emp.getStaffType().equals("Administrator")) {
-                    staffRole = "Administrator";
+                /*if (emp.getStaffType().equals("Administrator")) {
+                    staffUser = emp;
                 } else if (emp.getStaffType().equals("Admission")) {
                     staffRole = "Admission";
                 } else if (emp.getStaffType().equals("Handler")) {
                     staffRole = "Handler";
-                }
+                }*/
+
+                staffUser = emp;
 
                 System.out.println("Connected Successfully");
                 queries.connection.close();
