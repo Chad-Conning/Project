@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.modifyStaffController">
+   <top>
+      <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox accessibleRole="IMAGE_VIEW" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00A897; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: hidden hidden solid hidden;">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="105.0" fitWidth="201.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <Label fx:id="titleLabel" contentDisplay="CENTER" text="Bay Marine Rescue" textFill="WHITE" translateX="205.0">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="29.0" prefWidth="1205.0">
+               <children>
+                  <MenuBar prefHeight="29.0" prefWidth="153.0" style="-fx-border-color: black; -fx-border-style: hidden solid solid hidden; -fx-border-width: 2;">
+                    <menus>
+                      <Menu fx:id="btnMenuAdd" mnemonicParsing="false" text="Add">
+                           <items>
+                              <MenuItem fx:id="btnMenuAddRegisterA" mnemonicParsing="false" text="Register Animal" />
+                              <MenuItem fx:id="btnMenuAddAdmitA" mnemonicParsing="false" text="Admit Animal" />
+                              <MenuItem fx:id="btnMenuAddAddS" mnemonicParsing="false" text="Add Staff" />
+                              <MenuItem fx:id="btnMenuAddUpdateL" mnemonicParsing="false" text="Update Logbook" />
+                           </items>
+                      </Menu>
+                      <Menu fx:id="btnMenuEdit" mnemonicParsing="false" text="Edit">
+                           <items>
+                              <MenuItem fx:id="btnMenuEditModA" mnemonicParsing="false" text="Modify Animal Status" />
+                              <MenuItem fx:id="btnMenuEditModS" mnemonicParsing="false" text="Modify Staff" />
+                           </items>
+                      </Menu>
+                        <Menu fx:id="btnMenuDisplay" mnemonicParsing="false" text="Display">
+                          <items>
+                            <MenuItem fx:id="btnMenuDisplayAdmis" mnemonicParsing="false" text="View Daily Admissions Report" />
+                              <MenuItem fx:id="btnMenuDisplayLog" mnemonicParsing="false" text="View Daily Logs" />
+                              <MenuItem fx:id="btnMenuDisplayAR" mnemonicParsing="false" text="View Animals Report" />
+                              <MenuItem fx:id="btnMenuDisplayLogsA" mnemonicParsing="false" text="View Logs per animal Report" />
+                              <MenuItem fx:id="btnMenuDisplayS" mnemonicParsing="false" text="View Staff Report" />
+                          </items>
+                        </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="688.0" prefWidth="1205.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="380.0" text="Modify Staff Member" textAlignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="-10.0" />
+               </VBox.margin>
+            </Label>
+            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="545.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="labelSelectStaff" contentDisplay="CENTER" layoutX="4.0" layoutY="35.0" prefHeight="21.0" prefWidth="181.0" text="Select Staff Member">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Label>
+                  <ComboBox fx:id="comboSelectStaff" layoutX="234.0" layoutY="32.0" prefHeight="28.0" prefWidth="185.0" promptText="Staff ID" />
+                  <Label fx:id="labelMSName" contentDisplay="CENTER" layoutX="4.0" layoutY="85.0" prefHeight="21.0" prefWidth="181.0" text="Name">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <TextField fx:id="tfieldMSName" alignment="CENTER" layoutX="234.0" layoutY="81.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter first name" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></TextField>
+                  <Label fx:id="labelMSSurname" contentDisplay="CENTER" layoutX="3.0" layoutY="135.0" prefHeight="21.0" prefWidth="180.0" text="Surname">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <TextField fx:id="tfieldMSSurname" alignment="CENTER" layoutX="234.0" layoutY="131.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter surname" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <Label fx:id="labelMSPhone" contentDisplay="CENTER" layoutX="3.0" layoutY="185.0" prefHeight="21.0" prefWidth="181.0" text="Phone Number">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <TextField fx:id="tfieldMSPhone" alignment="CENTER" layoutX="234.0" layoutY="181.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter phone number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <Label fx:id="labelMSEmail" contentDisplay="CENTER" layoutX="2.0" layoutY="235.0" prefHeight="21.0" prefWidth="184.0" text="Email Address">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <TextField fx:id="tfieldMSEmail" alignment="CENTER" layoutX="234.0" layoutY="231.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter email address" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <Label fx:id="labelMSTax" contentDisplay="CENTER" layoutX="4.0" layoutY="285.0" prefHeight="21.0" prefWidth="181.0" text="Tax Number">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <TextField fx:id="tfieldMSTax" alignment="CENTER" layoutX="234.0" layoutY="281.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter tax number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <Label fx:id="labelMSStaffType" contentDisplay="CENTER" layoutX="1.0" layoutY="335.0" prefHeight="21.0" prefWidth="184.0" text="Staff Type">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <ComboBox fx:id="comboMSStaffType" layoutX="234.0" layoutY="331.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" />
+                  <Button fx:id="btnMSRegister" layoutX="38.0" layoutY="457.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <Button fx:id="btnMSCancel" layoutX="309.0" layoutY="457.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Cancel">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <Label fx:id="labelMSEmployed" contentDisplay="CENTER" layoutX="1.0" layoutY="399.0" prefHeight="21.0" prefWidth="184.0" text="Employed">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Label>
+                  <RadioButton fx:id="radioEmployed" layoutX="234.0" layoutY="380.0" mnemonicParsing="false" selected="true" text="Employed">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="staffTypeToggle" />
+                     </toggleGroup>
+                     <font>
+                        <Font size="15.0" />
+                     </font></RadioButton>
+                  <RadioButton layoutX="234.0" layoutY="409.0" mnemonicParsing="false" text="Not Employed" toggleGroup="$staffTypeToggle">
+                     <font>
+                        <Font size="15.0" />
+                     </font></RadioButton>
+               </children></Pane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

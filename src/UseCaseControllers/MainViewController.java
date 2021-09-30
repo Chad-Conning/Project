@@ -24,6 +24,8 @@ public class MainViewController {
     @FXML private Label lblAddStaff;
     @FXML private ImageView imgRegAnimal;
     @FXML private Label lblRegAnimal;
+    @FXML private ImageView imgModifyStaff;
+    @FXML private Label lblModifyStaff;
 
     @FXML private Pane addStaffPane;
     @FXML private Pane modifyStaffPane;
@@ -117,6 +119,13 @@ public class MainViewController {
             showRegAnimals();
         });
 
+        imgModifyStaff.setOnMouseClicked(actionEvent -> {
+            showModifyStaff();
+        });
+        lblModifyStaff.setOnMouseClicked(actionEvent -> {
+            showModifyStaff();
+        });
+
 
         /*searchSong.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -149,6 +158,21 @@ public class MainViewController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             addStaffController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+
+            controller.initSessionID(scene, staffUser);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showModifyStaff() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/modifyStaff.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            modifyStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(scene, staffUser);
