@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class modifyStaffController {
+
     Database queries = new Database();
     Connection connection;
 
@@ -135,7 +136,7 @@ public class modifyStaffController {
             System.err.println(e.getMessage());
         }
     }
-    
+
 
 
     private void showMainView() {
