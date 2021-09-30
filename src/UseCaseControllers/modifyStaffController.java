@@ -98,10 +98,10 @@ public class modifyStaffController {
         //add employed
 
         if (queries.modifyStaff(comboSelectStaff.getValue().toString(), txtfName, txtlName, txtContact, txtEmail, txtTaxNum, txtStaffType, isEmployed)) {
-            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new staff member has been modified.");
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The staff member with staff ID "+ comboSelectStaff.getValue().toString()+ " has been modified.");
             added.showAndWait();
         } else {
-            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new staff member could not be modified.");
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The staff member with staff ID "+ comboSelectStaff.getValue().toString()+ " could not be modified.");
             added.showAndWait();
         }
         try {
