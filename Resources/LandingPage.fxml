@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-style: solid; -fx-border-width: 2; -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.MainViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-style: solid; -fx-border-width: 2; -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.MainViewController">
     <top>
-        <VBox prefHeight="104.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="104.0" prefWidth="1209.0" BorderPane.alignment="TOP_CENTER">
             <children>
                 <HBox accessibleRole="IMAGE_VIEW" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="1209.0" style="-fx-background-color: #00A897; -fx-border-color: black; -fx-border-style: hidden hidden solid hidden; -fx-border-width: 2;">
                     <children>
@@ -40,14 +40,13 @@
                         </Label>
                     </children>
                 </HBox>
-                <AnchorPane prefHeight="2.0" prefWidth="1209.0" />
             </children>
         </VBox>
     </top>
    <right>
-        <VBox maxHeight="720.0" maxWidth="1209.0" prefHeight="720.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1209.0" BorderPane.alignment="TOP_CENTER">
             <children>
-                <HBox prefHeight="90.0" prefWidth="1209.0">
+                <HBox alignment="TOP_CENTER" prefHeight="90.0" prefWidth="1209.0">
                     <children>
                   <Button fx:id="btnLogOut" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Log Out">
                      <HBox.margin>
@@ -64,9 +63,9 @@
                         </Label>
                     </children>
                 </HBox>
-            <VBox prefHeight="632.0" prefWidth="1209.0">
+            <VBox alignment="TOP_CENTER" prefHeight="632.0" prefWidth="1209.0">
                <children>
-                  <HBox fx:id="LandingPageRow1" prefHeight="158.0" prefWidth="1209.0">
+                  <HBox fx:id="LandingPageRow1" alignment="TOP_CENTER" prefHeight="158.0" prefWidth="1209.0">
                      <children>
                         <Pane fx:id="addStaffPane" prefHeight="158.0" prefWidth="403.0">
                            <children>
@@ -135,7 +134,7 @@
                            </children>
                         </Pane>
                      </children></HBox>
-                  <HBox fx:id="LandingPageRow11" layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="1209.0">
+                  <HBox fx:id="LandingPageRow11" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="1209.0">
                      <children>
                         <Pane fx:id="registerAnimalPane" prefHeight="158.0" prefWidth="403.0">
                            <children>
@@ -205,7 +204,7 @@
                         </Pane>
                      </children>
                   </HBox>
-                  <HBox fx:id="LandingPageRow12" layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="1209.0">
+                  <HBox fx:id="LandingPageRow12" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="1209.0">
                      <children>
                         <Pane prefHeight="158.0" prefWidth="403.0">
                            <children>
@@ -275,7 +274,7 @@
                         </Pane>
                      </children>
                   </HBox>
-                  <HBox fx:id="LandingPageRow111" layoutX="10.0" layoutY="168.0" prefHeight="158.0" prefWidth="1209.0">
+                  <HBox fx:id="LandingPageRow111" alignment="TOP_CENTER" layoutX="10.0" layoutY="168.0" prefHeight="158.0" prefWidth="1209.0">
                      <children>
                         <Pane prefHeight="158.0" prefWidth="201.5" />
                         <Pane fx:id="viewLogsPane" prefHeight="158.0" prefWidth="403.0">
@@ -327,6 +326,9 @@
                   </HBox>
                </children></VBox>
             </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
         </VBox>
    </right>
 </BorderPane>

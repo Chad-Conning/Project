@@ -78,6 +78,30 @@ public class Database {
         return "";
     }
 
+    public Staff getStaff(String staffID) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Staff WHERE Staff_ID = " + Integer.parseInt(staffID));
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            Staff temp = new Staff();
+            temp.setStaffID(Integer.parseInt(staffID));
+            temp.setStaffPassword(rs.getString("Password"));
+            temp.setfName(rs.getString("Staff_FName"));
+            temp.setlName(rs.getString("Staff_LName"));
+            temp.setContactNum(rs.getString("Staff_ContactNum"));
+            temp.setEmail(rs.getString("Staff_Email"));
+            temp.setTaxNum(rs.getString("Staff_TaxNumber"));
+            temp.setStaffType(rs.getString("Staff_Type"));
+            temp.setBoolEmp(rs.getBoolean("is_Employed"));
+
+            return temp;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return new Staff();
+    }
+
     public boolean admitAnimal(String tagNo, String locationFound, String staffID) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Admission(Admission_Date, Tag_No, Location_Retrieved, Staff_ID) VALUES(?,?,?,?)");
@@ -115,16 +139,17 @@ public class Database {
         }
     }
 
-    public boolean modifyStaff(String fName, String lName, String contact, String email, String taxNum, String empRole){
+    public boolean modifyStaff(String staffID, String fName, String lName, String contact, String email, String taxNum, String empRole, Boolean isEmployed){
         try {
-            PreparedStatement updateStatement = connection.prepareStatement("UPDATE Staff(Staff_FName, Staff_LName, Staff_ContactNum, Staff_Email, Staff_TaxNumber, Staff_Type, is_Employed) VALUES(?,?,?,?,?,?,?) WHERE Staff_ID = IDValue");
-            updateStatement.setString(2, fName);
-            updateStatement.setString(3, lName);
-            updateStatement.setString(4, contact);
-            updateStatement.setString(5, email);
-            updateStatement.setString(6, taxNum);
-            updateStatement.setString(7, empRole);
-            updateStatement.setBoolean(8, true);
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE Staff SET Staff_FName = ?, Staff_LName = ?, Staff_ContactNum = ?, Staff_Email = ?, Staff_TaxNumber = ?, Staff_Type = ?, is_Employed = ? " +
+                    "WHERE Staff_ID = " + Integer.parseInt(staffID));
+            updateStatement.setString(1, fName);
+            updateStatement.setString(2, lName);
+            updateStatement.setString(3, contact);
+            updateStatement.setString(4, email);
+            updateStatement.setString(5, taxNum);
+            updateStatement.setString(6, empRole);
+            updateStatement.setBoolean(7, isEmployed);
             updateStatement.execute();
 
             return true;
