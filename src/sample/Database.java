@@ -68,10 +68,11 @@ public class Database {
 
     public String getTagNo(String name) {
         try {
-            String query = "SELECT * FROM Animal WHERE Animal_Name = " + name;
-            ResultSet rs = statement.executeQuery(query);
-            String tagNo = rs.getString("Tag_No");
-            return tagNo;
+            //String query = "SELECT * FROM Animal WHERE Animal_Name = " + name;
+            PreparedStatement deleteStatement = connection.prepareStatement("SELECT * FROM Animal WHERE Animal_Name = '" + name + "'");
+            ResultSet rs = deleteStatement.executeQuery();
+            rs.next();
+            return rs.getString("Tag_No");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

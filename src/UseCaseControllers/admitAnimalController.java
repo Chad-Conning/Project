@@ -37,7 +37,7 @@ public class admitAnimalController {
                 "New Brighton Beach", "Pollock Beach", "Sardinia Bay Beach", "Schoenmakerskop Beach", "St Georges Strand", "Swartkops Beach", "Van Stadens Beach", "Born on site");
         comboLocation.getSelectionModel().select("Born on site");
 
-        
+        datePicker.setValue(LocalDate.now());
 
         this.scene = scene;
         this.staffUser = staffUser;
