@@ -68,7 +68,6 @@ public class Database {
 
     public String getTagNo(String name) {
         try {
-            //String query = "SELECT * FROM Animal WHERE Animal_Name = " + name;
             PreparedStatement deleteStatement = connection.prepareStatement("SELECT * FROM Animal WHERE Animal_Name = '" + name + "'");
             ResultSet rs = deleteStatement.executeQuery();
             rs.next();

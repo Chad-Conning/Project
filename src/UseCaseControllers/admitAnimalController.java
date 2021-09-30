@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 import sample.Animal;
 import sample.Database;
 import sample.LoginManager;
@@ -12,7 +11,6 @@ import sample.Staff;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -29,7 +27,7 @@ public class admitAnimalController {
     @FXML private Button btnACancel;
     @FXML private TextField tfieldTag;
     @FXML private DatePicker datePicker;
-    @FXML private ComboBox comboLocation;
+    @FXML private ComboBox<String> comboLocation;
     @FXML private TextArea txtNotes;
 
     public void initSessionID(Scene scene, Staff staffUser, Animal newAnimal) {
@@ -59,7 +57,7 @@ public class admitAnimalController {
     private void admitAnimal() {
         connection = queries.connection;
         String txtTag = tfieldTag.getText();
-        String txtLocation = comboLocation.getValue().toString();
+        String txtLocation = comboLocation.getValue();
 
         if (queries.admitAnimal(txtTag, txtLocation, staffUser.getStaffID())) {
             try {
@@ -79,18 +77,23 @@ public class admitAnimalController {
     }
 
     private void cancelReg() {
-        queries.deRegAnimal(newAnimal.getTagNo());
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/registerAnimal.fxml")   // load fxml
-            );
-            scene.setRoot(loader.load());   // create scene for mainView screen
-            regAnimalController controller =
-                    loader.getController();   // gets the controller specified in the fxml
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Cancelling will deregister the animal. Would you like to cancel admission process?", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
 
-            controller.initOtherSession(scene, staffUser, newAnimal.getName(), newAnimal.getGender(), newAnimal.getAdult(), newAnimal.getSpecies());
-        } catch (IOException ex) {
-            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        if (alert.getResult() == ButtonType.YES) {
+            queries.deRegAnimal(newAnimal.getTagNo());
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("/registerAnimal.fxml")   // load fxml
+                );
+                scene.setRoot(loader.load());   // create scene for mainView screen
+                regAnimalController controller =
+                        loader.getController();   // gets the controller specified in the fxml
+
+                controller.initOtherSession(scene, staffUser, newAnimal.getName(), newAnimal.getGender(), newAnimal.getAdult(), newAnimal.getSpecies());
+            } catch (IOException ex) {
+                Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }
