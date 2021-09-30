@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import sample.Animal;
 import sample.Database;
 import sample.LoginManager;
 import sample.Staff;
@@ -19,17 +20,37 @@ public class regAnimalController {
     Connection connection;
     Scene scene;
     Staff staffUser;
+    String tagNo;
 
     @FXML private Button btnARegister;
     @FXML private Button btnACancel;
     @FXML private TextField tfieldName;
     @FXML private RadioButton toggleMale;
+    @FXML private RadioButton toggleFemale;
     @FXML private RadioButton toggleYes;
+    @FXML private RadioButton toggleNo;
     @FXML private ComboBox comboSpecies;
 
     public void initSessionID(Scene scene, Staff staffUser) {
         comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
         comboSpecies.getSelectionModel().select("Seal");
+
+        setUp(scene, staffUser);
+    }
+
+    public void initOtherSession(Scene scene, Staff staffUser, String name, String gender, Boolean isAdult, String species) {
+        comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
+        comboSpecies.getSelectionModel().select(species);
+        tfieldName.setText(name);
+        if (gender.equals("Female"))
+            toggleFemale.setSelected(true);
+        if (!isAdult)
+            toggleNo.setSelected(true);
+
+        setUp(scene, staffUser);
+    }
+
+    private void setUp(Scene scene, Staff staffUser) {
         this.scene = scene;
         this.staffUser = staffUser;
         try {
@@ -60,18 +81,39 @@ public class regAnimalController {
         String txtSpecies = comboSpecies.getValue().toString();
 
         if (queries.regAnimal(txtName, isAdult, txtGender, "Alive", txtSpecies)) {
-            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal member has been registered.");
+            tagNo = queries.getTagNo(txtName);
+            Animal newAnimal = new Animal(tagNo, txtName, isAdult, txtGender, txtSpecies);
+
+            try {
+                queries.connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            showAdmitAnimals(newAnimal);
+
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal has been registered.");
             added.showAndWait();
         } else {
-            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal member could not be registered.");
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal could not be registered.");
             added.showAndWait();
         }
+
+        //showMainView();
+    }
+
+    private void showAdmitAnimals(Animal newAnimal) {
         try {
-            queries.connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/admitAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());
+            admitAnimalController controller = loader.getController();
+
+            controller.initSessionID(scene, staffUser, newAnimal);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        showMainView();
     }
 
     private void showMainView() {

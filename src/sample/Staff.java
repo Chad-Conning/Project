@@ -15,8 +15,8 @@ public class Staff {
     private final SimpleStringProperty staffType = new SimpleStringProperty();
     private final SimpleBooleanProperty boolEmp = new SimpleBooleanProperty();
 
-    public int getStaffID() {
-        return staffID.get();
+    public String getStaffID() {
+        return staffID.getValue().toString();
     }
 
     public SimpleIntegerProperty staffIDProperty() {

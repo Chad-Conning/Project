@@ -56,7 +56,7 @@ public class LoginController {
             emp.setStaffID(rs.getInt("Staff_ID"));
             emp.setStaffPassword(rs.getString("Password"));
             emp.setStaffType(rs.getString("Staff_Type"));
-            if (emp.getStaffID() == parseInt(user.getText()) && emp.getStaffPassword().equals(password.getText())) {
+            if (emp.getStaffID().equals(user.getText()) && emp.getStaffPassword().equals(password.getText())) {
                 /*if (emp.getStaffType().equals("Administrator")) {
                     staffUser = emp;
                 } else if (emp.getStaffType().equals("Admission")) {

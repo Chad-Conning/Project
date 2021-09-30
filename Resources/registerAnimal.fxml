@@ -112,14 +112,14 @@
                      </padding></Label>
                   <ComboBox fx:id="comboSpecies" layoutX="233.0" layoutY="259.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" value="Administrative" />
                   <RadioButton id="radioEmployed" fx:id="toggleMale" layoutX="233.0" layoutY="100.0" mnemonicParsing="false" selected="true" text="Male">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="employedToggle" />
-                     </toggleGroup>
                      <font>
                         <Font size="15.0" />
                      </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="genderToggle" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton id="radioNotEmployed" fx:id="toggleFemale" layoutX="233.0" layoutY="132.0" mnemonicParsing="false" text="Female" toggleGroup="$employedToggle">
+                  <RadioButton id="radioNotEmployed" fx:id="toggleFemale" layoutX="233.0" layoutY="132.0" mnemonicParsing="false" text="Female" toggleGroup="$genderToggle">
                      <font>
                         <Font size="15.0" />
                      </font></RadioButton>
@@ -131,12 +131,15 @@
                      <font>
                         <Font size="15.0" />
                      </font></Button>
-                  <RadioButton fx:id="toggleYes" layoutX="232.0" layoutY="170.0" mnemonicParsing="false" text="Yes">
+                  <RadioButton fx:id="toggleYes" layoutX="232.0" layoutY="170.0" mnemonicParsing="false" selected="true" text="Yes">
                      <font>
                         <Font size="15.0" />
                      </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="adultToggle" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="toggleNo" layoutX="233.0" layoutY="205.0" mnemonicParsing="false" text="No">
+                  <RadioButton fx:id="toggleNo" layoutX="233.0" layoutY="205.0" mnemonicParsing="false" text="No" toggleGroup="$adultToggle">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -57,6 +57,27 @@ public class Database {
         }
     }
 
+    public void deRegAnimal(String tagNo) {
+        try {
+            String query = "DELETE FROM Animal WHERE Tag_No = " + tagNo;
+            statement.execute(query);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public String getTagNo(String name) {
+        try {
+            String query = "SELECT * FROM Animal WHERE Animal_Name = " + name;
+            ResultSet rs = statement.executeQuery(query);
+            String tagNo = rs.getString("Tag_No");
+            return tagNo;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return "";
+    }
+
     public boolean admitAnimal(String tagNo, String locationFound, String staffID) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Admission(Admission_Date, Tag_No, Location_Retrieved, Staff_ID) VALUES(?,?,?,?)");
