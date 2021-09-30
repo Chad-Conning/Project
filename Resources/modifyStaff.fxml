@@ -141,7 +141,7 @@
                         <Insets left="40.0" />
                      </padding></Label>
                   <ComboBox fx:id="comboMSStaffType" layoutX="234.0" layoutY="331.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" />
-                  <Button fx:id="btnMSRegister" layoutX="38.0" layoutY="457.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
+                  <Button fx:id="btnMSRegister" layoutX="38.0" layoutY="457.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Save">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
@@ -164,7 +164,7 @@
                      <font>
                         <Font size="15.0" />
                      </font></RadioButton>
-                  <RadioButton layoutX="234.0" layoutY="409.0" mnemonicParsing="false" text="Not Employed" toggleGroup="$staffTypeToggle">
+                  <RadioButton fx:id="radioNotEmployed" layoutX="234.0" layoutY="409.0" mnemonicParsing="false" text="Not Employed" toggleGroup="$staffTypeToggle">
                      <font>
                         <Font size="15.0" />
                      </font></RadioButton>

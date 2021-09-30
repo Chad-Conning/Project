@@ -114,4 +114,24 @@ public class Database {
             return false;
         }
     }
+
+    public boolean modifyStaff(String fName, String lName, String contact, String email, String taxNum, String empRole){
+        try {
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE Staff(Staff_FName, Staff_LName, Staff_ContactNum, Staff_Email, Staff_TaxNumber, Staff_Type, is_Employed) VALUES(?,?,?,?,?,?,?) WHERE Staff_ID = IDValue");
+            updateStatement.setString(2, fName);
+            updateStatement.setString(3, lName);
+            updateStatement.setString(4, contact);
+            updateStatement.setString(5, email);
+            updateStatement.setString(6, taxNum);
+            updateStatement.setString(7, empRole);
+            updateStatement.setBoolean(8, true);
+            updateStatement.execute();
+
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
