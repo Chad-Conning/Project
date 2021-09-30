@@ -4,11 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import sample.Database;
 import sample.LoginManager;
 import sample.Staff;
 
+import javax.swing.*;
+import java.awt.event.KeyAdapter;
 import java.sql.*;
 
 import static java.lang.Integer.parseInt;
@@ -27,19 +31,28 @@ public class LoginController {
         queries.connectDB();
 
         loginButton.setOnAction(event -> {
-            try {
-                if (authorize()) {
-                    loginManager.authenticated(staffUser);
-                }
-                else {    // handles incorrect credentials
-                    user.setText("");
-                    password.setText("");
-                    errorLbl.setText("Incorrect user credentials!");
-                }
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
+            login(loginManager);
         });
+
+        password.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode().equals(KeyCode.ENTER))
+                login(loginManager);
+        });
+    }
+
+    private void login(final LoginManager loginManager) {
+        try {
+            if (authorize()) {
+                loginManager.authenticated(staffUser);
+            }
+            else {    // handles incorrect credentials
+                user.setText("");
+                password.setText("");
+                errorLbl.setText("Incorrect user credentials!");
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     /**
@@ -57,14 +70,6 @@ public class LoginController {
             emp.setStaffPassword(rs.getString("Password"));
             emp.setStaffType(rs.getString("Staff_Type"));
             if (emp.getStaffID().equals(user.getText()) && emp.getStaffPassword().equals(password.getText())) {
-                /*if (emp.getStaffType().equals("Administrator")) {
-                    staffUser = emp;
-                } else if (emp.getStaffType().equals("Admission")) {
-                    staffRole = "Admission";
-                } else if (emp.getStaffType().equals("Handler")) {
-                    staffRole = "Handler";
-                }*/
-
                 staffUser = emp;
 
                 System.out.println("Connected Successfully");
