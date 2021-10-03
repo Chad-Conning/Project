@@ -53,10 +53,10 @@ public class addStaffController {
 //        validationControl();
 
         btnSRegister.setOnAction(actionEvent -> {
-            Boolean result = validationControl();
+            /*Boolean result = validationControl();
             //validation from https://www.youtube.com/watch?v=8OJMLeXyC4M
-            validationControl();
-            if (result==false)
+            validationControl();*/
+            if (validationControl())
                 addStaff();
         });
 
@@ -108,8 +108,20 @@ public class addStaffController {
 
     //validation helper method
     private Boolean validationControl(){
-        Boolean result = true;
-        boolean name = dataValidation.textFieldIsNull(tfieldName,vLabelName, "Name is required");
+        //Boolean result = true;
+
+        boolean name = dataValidation.checkValidation(tfieldName,vLabelName,1);
+        boolean surname = dataValidation.checkValidation(tfieldSurname,vLabelSurname,1);
+        boolean email = dataValidation.checkValidation(tfieldEmail,vLabelEmail,3);
+        boolean phone = dataValidation.checkValidation(tfieldPhone,vLabelPhone,2);
+        boolean tax = dataValidation.checkValidation(tfieldTax,vLabelTax,2);
+        boolean password = dataValidation.checkValidation(tfieldPassword,vLabelPassword,4);
+
+        if (name && surname && email && phone && tax && password) {
+            return true;
+        } else return false;
+
+        /*boolean name = dataValidation.textFieldIsNull(tfieldName,vLabelName, "Name is required");
         boolean alphabetName = dataValidation.textAlphabet(tfieldName, vLabelName, "Name must only contain letters");
         boolean surname = dataValidation.textFieldIsNull(tfieldSurname,vLabelSurname, "Surname is required");
         boolean alphabetSurname = dataValidation.textAlphabet(tfieldSurname, vLabelSurname, "Surname must only contain letters");
@@ -119,8 +131,8 @@ public class addStaffController {
         boolean phoneType = dataValidation.textNumeric(tfieldPhone, vLabelPhone, "Phone number must only contain numbers");
         boolean tax = dataValidation.textFieldIsNull(tfieldTax,vLabelTax, "Tax number is required");
         boolean taxType = dataValidation.textNumeric(tfieldTax, vLabelTax, "Tax number must only contain numbers");
-        boolean password = dataValidation.textFieldIsNull(tfieldPassword,vLabelPassword, "Password is required");
-        return result;
+        boolean password = dataValidation.textFieldIsNull(tfieldPassword,vLabelPassword, "Password is required");*/
+
     }
 
     // private boolean validationControl(){
