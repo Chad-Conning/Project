@@ -50,7 +50,6 @@ public class addStaffController {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-//        validationControl();
 
         btnSRegister.setOnAction(actionEvent -> {
             /*Boolean result = validationControl();
@@ -87,7 +86,7 @@ public class addStaffController {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        //showMainView();
+        showMainView();
     }
 
     private void showMainView() {
