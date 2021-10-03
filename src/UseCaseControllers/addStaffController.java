@@ -1,13 +1,11 @@
 package UseCaseControllers;
 
+import DataValidation.dataValidation;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.controlsfx.validation.Severity;
 import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
@@ -36,6 +34,13 @@ public class addStaffController {
     @FXML private TextField tfieldTax;
     @FXML private TextField tfieldPassword;
     @FXML private ComboBox comboStaffType;
+
+    @FXML private Label vLabelName;
+    @FXML private Label vLabelSurname;
+    @FXML private Label vLabelEmail;
+    @FXML private Label vLabelPhone;
+    @FXML private Label vLabelTax;
+    @FXML private Label vLabelPassword;
     Staff staffUser;
     ValidationSupport validationSupport = new ValidationSupport();
     Scene scene;
@@ -54,9 +59,16 @@ public class addStaffController {
 //        validationControl();
 
         btnSRegister.setOnAction(actionEvent -> {
-            Boolean result = validationControl();
-            if (result)
-                addStaff();
+//            Boolean result = validationControl();
+            //validation from https://www.youtube.com/watch?v=8OJMLeXyC4M
+            boolean name = dataValidation.textFieldIsNull(tfieldName,vLabelName, "Name is required");
+            boolean surname = dataValidation.textFieldIsNull(tfieldSurname,vLabelSurname, "Surname is required");
+            boolean email = dataValidation.textFieldIsNull(tfieldEmail,vLabelEmail, "Email is required");
+            boolean phone = dataValidation.textFieldIsNull(tfieldPhone,vLabelPhone, "Phone number is required");
+            boolean tax = dataValidation.textFieldIsNull(tfieldTax,vLabelTax, "Tax number is required");
+            boolean password = dataValidation.textFieldIsNull(tfieldPassword,vLabelPassword, "Password is required");
+//            if (result)
+//                addStaff();
         });
 
         btnSCancel.setOnAction(actionEvent -> showMainView());

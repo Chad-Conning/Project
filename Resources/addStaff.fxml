@@ -88,6 +88,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
+                  <Label fx:id="vLabelName" layoutX="264.0" layoutY="59.0" prefHeight="17.0" prefWidth="183.0" textFill="RED" translateX="-30.0" />
                   <TextField fx:id="tfieldName" alignment="CENTER" layoutX="233.0" layoutY="30.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter first name" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;">
                      <opaqueInsets>
                         <Insets />
@@ -99,6 +100,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
+                  <Label fx:id="vLabelSurname" layoutX="233.0" layoutY="109.0" prefHeight="17.0" prefWidth="185.0" textFill="RED" />
                   <TextField fx:id="tfieldSurname" alignment="CENTER" layoutX="233.0" layoutY="80.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter surname" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelPhone" contentDisplay="CENTER" layoutY="134.0" prefHeight="21.0" prefWidth="181.0" text="Phone Number">
                      <font>
@@ -107,6 +109,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
+                  <Label fx:id="vLabelPhone" layoutX="234.0" layoutY="159.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
                   <TextField fx:id="tfieldPhone" alignment="CENTER" layoutX="233.0" layoutY="130.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter phone number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelEmail" contentDisplay="CENTER" layoutY="184.0" prefHeight="21.0" prefWidth="184.0" text="Email Address">
                      <font>
@@ -115,6 +118,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
+                  <Label fx:id="vLabelEmail" layoutX="234.0" layoutY="209.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
                   <TextField fx:id="tfieldEmail" alignment="CENTER" layoutX="233.0" layoutY="180.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter email address" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelTax" contentDisplay="CENTER" layoutY="234.0" prefHeight="21.0" prefWidth="181.0" text="Tax Number">
                      <font>
@@ -123,6 +127,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
+                  <Label fx:id="vLabelTax" layoutX="234.0" layoutY="259.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
                   <TextField fx:id="tfieldTax" alignment="CENTER" layoutX="233.0" layoutY="230.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter tax number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelStaffType" contentDisplay="CENTER" layoutY="284.0" prefHeight="21.0" prefWidth="184.0" text="Staff Type">
                      <font>
@@ -146,6 +151,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="tfieldPassword" alignment="CENTER" layoutX="233.0" layoutY="330.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter a password" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <Label fx:id="vLabelPassword" layoutX="234.0" layoutY="359.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
                </children></Pane>
          </children>
       </VBox>
