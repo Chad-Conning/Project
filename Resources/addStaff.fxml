@@ -109,7 +109,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label fx:id="vLabelPhone" layoutX="234.0" layoutY="159.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
+                  <Label fx:id="vLabelPhone" layoutX="234.0" layoutY="159.0" prefHeight="17.0" prefWidth="229.0" textFill="RED" />
                   <TextField fx:id="tfieldPhone" alignment="CENTER" layoutX="233.0" layoutY="130.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter phone number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelEmail" contentDisplay="CENTER" layoutY="184.0" prefHeight="21.0" prefWidth="184.0" text="Email Address">
                      <font>
