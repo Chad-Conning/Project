@@ -5,8 +5,33 @@ import javafx.scene.control.TextField;
 
 public class dataValidation {
 
+    public static boolean checkValidation(TextField inputTextField, Label inputLabel, int validationNumber) {
+        //boolean isNull = false;
+        String validationString = null;
+
+        if (inputTextField.getText().isEmpty()) {
+            validationString = "Field cannot be empty";
+            inputLabel.setText(validationString);
+            return false;
+        } else
+        {
+            switch (validationNumber) {
+                case 1:
+                    return textAlphabet(inputTextField, inputLabel, "Field may only contain letters");
+                case 2:
+                    return textNumeric(inputTextField, inputLabel, "Field may only contain numbers");
+                case 3:
+                    return emailFormat(inputTextField, inputLabel, "Invalid email format, (Example.gmail.com)");
+                default: {
+                    inputLabel.setText("");
+                    return true;
+                }
+            }
+        }
+    }
+
     //null form validation
-    public static boolean textFieldIsNull(TextField inputTextField, Label inputLabel, String validationText){
+    /*public static boolean textFieldIsNull(TextField inputTextField, Label inputLabel, String validationText){
             boolean isNull = false;
             String validationString = null;
 
@@ -17,7 +42,7 @@ public class dataValidation {
 
             inputLabel.setText(validationString);
             return isNull;
-        }
+        }*/
 
 //     data length form validation
     public static boolean dataLength(TextField inputTextField, Label inputLabel, String validationText, String requiredLength){
