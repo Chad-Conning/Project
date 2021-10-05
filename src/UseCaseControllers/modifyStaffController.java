@@ -4,9 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import org.controlsfx.validation.Severity;
-import org.controlsfx.validation.ValidationSupport;
-import org.controlsfx.validation.Validator;
 import sample.Database;
 import sample.LoginManager;
 import sample.Staff;
@@ -20,10 +17,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class modifyStaffController {
-
     Database queries = new Database();
     Connection connection;
-
 
     @FXML private Button btnMSRegister;
     @FXML private Button btnMSCancel;
@@ -38,7 +33,7 @@ public class modifyStaffController {
     @FXML private ComboBox comboSelectStaff;
 
     Staff staffUser;
-    ValidationSupport validationSupport = new ValidationSupport();
+    //ValidationSupport validationSupport = new ValidationSupport();
     Scene scene;
 
     public void initSessionID(Scene scene, Staff staffUser) {
@@ -59,9 +54,7 @@ public class modifyStaffController {
 //        validationControl();
 
         btnMSRegister.setOnAction(actionEvent -> {
-            //Boolean result = validationControl();
-           // if (result)
-                modifyStaff();
+             modifyStaff();
         });
 
         btnMSCancel.setOnAction(actionEvent -> showMainView());
@@ -123,13 +116,14 @@ public class modifyStaffController {
 
             LoginManager loginManager = new LoginManager(scene);
             controller.initSessionID(loginManager, this.scene, staffUser);
-        } catch (IOException ex) {
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     //validation helper method
-    private boolean validationControl(){
+    /*private boolean validationControl(){
         boolean result = true;
         //validation using controlsfx https://jar-download.com/artifacts/org.controlsfx/controlsfx/11.1.0
         //https://www.tabnine.com/code/java/methods/org.controlsfx.validation.Validator/createRegexValidator
@@ -174,5 +168,5 @@ public class modifyStaffController {
             result = false;
 
         return result;
-    }
+    }*/
 }

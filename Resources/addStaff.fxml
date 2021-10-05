@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.addStaffController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.addStaffController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
             <HBox accessibleRole="IMAGE_VIEW" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00A897; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: hidden hidden solid hidden;">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox maxWidth="200.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="105.0" fitWidth="201.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -27,11 +27,16 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <Label fx:id="titleLabel" contentDisplay="CENTER" text="Bay Marine Rescue" textFill="WHITE" translateX="205.0">
-                     <font>
-                        <Font size="50.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER" prefHeight="105.0" prefWidth="421.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="titleLabel" contentDisplay="CENTER" text="Bay Marine Rescue" textFill="WHITE">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox maxWidth="200.0" prefHeight="100.0" prefWidth="200.0" />
                </children>
             </HBox>
             <AnchorPane prefHeight="29.0" prefWidth="1205.0">

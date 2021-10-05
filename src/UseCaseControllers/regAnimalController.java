@@ -1,5 +1,6 @@
 package UseCaseControllers;
 
+import DataValidation.dataValidation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,6 +32,8 @@ public class regAnimalController {
     @FXML private RadioButton toggleNo;
     @FXML private ComboBox comboSpecies;
 
+    @FXML private Label vLabelName;
+
     public void initSessionID(Scene scene, Staff staffUser) {
         comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
         comboSpecies.getSelectionModel().select("Seal");
@@ -50,6 +53,13 @@ public class regAnimalController {
         setUp(scene, staffUser);
     }
 
+    private Boolean validationControl() {
+        boolean name = dataValidation.checkValidation(tfieldName,vLabelName,1,"");
+        if (name)
+            return true;
+        else return false;
+    }
+
     private void setUp(Scene scene, Staff staffUser) {
         this.scene = scene;
         this.staffUser = staffUser;
@@ -60,7 +70,10 @@ public class regAnimalController {
             e.printStackTrace();
         }
 
-        btnARegister.setOnAction(actionEvent -> regAnimal());
+        btnARegister.setOnAction(actionEvent -> {
+            if (validationControl())
+                regAnimal();
+        });
 
         btnACancel.setOnAction(actionEvent -> showMainView());
     }
@@ -99,7 +112,6 @@ public class regAnimalController {
             added.showAndWait();
         }
 
-        //showMainView();
     }
 
     private void showAdmitAnimals(Animal newAnimal) {

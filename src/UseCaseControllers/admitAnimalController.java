@@ -26,9 +26,12 @@ public class admitAnimalController {
     @FXML private Button btnAdmit;
     @FXML private Button btnACancel;
     @FXML private TextField tfieldTag;
+    //@FXML private ComboBox<String> tfieldTag;
     @FXML private DatePicker datePicker;
     @FXML private ComboBox<String> comboLocation;
     @FXML private TextArea txtNotes;
+
+    @FXML private Label lblTagMsg;
 
     public void initSessionID(Scene scene, Staff staffUser, Animal newAnimal) {
         comboLocation.getItems().addAll("Beachview Beach", "Bluewater Bay Beach", "Hobie Beach", "Humewood Beach", "King's Beach", "Maitland's Beach",
@@ -40,6 +43,8 @@ public class admitAnimalController {
         this.scene = scene;
         this.staffUser = staffUser;
         this.newAnimal = newAnimal;
+
+        //tfieldTag.getSelectionModel().select(newAnimal.getTagNo());
         tfieldTag.setText(newAnimal.getTagNo());
 
         try {
@@ -58,8 +63,9 @@ public class admitAnimalController {
         connection = queries.connection;
         String txtTag = tfieldTag.getText();
         String txtLocation = comboLocation.getValue();
+        String admissionNotes = txtNotes.getText();
 
-        if (queries.admitAnimal(txtTag, txtLocation, staffUser.getStaffID())) {
+        if (queries.admitAnimal(txtTag, txtLocation, staffUser.getStaffID(), admissionNotes)) {
             try {
                 queries.connection.close();
             } catch (SQLException throwables) {

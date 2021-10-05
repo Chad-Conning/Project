@@ -10,9 +10,9 @@
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox accessibleRole="IMAGE_VIEW" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00A897; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: hidden hidden solid hidden;">
+            <HBox accessibleRole="IMAGE_VIEW" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00A897; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: hidden hidden solid hidden;">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox maxWidth="200.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="105.0" fitWidth="201.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -27,11 +27,15 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <Label fx:id="titleLabel" contentDisplay="CENTER" text="Bay Marine Rescue" textFill="WHITE" translateX="205.0">
-                     <font>
-                        <Font size="50.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER" prefHeight="105.0" prefWidth="893.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="titleLabel" contentDisplay="CENTER" prefHeight="73.0" prefWidth="427.0" text="Bay Marine Rescue" textFill="WHITE">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </Label>
+                     </children></HBox>
+                  <HBox maxWidth="200.0" prefHeight="100.0" prefWidth="200.0" />
                </children>
             </HBox>
             <AnchorPane prefHeight="29.0" prefWidth="1205.0">
@@ -88,7 +92,6 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldTag" alignment="CENTER" editable="false" layoutX="233.0" layoutY="30.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelName" contentDisplay="CENTER" layoutX="6.0" layoutY="86.0" prefHeight="21.0" prefWidth="180.0" text="Date">
                      <font>
                         <Font size="15.0" />
@@ -111,7 +114,7 @@
                         <Insets left="40.0" />
                      </padding></Label>
                   <ComboBox fx:id="comboLocation" layoutX="233.0" layoutY="138.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" value="Administrative" />
-                  <Button fx:id="btnAdmit" layoutX="41.0" layoutY="324.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
+                  <Button fx:id="btnAdmit" layoutX="41.0" layoutY="324.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Admit">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
@@ -119,8 +122,10 @@
                      <font>
                         <Font size="15.0" />
                      </font></Button>
-                  <DatePicker fx:id="datePicker" editable="false" layoutX="233.0" layoutY="84.0" prefHeight="25.0" prefWidth="143.0" />
+                  <DatePicker fx:id="datePicker" disable="true" editable="false" layoutX="233.0" layoutY="84.0" prefHeight="25.0" prefWidth="143.0" />
                   <TextArea fx:id="txtNotes" layoutX="233.0" layoutY="198.0" prefHeight="88.0" prefWidth="185.0" />
+                  <Label fx:id="lblTagMsg" layoutX="239.0" layoutY="59.0" text="TagNo does not exist." textFill="RED" visible="false" />
+                  <TextField fx:id="tfieldTag" editable="false" layoutX="234.0" layoutY="32.0" prefHeight="28.0" prefWidth="185.0" />
                </children></Pane>
          </children>
       </VBox>
