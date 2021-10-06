@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.modifyStaffController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.modifyStaffController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
@@ -41,7 +41,7 @@
             </HBox>
             <AnchorPane prefHeight="29.0" prefWidth="1205.0">
                <children>
-                  <MenuBar prefHeight="29.0" prefWidth="153.0" style="-fx-border-color: black; -fx-border-style: hidden solid solid hidden; -fx-border-width: 2;">
+                  <MenuBar prefHeight="29.0" prefWidth="216.0" style="-fx-border-color: black; -fx-border-style: hidden solid solid hidden; -fx-border-width: 2;">
                     <menus>
                       <Menu fx:id="btnMenuAdd" mnemonicParsing="false" text="Add">
                            <items>
@@ -63,6 +63,11 @@
                               <MenuItem fx:id="btnMenuDisplayAR" mnemonicParsing="false" text="View Animals Report" />
                               <MenuItem fx:id="btnMenuDisplayLogsA" mnemonicParsing="false" text="View Logs per animal Report" />
                               <MenuItem fx:id="btnMenuDisplayS" mnemonicParsing="false" text="View Staff Report" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Log out">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
                           </items>
                         </Menu>
                     </menus>
