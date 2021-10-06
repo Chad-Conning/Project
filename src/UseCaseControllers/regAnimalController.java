@@ -31,6 +31,7 @@ public class regAnimalController {
     @FXML private RadioButton toggleYes;
     @FXML private RadioButton toggleNo;
     @FXML private ComboBox comboSpecies;
+    @FXML private Label lblUserInformation;
 
     @FXML private Label vLabelName;
 
@@ -44,6 +45,7 @@ public class regAnimalController {
     public void initOtherSession(Scene scene, Staff staffUser, String name, String gender, Boolean isAdult, String species) {
         comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
         comboSpecies.getSelectionModel().select(species);
+
         tfieldName.setText(name);
         if (gender.equals("Female"))
             toggleFemale.setSelected(true);
@@ -63,6 +65,9 @@ public class regAnimalController {
     private void setUp(Scene scene, Staff staffUser) {
         this.scene = scene;
         this.staffUser = staffUser;
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
+
         try {
             queries.connectDB();
 

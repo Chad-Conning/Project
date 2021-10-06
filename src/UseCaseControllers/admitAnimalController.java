@@ -30,13 +30,15 @@ public class admitAnimalController {
     @FXML private DatePicker datePicker;
     @FXML private ComboBox<String> comboLocation;
     @FXML private TextArea txtNotes;
-
+    @FXML private Label lblUserInformation;
     @FXML private Label lblTagMsg;
 
     public void initSessionID(Scene scene, Staff staffUser, Animal newAnimal) {
         comboLocation.getItems().addAll("Beachview Beach", "Bluewater Bay Beach", "Hobie Beach", "Humewood Beach", "King's Beach", "Maitland's Beach",
                 "New Brighton Beach", "Pollock Beach", "Sardinia Bay Beach", "Schoenmakerskop Beach", "St Georges Strand", "Swartkops Beach", "Van Stadens Beach", "Born on site");
         comboLocation.getSelectionModel().select("Born on site");
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
 
         datePicker.setValue(LocalDate.now());
 

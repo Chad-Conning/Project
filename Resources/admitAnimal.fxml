@@ -130,4 +130,11 @@
          </children>
       </VBox>
    </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblUserInformation" text="Label" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

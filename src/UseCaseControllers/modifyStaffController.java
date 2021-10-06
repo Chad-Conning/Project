@@ -31,6 +31,7 @@ public class modifyStaffController {
     @FXML private RadioButton radioEmployed;
     @FXML private RadioButton radioNotEmployed;
     @FXML private ComboBox comboSelectStaff;
+    @FXML private Label lblUserInformation;
 
     Staff staffUser;
     //ValidationSupport validationSupport = new ValidationSupport();
@@ -39,6 +40,9 @@ public class modifyStaffController {
     public void initSessionID(Scene scene, Staff staffUser) {
         comboMSStaffType.getItems().addAll("Administrator", "Admission", "Handler");
         comboMSStaffType.getSelectionModel().select("Administrator");
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
+
         this.staffUser = staffUser;
         this.scene = scene;
         try {

@@ -64,7 +64,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="626.0" text="Welcome to Bay Marine Rescue" textAlignment="CENTER">
+                              <Label fx:id="txtIntroHeading" alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="626.0" text="Welcome to Bay Marine Rescue" textAlignment="CENTER">
                                   <font>
                                       <Font size="40.0" />
                                   </font>
@@ -88,7 +88,7 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
                                        <image>
-                                          <Image url="@Images/Images/dolphin.png" />
+                                          <Image url="@Images/Images/users.png" />
                                        </image>
                                     </ImageView>
                                     <Label fx:id="lblAddStaff" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Add Staff">
@@ -110,7 +110,7 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
                                        <image>
-                                          <Image url="@Images/Images/penguins.png" />
+                                          <Image url="@Images/Images/editUser.png" />
                                        </image>
                                     </ImageView>
                                     <Label fx:id="lblModifyStaff" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Modify Staff">
@@ -132,7 +132,7 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
                                        <image>
-                                          <Image url="@Images/Images/whale_tail.png" />
+                                          <Image url="@Images/Images/viewStaffReports2.png" />
                                        </image>
                                     </ImageView>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Staff Reports">
@@ -157,7 +157,7 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
                                        <image>
-                                          <Image url="@Images/Images/fish.png" />
+                                          <Image url="@Images/Images/addAnimal.png" />
                                        </image>
                                     </ImageView>
                                     <Label fx:id="lblRegAnimal" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Register Animal">
@@ -179,10 +179,10 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
                                        <image>
-                                          <Image url="@Images/Images/turtle.png" />
+                                          <Image url="@Images/Images/medical-report.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Admit Animal">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Modify Animal Status">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -227,10 +227,10 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
                                        <image>
-                                          <Image url="@Images/Images/dolphin.png" />
+                                          <Image url="@Images/Images/medical-report.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Modify Animal Status">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Logs Per Animal">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -288,28 +288,6 @@
                   <HBox fx:id="LandingPageRow111" alignment="TOP_CENTER" layoutX="10.0" layoutY="168.0" prefHeight="158.0" prefWidth="1209.0">
                      <children>
                         <Pane prefHeight="158.0" prefWidth="201.5" />
-                        <Pane fx:id="viewLogsPane" prefHeight="158.0" prefWidth="403.0">
-                           <children>
-                              <Button fx:id="btnViewLogsPerAnimal" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="380.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
-                              <HBox layoutX="12.0" layoutY="12.0" prefHeight="135.0" prefWidth="380.0">
-                                 <children>
-                                    <ImageView fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </HBox.margin>
-                                       <image>
-                                          <Image url="@Images/Images/fish.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Logs Per Animal">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
                         <Pane layoutX="413.0" layoutY="10.0" prefHeight="158.0" prefWidth="403.0">
                            <children>
                               <Button fx:id="btnViewAnimalReports" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="380.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
@@ -342,4 +320,11 @@
          </BorderPane.margin>
         </VBox>
    </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblUserInformation" text="Label" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

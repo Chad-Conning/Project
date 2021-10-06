@@ -28,6 +28,7 @@ public class addStaffController {
     @FXML private TextField tfieldTax;
     @FXML private TextField tfieldPassword;
     @FXML private ComboBox comboStaffType;
+    @FXML private Label lblUserInformation;
 
     @FXML private Label vLabelName;
     @FXML private Label vLabelSurname;
@@ -42,6 +43,9 @@ public class addStaffController {
         comboStaffType.getItems().addAll("Administrator", "Admission", "Handler");
         comboStaffType.getSelectionModel().select("Admission");
         this.staffUser = staffUser;
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
+
         this.scene = scene;
         try {
             queries.connectDB();

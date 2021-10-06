@@ -34,12 +34,17 @@ public class MainViewController {
     @FXML private Pane admitAnimalPane;
     @FXML private Pane viewLogsPane;
     @FXML private Pane logbookPane;
+    @FXML private Label txtIntroHeading;
+    @FXML private Label lblUserInformation;
     Staff staffUser;
 
     private Scene scene;
 
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.staffUser = staffUser;
+        txtIntroHeading.setText("Welcome, " + staffUser.getfName() + "!");
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
+
         if (!staffUser.getStaffType().equals("Administrator")) {
             addStaffPane.setOpacity(0.4);
             addStaffPane.setDisable(true);
@@ -64,37 +69,6 @@ public class MainViewController {
                 logbookPane.setDisable(true);
             }
         }
-        /*if (staffRole.equals("Handler")) {
-            addStaffPane.setOpacity(0.4);
-            addStaffPane.setDisable(true);
-
-            modifyStaffPane.setOpacity(0.4);
-            modifyStaffPane.setDisable(true);
-
-            viewStaffPane.setOpacity(0.4);
-            viewStaffPane.setDisable(true);
-
-            registerAnimalPane.setOpacity(0.4);
-            registerAnimalPane.setDisable(true);
-
-            admitAnimalPane.setOpacity(0.4);
-            admitAnimalPane.setDisable(true);
-        } else if (staffRole.equals("Admission")) {
-            addStaffPane.setOpacity(0.4);
-            addStaffPane.setDisable(true);
-
-            modifyStaffPane.setOpacity(0.4);
-            modifyStaffPane.setDisable(true);
-
-            viewStaffPane.setOpacity(0.4);
-            viewStaffPane.setDisable(true);
-
-            viewLogsPane.setOpacity(0.4);
-            viewLogsPane.setDisable(true);
-
-            logbookPane.setOpacity(0.4);
-            logbookPane.setDisable(true);
-        }*/
 
         this.scene = scene;
         try {
@@ -125,30 +99,6 @@ public class MainViewController {
         lblModifyStaff.setOnMouseClicked(actionEvent -> {
             showModifyStaff();
         });
-
-
-        /*searchSong.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                displaySongs(songSearch.getText(), -1);
-            }
-        });
-
-        albumView.getSelectionModel().selectedItemProperty().addListener(((observableValue, album, t1) ->
-                displaySongs("", t1.getCDID())));
-
-        editAlbum.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (albumView.getSelectionModel().getSelectedItem() != null)
-                    editAlbum(albumView.getSelectionModel().getSelectedItem());
-                else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "Please select an album to edit and then the edit album button.");
-                    alert.showAndWait();
-                }
-            }
-        });
-        });*/
     }
 
     private void showAddStaff() {
@@ -196,103 +146,7 @@ public class MainViewController {
         }
     }
 
-   /* public void displayAlbums(String phrase) {
-        String sql;
-        if (phrase.equals(""))
-            sql = "SELECT * FROM Staff";
-        else
-            sql = "SELECT * FROM Staff WHERE Title LIKE '%" + phrase + "%'";
-
-        staffData = FXCollections.observableArrayList();
-        try {
-            rs = statement.executeQuery(sql);
-            while (rs.next()) {
-                Staff emp = new Staff();
-                emp.setStaffID(rs.getInt("Staff_ID"));
-                emp.setfName(rs.getString("Staff_FName"));
-                emp.setlName(rs.getString("Staff_LName"));
-                emp.setContactNum(rs.getString("Staff_ContactNum"));
-                emp.setEmail(rs.getString("Staff_Email"));
-                emp.setTaxNum(rs.getString("Staff_TaxNumber"));
-                emp.setStaffType(rs.getString("Staff_Type"));
-                emp.setBoolEmp(rs.getBoolean("is_Employed"));
-                staffData.add(emp);
-            }
-            staffID.setCellValueFactory(new PropertyValueFactory<>("staffID"));
-            fName.setCellValueFactory(new PropertyValueFactory<>("fName"));
-            lName.setCellValueFactory(new PropertyValueFactory<>("lName"));
-            contactNum.setCellValueFactory(new PropertyValueFactory<>("contactNum"));
-            email.setCellValueFactory(new PropertyValueFactory<>("email"));
-            taxNum.setCellValueFactory(new PropertyValueFactory<>("taxNum"));
-            staffType.setCellValueFactory(new PropertyValueFactory<>("staffType"));
-            boolEmp.setCellValueFactory(new PropertyValueFactory<>("boolEmp"));
-            staffTableView.setItems(staffData);
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }*/
-
-   /* private void editAlbum(Album toEdit) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to edit this album?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-        alert.showAndWait();
-
-        if (alert.getResult() == ButtonType.YES) {
-            Stage editing = createEditingStage(new Stage(), 0);
-            TextField txtTitle = (TextField) editing.getScene().lookup("#txtTitle");
-            TextField txtYear = (TextField) editing.getScene().lookup("#txtYear");
-
-            txtTitle.textProperty().set(String.valueOf(toEdit.getTitle()));
-            txtYear.textProperty().setValue(String.valueOf(toEdit.getYear()));
-
-            // Restore old position if had one.
-            if(oldX != 0) {
-                editing.setX(oldX);
-                editing.setY(oldY);
-            }
-
-            // Show and wait - waits for stage to close.
-            editing.showAndWait();
-
-            // Remember current position as the "new" old position.
-            oldX = editing.getX();
-            oldY = editing.getY();
-
-            try {
-                PreparedStatement insertStatement = connection.prepareStatement("UPDATE CD SET Title = ?, Year = ? WHERE CDID = " + toEdit.getCDID());
-
-                insertStatement.setString(1, txtTitle.textProperty().get());
-                insertStatement.setInt(2, Integer.parseInt(txtYear.textProperty().get()));
-                insertStatement.execute();
-                displayAlbums("");
-            }
-            catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }*/
-
-   /* private void deleteAlbum(Album toDelete) {
-        String sql;
-        try {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to delete this album and its songs?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-            alert.showAndWait();
-
-            if (alert.getResult() == ButtonType.YES) {
-                //do stuff
-                sql = "DELETE FROM Track WHERE CDID = " + toDelete.getCDID();
-                statement.execute(sql);
-
-                sql = "DELETE FROM CD WHERE CDID = " + toDelete.getCDID();
-                statement.execute(sql);
-
-                displayAlbums("");
-                displaySongs("", -1);
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
+   /*
 
     public Stage createEditingStage(Stage owner, int CDID) {
         Stage stage = new Stage();
