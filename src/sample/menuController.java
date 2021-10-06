@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
@@ -24,12 +25,17 @@ public class menuController {
     @FXML public MenuItem btnMenuDisplayAR;
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
+    @FXML public Menu menuLogout;
+
+    LoginManager loginManager;
 
     Scene scene;
     Staff staffUser;
 
-    public menuController(Scene scene, Staff staffUser, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
+    public menuController(Menu menuLogout, final LoginManager loginManager, Scene scene, Staff staffUser, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
                           MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS) {
+        this.loginManager = loginManager;
+
         this.scene = scene;
         this.staffUser = staffUser;
 
@@ -43,6 +49,9 @@ public class menuController {
         this.btnMenuDisplayAR = btnMenuDisplayAR;
         this.btnMenuDisplayLogsA = btnMenuDisplayLogsA;
         this.btnMenuDisplayS = btnMenuDisplayS;
+        this.menuLogout = menuLogout;
+
+        menuLogout.setOnAction(event -> loginManager.logout());
 
         btnMenuAddAddS.setOnAction(event -> showAddStaff());
         btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
@@ -50,8 +59,10 @@ public class menuController {
 
     }
 
-    public menuController(MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
+    public menuController(final LoginManager loginManager, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
                           MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS) {
+        this.loginManager = loginManager;
+
         this.btnMenuAddRegisterA = btnMenuAddRegisterA;
         this.btnMenuAddAddS = btnMenuAddAddS;
         this.btnMenuAddUpdateL = btnMenuAddUpdateL;
@@ -62,6 +73,8 @@ public class menuController {
         this.btnMenuDisplayAR = btnMenuDisplayAR;
         this.btnMenuDisplayLogsA = btnMenuDisplayLogsA;
         this.btnMenuDisplayS = btnMenuDisplayS;
+
+        //menuLogout.setOnAction(event -> showLogoutAlert());
 
         btnMenuAddRegisterA.setOnAction(event -> showAlert());
         btnMenuAddAddS.setOnAction(event -> showAlert());
@@ -80,6 +93,11 @@ public class menuController {
         alert.showAndWait();
     }
 
+   /* private void showLogoutAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please cancel the admission and then log out.");
+        alert.showAndWait();
+    }*/
+
     private void showAddStaff() {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -89,7 +107,7 @@ public class menuController {
             addStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -104,7 +122,7 @@ public class menuController {
             modifyStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -119,7 +137,7 @@ public class menuController {
             regAnimalController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

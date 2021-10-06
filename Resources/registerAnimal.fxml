@@ -8,7 +8,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.regAnimalController">
    <top>
-      <VBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
             <HBox accessibleRole="IMAGE_VIEW" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #00A897; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: hidden hidden solid hidden;">
                <children>
@@ -68,9 +68,9 @@
                               <MenuItem fx:id="btnMenuDisplayS" mnemonicParsing="false" text="View Staff Report" />
                           </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="Log out">
+                        <Menu fx:id="menuLogout" mnemonicParsing="false" text="Log out">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Confirm" />
                           </items>
                         </Menu>
                     </menus>

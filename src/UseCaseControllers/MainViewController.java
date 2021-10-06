@@ -40,7 +40,10 @@ public class MainViewController {
 
     private Scene scene;
 
+    LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
+        this.loginManager = loginManager;
+
         this.staffUser = staffUser;
         txtIntroHeading.setText("Welcome, " + staffUser.getfName() + "!");
         lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
@@ -110,7 +113,7 @@ public class MainViewController {
             addStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -125,7 +128,7 @@ public class MainViewController {
             modifyStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -140,7 +143,7 @@ public class MainViewController {
             regAnimalController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
-            controller.initSessionID(scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

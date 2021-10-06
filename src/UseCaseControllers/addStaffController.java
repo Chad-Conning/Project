@@ -49,11 +49,15 @@ public class addStaffController {
     @FXML public MenuItem btnMenuDisplayAR;
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
+    @FXML public Menu menuLogout;
 
     Staff staffUser;
     Scene scene;
 
-    public void initSessionID(Scene scene, Staff staffUser) {
+    LoginManager loginManager;
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
+        this.loginManager = loginManager;
+
         comboStaffType.getItems().addAll("Administrator", "Admission", "Handler");
         comboStaffType.getSelectionModel().select("Admission");
         this.staffUser = staffUser;
@@ -62,7 +66,7 @@ public class addStaffController {
 
         this.scene = scene;
 
-        menuController menu = new menuController(scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+        menuController menu = new menuController(menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                 btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
 
         try {

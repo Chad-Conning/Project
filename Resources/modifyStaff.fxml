@@ -66,9 +66,9 @@
                               <MenuItem fx:id="btnMenuDisplayS" mnemonicParsing="false" text="View Staff Report" />
                           </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="Log out">
+                        <Menu fx:id="menuLogout" mnemonicParsing="false" text="Log out">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Confirm" />
                           </items>
                         </Menu>
                     </menus>

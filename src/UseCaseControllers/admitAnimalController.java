@@ -41,7 +41,10 @@ public class admitAnimalController {
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
 
-    public void initSessionID(Scene scene, Staff staffUser, Animal newAnimal) {
+    LoginManager loginManager;
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, Animal newAnimal) {
+        this.loginManager = loginManager;
+
         comboLocation.getItems().addAll("Beachview Beach", "Bluewater Bay Beach", "Hobie Beach", "Humewood Beach", "King's Beach", "Maitland's Beach",
                 "New Brighton Beach", "Pollock Beach", "Sardinia Bay Beach", "Schoenmakerskop Beach", "St Georges Strand", "Swartkops Beach", "Van Stadens Beach", "Born on site");
         comboLocation.getSelectionModel().select("Born on site");
@@ -54,7 +57,7 @@ public class admitAnimalController {
         this.staffUser = staffUser;
         this.newAnimal = newAnimal;
 
-        menuController menu = new menuController(btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+        menuController menu = new menuController(loginManager, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                 btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
 
         //tfieldTag.getSelectionModel().select(newAnimal.getTagNo());
@@ -109,7 +112,7 @@ public class admitAnimalController {
                 regAnimalController controller =
                         loader.getController();   // gets the controller specified in the fxml
 
-                controller.initOtherSession(scene, staffUser, newAnimal.getName(), newAnimal.getGender(), newAnimal.getAdult(), newAnimal.getSpecies());
+                controller.initOtherSession(loginManager, scene, staffUser, newAnimal.getName(), newAnimal.getGender(), newAnimal.getAdult(), newAnimal.getSpecies());
             } catch (IOException ex) {
                 Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
             }

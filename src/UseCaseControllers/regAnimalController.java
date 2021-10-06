@@ -40,17 +40,19 @@ public class regAnimalController {
     @FXML public MenuItem btnMenuDisplayAR;
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
+    @FXML public Menu menuLogout;
 
     @FXML private Label vLabelName;
 
-    public void initSessionID(Scene scene, Staff staffUser) {
+    LoginManager loginManager;
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
         comboSpecies.getSelectionModel().select("Seal");
 
-        setUp(scene, staffUser);
+        setUp(loginManager, scene, staffUser);
     }
 
-    public void initOtherSession(Scene scene, Staff staffUser, String name, String gender, Boolean isAdult, String species) {
+    public void initOtherSession(final LoginManager loginManager, Scene scene, Staff staffUser, String name, String gender, Boolean isAdult, String species) {
         comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
         comboSpecies.getSelectionModel().select(species);
 
@@ -60,7 +62,7 @@ public class regAnimalController {
         if (!isAdult)
             toggleNo.setSelected(true);
 
-        setUp(scene, staffUser);
+        setUp(loginManager, scene, staffUser);
     }
 
     private Boolean validationControl() {
@@ -70,10 +72,12 @@ public class regAnimalController {
         else return false;
     }
 
-    private void setUp(Scene scene, Staff staffUser) {
+    private void setUp(final LoginManager loginManager, Scene scene, Staff staffUser) {
+        this.loginManager = loginManager;
         this.scene = scene;
         this.staffUser = staffUser;
-        menuController menu = new menuController(scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+
+        menuController menu = new menuController(menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                 btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
 
         lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
@@ -137,7 +141,7 @@ public class regAnimalController {
             scene.setRoot(loader.load());
             admitAnimalController controller = loader.getController();
 
-            controller.initSessionID(scene, staffUser, newAnimal);
+            controller.initSessionID(loginManager, scene, staffUser, newAnimal);
         } catch (IOException e) {
             e.printStackTrace();
         }
