@@ -162,7 +162,7 @@ public class Database {
         }
     }
 
-    public ResultSet getAnimalsToAdmit() {
+    /*public ResultSet getAnimalsToAdmit() {
         ResultSet rs;
         try {
             String query = "SELECT Tag_No FROM Animal NATURAL JOIN Admission";
@@ -173,5 +173,5 @@ public class Database {
             System.out.println("Failed to execute query "+e.getMessage());
             return null;
         }
-    }
+    }*/
 }
