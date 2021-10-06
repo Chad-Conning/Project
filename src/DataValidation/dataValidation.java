@@ -5,13 +5,9 @@ import javafx.scene.control.TextField;
 
 public class dataValidation {
 
-    public static boolean checkValidation(TextField inputTextField, Label inputLabel, int validationNumber) {
-        //boolean isNull = false;
-        String validationString = null;
-
+    public static boolean checkValidation(TextField inputTextField, Label inputLabel, int validationNumber, String numberLength) {
         if (inputTextField.getText().isEmpty()) {
-            validationString = "Field cannot be empty";
-            inputLabel.setText(validationString);
+            inputLabel.setText("Field cannot be empty");
             return false;
         } else
         {
@@ -19,7 +15,11 @@ public class dataValidation {
                 case 1:
                     return textAlphabet(inputTextField, inputLabel, "Field may only contain letters");
                 case 2:
-                    return textNumeric(inputTextField, inputLabel, "Field may only contain numbers");
+                    Boolean numeric = textNumeric(inputTextField, inputLabel, "Field may only contain numbers");
+                    Boolean length = dataLength(inputTextField, inputLabel, "Number must be 10 digits", numberLength);
+                    if (numeric && length)
+                        return true;
+                    else return false;
                 case 3:
                     return emailFormat(inputTextField, inputLabel, "Invalid email format, (Example.gmail.com)");
                 default: {
@@ -29,20 +29,6 @@ public class dataValidation {
             }
         }
     }
-
-    //null form validation
-    /*public static boolean textFieldIsNull(TextField inputTextField, Label inputLabel, String validationText){
-            boolean isNull = false;
-            String validationString = null;
-
-            if (inputTextField.getText().isEmpty()){
-                isNull = true;
-                validationString = validationText;
-            }
-
-            inputLabel.setText(validationString);
-            return isNull;
-        }*/
 
 //     data length form validation
     public static boolean dataLength(TextField inputTextField, Label inputLabel, String validationText, String requiredLength){

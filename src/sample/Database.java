@@ -28,9 +28,10 @@ public class Database {
     }
 
     public ResultSet getStaffList() {
+        ResultSet rs;
         try {
             String query = "SELECT * FROM Staff";
-            ResultSet rs = statement.executeQuery(query);
+            rs = statement.executeQuery(query);
             return rs;
         }
         catch (Exception e) {
@@ -102,13 +103,14 @@ public class Database {
         return new Staff();
     }
 
-    public boolean admitAnimal(String tagNo, String locationFound, String staffID) {
+    public boolean admitAnimal(String tagNo, String locationFound, String staffID, String txtNotes) {
         try {
-            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Admission(Admission_Date, Tag_No, Location_Retrieved, Staff_ID) VALUES(?,?,?,?)");
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Admission(Admission_Date, Tag_No, Location_Retrieved, Staff_ID, Comments) VALUES(?,?,?,?,?)");
             insertStatement.setDate(1, Date.valueOf(LocalDate.now()));
             insertStatement.setString(2, tagNo);
             insertStatement.setString(3, locationFound);
             insertStatement.setString(4, staffID);
+            insertStatement.setString(5, txtNotes);
             insertStatement.execute();
 
             return true;
@@ -159,4 +161,17 @@ public class Database {
             return false;
         }
     }
+
+    /*public ResultSet getAnimalsToAdmit() {
+        ResultSet rs;
+        try {
+            String query = "SELECT Tag_No FROM Animal NATURAL JOIN Admission";
+            rs = statement.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query "+e.getMessage());
+            return null;
+        }
+    }*/
 }
