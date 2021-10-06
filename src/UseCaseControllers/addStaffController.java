@@ -31,6 +31,7 @@ public class addStaffController {
     @FXML private ComboBox comboStaffType;
     @FXML private Label lblUserInformation;
 
+    //validation
     @FXML private Label vLabelName;
     @FXML private Label vLabelSurname;
     @FXML private Label vLabelEmail;
