@@ -46,7 +46,6 @@
                       <Menu fx:id="btnMenuAdd" mnemonicParsing="false" text="Add">
                            <items>
                               <MenuItem fx:id="btnMenuAddRegisterA" mnemonicParsing="false" text="Register Animal" />
-                              <MenuItem fx:id="btnMenuAddAdmitA" mnemonicParsing="false" text="Admit Animal" />
                               <MenuItem fx:id="btnMenuAddAddS" mnemonicParsing="false" text="Add Staff" />
                               <MenuItem fx:id="btnMenuAddUpdateL" mnemonicParsing="false" text="Update Logbook" />
                            </items>

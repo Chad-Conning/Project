@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import sample.Animal;
-import sample.Database;
-import sample.LoginManager;
-import sample.Staff;
+import sample.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -33,6 +30,17 @@ public class admitAnimalController {
     @FXML private Label lblUserInformation;
     @FXML private Label lblTagMsg;
 
+    @FXML public MenuItem btnMenuAddRegisterA;
+    @FXML public MenuItem btnMenuAddAddS;
+    @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuEditModA;
+    @FXML public MenuItem btnMenuEditModS;
+    @FXML public MenuItem btnMenuDisplayAdmis;
+    @FXML public MenuItem btnMenuDisplayLog;
+    @FXML public MenuItem btnMenuDisplayAR;
+    @FXML public MenuItem btnMenuDisplayLogsA;
+    @FXML public MenuItem btnMenuDisplayS;
+
     public void initSessionID(Scene scene, Staff staffUser, Animal newAnimal) {
         comboLocation.getItems().addAll("Beachview Beach", "Bluewater Bay Beach", "Hobie Beach", "Humewood Beach", "King's Beach", "Maitland's Beach",
                 "New Brighton Beach", "Pollock Beach", "Sardinia Bay Beach", "Schoenmakerskop Beach", "St Georges Strand", "Swartkops Beach", "Van Stadens Beach", "Born on site");
@@ -45,6 +53,9 @@ public class admitAnimalController {
         this.scene = scene;
         this.staffUser = staffUser;
         this.newAnimal = newAnimal;
+
+        menuController menu = new menuController(btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
 
         //tfieldTag.getSelectionModel().select(newAnimal.getTagNo());
         tfieldTag.setText(newAnimal.getTagNo());

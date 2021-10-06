@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import sample.Database;
 import sample.LoginManager;
 import sample.Staff;
+import sample.menuController;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -36,6 +37,18 @@ public class addStaffController {
     @FXML private Label vLabelPhone;
     @FXML private Label vLabelTax;
     @FXML private Label vLabelPassword;
+
+    @FXML public MenuItem btnMenuAddRegisterA;
+    @FXML public MenuItem btnMenuAddAddS;
+    @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuEditModA;
+    @FXML public MenuItem btnMenuEditModS;
+    @FXML public MenuItem btnMenuDisplayAdmis;
+    @FXML public MenuItem btnMenuDisplayLog;
+    @FXML public MenuItem btnMenuDisplayAR;
+    @FXML public MenuItem btnMenuDisplayLogsA;
+    @FXML public MenuItem btnMenuDisplayS;
+
     Staff staffUser;
     Scene scene;
 
@@ -47,6 +60,10 @@ public class addStaffController {
         lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
 
         this.scene = scene;
+
+        menuController menu = new menuController(scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+
         try {
             queries.connectDB();
 

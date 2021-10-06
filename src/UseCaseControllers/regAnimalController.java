@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import sample.Animal;
-import sample.Database;
-import sample.LoginManager;
-import sample.Staff;
+import sample.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -32,6 +29,17 @@ public class regAnimalController {
     @FXML private RadioButton toggleNo;
     @FXML private ComboBox comboSpecies;
     @FXML private Label lblUserInformation;
+
+    @FXML public MenuItem btnMenuAddRegisterA;
+    @FXML public MenuItem btnMenuAddAddS;
+    @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuEditModA;
+    @FXML public MenuItem btnMenuEditModS;
+    @FXML public MenuItem btnMenuDisplayAdmis;
+    @FXML public MenuItem btnMenuDisplayLog;
+    @FXML public MenuItem btnMenuDisplayAR;
+    @FXML public MenuItem btnMenuDisplayLogsA;
+    @FXML public MenuItem btnMenuDisplayS;
 
     @FXML private Label vLabelName;
 
@@ -65,6 +73,8 @@ public class regAnimalController {
     private void setUp(Scene scene, Staff staffUser) {
         this.scene = scene;
         this.staffUser = staffUser;
+        menuController menu = new menuController(scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
 
         lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
 

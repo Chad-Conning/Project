@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import sample.Database;
 import sample.LoginManager;
 import sample.Staff;
+import sample.menuController;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -33,6 +34,17 @@ public class modifyStaffController {
     @FXML private ComboBox comboSelectStaff;
     @FXML private Label lblUserInformation;
 
+    @FXML public MenuItem btnMenuAddRegisterA;
+    @FXML public MenuItem btnMenuAddAddS;
+    @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuEditModA;
+    @FXML public MenuItem btnMenuEditModS;
+    @FXML public MenuItem btnMenuDisplayAdmis;
+    @FXML public MenuItem btnMenuDisplayLog;
+    @FXML public MenuItem btnMenuDisplayAR;
+    @FXML public MenuItem btnMenuDisplayLogsA;
+    @FXML public MenuItem btnMenuDisplayS;
+
     Staff staffUser;
     //ValidationSupport validationSupport = new ValidationSupport();
     Scene scene;
@@ -45,6 +57,10 @@ public class modifyStaffController {
 
         this.staffUser = staffUser;
         this.scene = scene;
+
+        menuController menu = new menuController(scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+
         try {
             queries.connectDB();
             ResultSet rs = queries.getStaffList();
