@@ -31,7 +31,9 @@ public class LoginManager {
      * Will show the login application screen.
      */
     public void logout() {
+        System.out.println("Disconnected successfully");
         showLoginScreen();
+
     }
 
     public void showLoginScreen() {

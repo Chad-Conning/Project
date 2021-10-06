@@ -97,6 +97,7 @@ public class menuController {
         try {
             connection.close();
             loginManager.logout();
+            System.out.println("Disconnected successfully");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
