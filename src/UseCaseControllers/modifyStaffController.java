@@ -1,5 +1,6 @@
 package UseCaseControllers;
 
+import DataValidation.dataValidation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -45,8 +46,15 @@ public class modifyStaffController {
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
 
+    //Validation
+    @FXML private Label vLabelName;
+    @FXML private Label vLabelSurname;
+    @FXML private Label vLabelEmail;
+    @FXML private Label vLabelPhone;
+    @FXML private Label vLabelTax;
+
+
     Staff staffUser;
-    //ValidationSupport validationSupport = new ValidationSupport();
     Scene scene;
 
     public void initSessionID(Scene scene, Staff staffUser) {
@@ -71,9 +79,10 @@ public class modifyStaffController {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-//        validationControl();
 
         btnMSRegister.setOnAction(actionEvent -> {
+            //if all validation checks pass then modify staff
+            if(validationControl())
              modifyStaff();
         });
 
@@ -143,50 +152,16 @@ public class modifyStaffController {
     }
 
     //validation helper method
-    /*private boolean validationControl(){
-        boolean result = true;
-        //validation using controlsfx https://jar-download.com/artifacts/org.controlsfx/controlsfx/11.1.0
-        //https://www.tabnine.com/code/java/methods/org.controlsfx.validation.Validator/createRegexValidator
-        Validator<String> noWhitespaceName
-                = Validator.createRegexValidator("Field cannot contain whitespace", "\\[a-zA-Z]", Severity.ERROR);
-        Validator<String> emptyName = Validator.createEmptyValidator("Field cannot be empty");
-        validationSupport.registerValidator(tfieldMSName, Validator.combine(noWhitespaceName, emptyName));
-        if (!validationSupport.isInvalid())
-            result = false;
-        // return false;
+    private Boolean validationControl() {
+        boolean name = dataValidation.checkValidation(tfieldMSName,vLabelName,1,"");
+        boolean surname = dataValidation.checkValidation(tfieldMSSurname,vLabelSurname,1,"");
+        boolean email = dataValidation.checkValidation(tfieldMSEmail,vLabelEmail,3,"");
+        boolean phone = dataValidation.checkValidation(tfieldMSPhone,vLabelPhone,2, "10");
+        boolean tax = dataValidation.checkValidation(tfieldMSTax,vLabelTax,2,"10");
 
-//        validationSupport.registerValidator(tfieldSurname, Validator.combine(noWhitespaceName, emptyName));
-        Validator<String> noWhitespaceSurname
-                = Validator.createRegexValidator("Field cannot contain whitespace", "\\[a-zA-Z]", Severity.ERROR);
-        Validator<String> emptySurname = Validator.createEmptyValidator("Field cannot be empty");
-        validationSupport.registerValidator(tfieldMSSurname, Validator.combine(noWhitespaceSurname, emptySurname));
-        if (!validationSupport.isInvalid())
-            result = false;
+        if (name && surname && email && phone && tax)
+            return true;
+        else return false;
+    }
 
-//        validationSupport.registerValidator(tfieldPhone, Validator.combine(noWhitespaceName, emptyName));
-        Validator<String> noWhitespacePhone
-                = Validator.createRegexValidator("Field cannot contain whitespace", "\\[a-zA-Z]", Severity.ERROR);
-        Validator<String> emptyPhone = Validator.createEmptyValidator("Field cannot be empty");
-        validationSupport.registerValidator(tfieldMSPhone, Validator.combine(noWhitespacePhone, emptyPhone));
-        if (!validationSupport.isInvalid())
-            result = false;
-
-//        validationSupport.registerValidator(tfieldEmail, Validator.combine(noWhitespaceName, emptyName));
-        Validator<String> noWhitespaceEmail
-                = Validator.createRegexValidator("Field cannot contain whitespace", "\\[a-zA-Z]", Severity.ERROR);
-        Validator<String> emptyEmail = Validator.createEmptyValidator("Field cannot be empty");
-        validationSupport.registerValidator(tfieldMSEmail, Validator.combine(noWhitespaceEmail, emptyEmail));
-        if (!validationSupport.isInvalid())
-            result = false;
-
-//        validationSupport.registerValidator(tfieldTax, Validator.combine(noWhitespaceName, emptyName));
-        Validator<String> noWhitespaceTax
-                = Validator.createRegexValidator("Field cannot contain whitespace", "\\[a-zA-Z]", Severity.ERROR);
-        Validator<String> emptyTax = Validator.createEmptyValidator("Field cannot be empty");
-        validationSupport.registerValidator(tfieldMSTax, Validator.combine(noWhitespaceTax, emptyTax));
-        if (!validationSupport.isInvalid())
-            result = false;
-
-        return result;
-    }*/
 }
