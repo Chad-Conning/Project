@@ -11,10 +11,14 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class menuController {
+    Connection connection;
+
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
     @FXML public MenuItem btnMenuAddUpdateL;
@@ -32,9 +36,10 @@ public class menuController {
     Scene scene;
     Staff staffUser;
 
-    public menuController(Menu menuLogout, final LoginManager loginManager, Scene scene, Staff staffUser, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
+    public menuController(Connection connection, Menu menuLogout, final LoginManager loginManager, Scene scene, Staff staffUser, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
                           MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS) {
         this.loginManager = loginManager;
+        this.connection = connection;
 
         this.scene = scene;
         this.staffUser = staffUser;
@@ -51,7 +56,7 @@ public class menuController {
         this.btnMenuDisplayS = btnMenuDisplayS;
         this.menuLogout = menuLogout;
 
-        menuLogout.setOnAction(event -> loginManager.logout());
+        menuLogout.setOnAction(event -> logout());
 
         btnMenuAddAddS.setOnAction(event -> showAddStaff());
         btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
@@ -86,6 +91,16 @@ public class menuController {
         btnMenuDisplayAR.setOnAction(event -> showAlert());
         btnMenuDisplayLogsA.setOnAction(event -> showAlert());
         btnMenuDisplayS.setOnAction(event -> showAlert());
+    }
+
+    private void logout() {
+        try {
+            connection.close();
+            loginManager.logout();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 
     private void showAlert() {

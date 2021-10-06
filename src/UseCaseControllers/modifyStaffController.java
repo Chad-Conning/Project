@@ -54,7 +54,6 @@ public class modifyStaffController {
     @FXML private Label vLabelPhone;
     @FXML private Label vLabelTax;
 
-
     Staff staffUser;
     Scene scene;
 
@@ -70,16 +69,14 @@ public class modifyStaffController {
         this.staffUser = staffUser;
         this.scene = scene;
 
-        menuController menu = new menuController(menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
-                btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
-
         try {
             queries.connectDB();
+            menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
             ResultSet rs = queries.getStaffList();
             while (rs.next()) {
                 comboSelectStaff.getItems().add(rs.getString("Staff_ID"));
             }
-
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
