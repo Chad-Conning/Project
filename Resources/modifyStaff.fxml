@@ -120,7 +120,7 @@
                         <Insets left="40.0" />
                      </padding></Label>
                   <Label fx:id="vLabelSurname" layoutX="235.0" layoutY="160.0" prefHeight="17.0" prefWidth="183.0" textFill="RED" />
-                  <TextField fx:id="tfieldMSSurname" alignment="CENTER" layoutX="234.0" layoutY="131.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter surname" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
+                  <TextField fx:id="tfieldMSSurname" alignment="CENTER" layoutX="234.0" layoutY="131.0" prefHeight="28.0" prefWidth="185.0" promptText="Search on surname" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
                   <Label fx:id="labelMSPhone" contentDisplay="CENTER" layoutX="3.0" layoutY="185.0" prefHeight="21.0" prefWidth="181.0" text="Phone Number">
                      <font>
                         <Font size="15.0" />
@@ -183,6 +183,15 @@
                      <font>
                         <Font size="15.0" />
                      </font></RadioButton>
+                  <Button fx:id="btnSearch" layoutX="423.0" layoutY="32.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="20.0" fitWidth="25.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/Images/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children></Pane>
          </children>
       </VBox>

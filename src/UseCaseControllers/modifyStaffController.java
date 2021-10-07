@@ -45,6 +45,7 @@ public class modifyStaffController {
     @FXML public MenuItem btnMenuDisplayAR;
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
+    @FXML public Button btnSearch;
     @FXML public Menu menuLogout;
 
     //Validation
@@ -73,6 +74,7 @@ public class modifyStaffController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+            menu.btnMenuEditModS.setDisable(true);
             ResultSet rs = queries.getStaffList();
             while (rs.next()) {
                 comboSelectStaff.getItems().add(rs.getString("Staff_ID"));
@@ -90,10 +92,25 @@ public class modifyStaffController {
         btnMSCancel.setOnAction(actionEvent -> showMainView());
 
         comboSelectStaff.setOnAction(actionEvent -> populateFields(comboSelectStaff.getValue().toString()));
+
+        btnSearch.setOnAction(actionEvent -> searchOnSurname(tfieldMSSurname.getText()));
     }
 
-    private void populateFields(String staffID) {
-        Staff temp = queries.getStaff(staffID);
+    private void searchOnSurname(String surname) {
+        populateFields(surname);
+    }
+
+    private void populateFields(String staffVariable) {
+        Staff temp;
+        if (!tfieldMSSurname.getText().equals("")) {
+            temp = queries.getStaffBySurname(staffVariable);
+            if (temp == null) {
+                return;
+            }
+        }
+        else temp = queries.getStaff(staffVariable);
+
+        comboSelectStaff.getSelectionModel().select(temp.getStaffID());
         tfieldMSName.setText(temp.getfName());
         tfieldMSSurname.setText(temp.getlName());
         tfieldMSPhone.setText(temp.getContactNum());

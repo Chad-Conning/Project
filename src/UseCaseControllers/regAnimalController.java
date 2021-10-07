@@ -83,6 +83,7 @@ public class regAnimalController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+            menu.btnMenuAddRegisterA.setDisable(true);
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

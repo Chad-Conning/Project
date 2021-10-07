@@ -70,6 +70,7 @@ public class addStaffController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+            menu.btnMenuAddAddS.setDisable(true);
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

@@ -103,6 +103,32 @@ public class Database {
         return new Staff();
     }
 
+    public Staff getStaffBySurname(String surname) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Staff WHERE Staff_LName = '" + surname + "'");
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                Staff temp = new Staff();
+                temp.setStaffID(rs.getInt("Staff_ID"));
+                temp.setStaffPassword(rs.getString("Password"));
+                temp.setfName(rs.getString("Staff_FName"));
+                temp.setlName(rs.getString("Staff_LName"));
+                temp.setContactNum(rs.getString("Staff_ContactNum"));
+                temp.setEmail(rs.getString("Staff_Email"));
+                temp.setTaxNum(rs.getString("Staff_TaxNumber"));
+                temp.setStaffType(rs.getString("Staff_Type"));
+                temp.setBoolEmp(rs.getBoolean("is_Employed"));
+
+                return temp;
+            }
+            else return null;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return new Staff();
+    }
+
     public boolean admitAnimal(String tagNo, String locationFound, String staffID, String txtNotes) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Admission(Admission_Date, Tag_No, Location_Retrieved, Staff_ID, Comments) VALUES(?,?,?,?,?)");
