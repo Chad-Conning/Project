@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,10 +28,10 @@ public class modifyStaffController {
     @FXML private TextField tfieldMSPhone;
     @FXML private TextField tfieldMSEmail;
     @FXML private TextField tfieldMSTax;
-    @FXML private ComboBox comboMSStaffType;
+    @FXML private ComboBox<String> comboMSStaffType;
     @FXML private RadioButton radioEmployed;
     @FXML private RadioButton radioNotEmployed;
-    @FXML private ComboBox comboSelectStaff;
+    @FXML private ComboBox<String> comboSelectStaff;
     @FXML private Label lblUserInformation;
 
     @FXML public MenuItem btnMenuAddRegisterA;
@@ -105,6 +104,10 @@ public class modifyStaffController {
         if (temp == null)
             return;
 
+        setFields(temp);
+    }
+
+    private void setFields(Staff temp) {
         comboSelectStaff.getSelectionModel().select(temp.getStaffID());
         tfieldMSName.setText(temp.getfName());
         tfieldMSSurname.setText(temp.getlName());
@@ -114,21 +117,13 @@ public class modifyStaffController {
         comboMSStaffType.getSelectionModel().select(temp.getStaffType());
         if (!temp.isBoolEmp())
             radioNotEmployed.setSelected(true);
-
     }
 
     private void populateFields(String staffID) {
         Staff temp;
         temp = queries.getStaff(staffID);
 
-        tfieldMSName.setText(temp.getfName());
-        tfieldMSSurname.setText(temp.getlName());
-        tfieldMSPhone.setText(temp.getContactNum());
-        tfieldMSEmail.setText(temp.getEmail());
-        tfieldMSTax.setText(temp.getTaxNum());
-        comboMSStaffType.getSelectionModel().select(temp.getStaffType());
-        if (!temp.isBoolEmp())
-            radioNotEmployed.setSelected(true);
+        setFields(temp);
     }
 
     private void modifyStaff() {
