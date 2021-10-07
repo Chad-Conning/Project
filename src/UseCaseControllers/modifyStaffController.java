@@ -93,24 +93,34 @@ public class modifyStaffController {
 
         comboSelectStaff.setOnAction(actionEvent -> populateFields(comboSelectStaff.getValue().toString()));
 
-        btnSearch.setOnAction(actionEvent -> searchOnSurname(tfieldMSSurname.getText()));
+        btnSearch.setOnAction(actionEvent -> populateFromSurname(tfieldMSSurname.getText()));
     }
 
-    private void searchOnSurname(String surname) {
-        populateFields(surname);
-    }
+    private void populateFromSurname(String surname) {
+        if (surname.equals(""))
+            return;
 
-    private void populateFields(String staffVariable) {
         Staff temp;
-        if (!tfieldMSSurname.getText().equals("")) {
-            temp = queries.getStaffBySurname(staffVariable);
-            if (temp == null) {
-                return;
-            }
-        }
-        else temp = queries.getStaff(staffVariable);
+        temp = queries.getStaffBySurname(surname);
+        if (temp == null)
+            return;
 
         comboSelectStaff.getSelectionModel().select(temp.getStaffID());
+        tfieldMSName.setText(temp.getfName());
+        tfieldMSSurname.setText(temp.getlName());
+        tfieldMSPhone.setText(temp.getContactNum());
+        tfieldMSEmail.setText(temp.getEmail());
+        tfieldMSTax.setText(temp.getTaxNum());
+        comboMSStaffType.getSelectionModel().select(temp.getStaffType());
+        if (!temp.isBoolEmp())
+            radioNotEmployed.setSelected(true);
+
+    }
+
+    private void populateFields(String staffID) {
+        Staff temp;
+        temp = queries.getStaff(staffID);
+
         tfieldMSName.setText(temp.getfName());
         tfieldMSSurname.setText(temp.getlName());
         tfieldMSPhone.setText(temp.getContactNum());
