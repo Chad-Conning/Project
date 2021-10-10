@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.modifyStaffController">
+    <top>
+        <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox accessibleRole="IMAGE_VIEW" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00A897; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: hidden hidden solid hidden;">
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="105.0" fitWidth="201.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@logo.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                            </children>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </HBox>
+                        <Label fx:id="titleLabel" contentDisplay="CENTER" text="Bay Marine Rescue" textFill="WHITE" translateX="205.0">
+                            <font>
+                                <Font size="50.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <AnchorPane prefHeight="29.0" prefWidth="1205.0">
+                    <children>
+                        <MenuBar prefHeight="29.0" prefWidth="153.0" style="-fx-border-color: black; -fx-border-style: hidden solid solid hidden; -fx-border-width: 2;">
+                            <menus>
+                                <Menu fx:id="btnMenuAdd" mnemonicParsing="false" text="Add">
+                                    <items>
+                                        <MenuItem fx:id="btnMenuAddRegisterA" mnemonicParsing="false" text="Register Animal" />
+                                        <MenuItem fx:id="btnMenuAddAdmitA" mnemonicParsing="false" text="Admit Animal" />
+                                        <MenuItem fx:id="btnMenuAddAddS" mnemonicParsing="false" text="Add Staff" />
+                                        <MenuItem fx:id="btnMenuAddUpdateL" mnemonicParsing="false" text="Update Logbook" />
+                                    </items>
+                                </Menu>
+                                <Menu fx:id="btnMenuEdit" mnemonicParsing="false" text="Edit">
+                                    <items>
+                                        <MenuItem fx:id="btnMenuEditModA" mnemonicParsing="false" text="Modify Animal Status" />
+                                        <MenuItem fx:id="btnMenuEditModS" mnemonicParsing="false" text="Modify Staff" />
+                                    </items>
+                                </Menu>
+                                <Menu fx:id="btnMenuDisplay" mnemonicParsing="false" text="Display">
+                                    <items>
+                                        <MenuItem fx:id="btnMenuDisplayAdmis" mnemonicParsing="false" text="View Daily Admissions Report" />
+                                        <MenuItem fx:id="btnMenuDisplayLog" mnemonicParsing="false" text="View Daily Logs" />
+                                        <MenuItem fx:id="btnMenuDisplayAR" mnemonicParsing="false" text="View Animals Report" />
+                                        <MenuItem fx:id="btnMenuDisplayLogsA" mnemonicParsing="false" text="View Logs per animal Report" />
+                                        <MenuItem fx:id="btnMenuDisplayS" mnemonicParsing="false" text="View Staff Report" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="TOP_CENTER" prefHeight="688.0" prefWidth="1205.0" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="425.0" text="Update Logbook" textAlignment="CENTER">
+                <font>
+                    <Font size="40.0" />
+                </font>
+                <VBox.margin>
+                    <Insets bottom="20.0" top="-10.0" />
+                </VBox.margin>
+            </Label>
+            <Pane fx:id="UpdateLogbookBox" maxWidth="-Infinity" prefHeight="416.0" prefWidth="628.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+                <children>
+                    <Label fx:id="lblDate" contentDisplay="CENTER" layoutX="32.0" layoutY="35.0" prefHeight="21.0" prefWidth="100.0" text="Date">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="lblTagNo" contentDisplay="CENTER" layoutX="32.0" layoutY="80.0" prefHeight="21.0" prefWidth="100.0" text="Tag Number">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="lblCentre" layoutX="32.0" layoutY="125.0" text="Centre">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="lblCondition" layoutX="32.0" layoutY="215.0" text="Condition">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="lblFoodDesc" layoutX="32.0" layoutY="260" text="Food Description">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="lblMedDesc" layoutX="32.0" layoutY="305.0" text="Medication Description">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <DatePicker fx:id="dateLog" layoutX="307.0" layoutY="23.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Log Date" />
+                    <VBox layoutX="307.0" layoutY="115.0" prefHeight="74.0" prefWidth="175.0" style="-fx-padding: 5px;">
+                        <children>
+                            <RadioButton mnemonicParsing="false" style="-fx-label-padding: 5px;" text="ICU" fx:id="rbtICU">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                                <toggleGroup>
+                                    <ToggleGroup fx:id="Centre" />
+                                </toggleGroup>
+                            </RadioButton>
+                            <RadioButton layoutX="15.0" layoutY="15.0" mnemonicParsing="false" selected="true" style="-fx-label-padding: 5px;" fx:id="rbtRehab" text="Rehab" toggleGroup="$Centre">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </RadioButton>
+                        </children>
+                    </VBox>
+                    <ComboBox editable="true" layoutX="307.0" layoutY="68.0" prefHeight="25.0" prefWidth="175.0" fx:id="cbxTagNo" promptText="Select Tag Number" />
+                    <ComboBox layoutX="307.0" layoutY="213.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Condition" fx:id="cbxCondition"/>
+                    <ComboBox editable="true" layoutX="307.0" layoutY="258.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Food" fx:id="cbxFood" />
+                    <ComboBox editable="true" layoutX="307.0" layoutY="303.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Medication" fx:id="cbxMedication"/>
+                    <Button layoutX="107.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Save" fx:id="btnSave">
+                        <onAction>
+
+                        </onAction>
+                    </Button>
+                    <Button layoutX="421.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Cancel" fx:id="btnCancel"/>
+
+
+                </children>
+            </Pane>
+        </VBox>
+    </center>
+</BorderPane>
