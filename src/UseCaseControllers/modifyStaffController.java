@@ -126,7 +126,6 @@ public class modifyStaffController {
     }
 
     private void modifyStaff() {
-
         connection = queries.connection;
         String txtfName = tfieldMSName.getText();
         String txtlName = tfieldMSSurname.getText();

@@ -36,12 +36,11 @@
                 </HBox>
                 <AnchorPane prefHeight="29.0" prefWidth="1205.0">
                     <children>
-                        <MenuBar prefHeight="29.0" prefWidth="153.0" style="-fx-border-color: black; -fx-border-style: hidden solid solid hidden; -fx-border-width: 2;">
+                        <MenuBar prefHeight="29.0" prefWidth="216.0" style="-fx-border-color: black; -fx-border-style: hidden solid solid hidden; -fx-border-width: 2;">
                             <menus>
                                 <Menu fx:id="btnMenuAdd" mnemonicParsing="false" text="Add">
                                     <items>
                                         <MenuItem fx:id="btnMenuAddRegisterA" mnemonicParsing="false" text="Register Animal" />
-                                        <MenuItem fx:id="btnMenuAddAdmitA" mnemonicParsing="false" text="Admit Animal" />
                                         <MenuItem fx:id="btnMenuAddAddS" mnemonicParsing="false" text="Add Staff" />
                                         <MenuItem fx:id="btnMenuAddUpdateL" mnemonicParsing="false" text="Update Logbook" />
                                     </items>
@@ -61,6 +60,11 @@
                                         <MenuItem fx:id="btnMenuDisplayS" mnemonicParsing="false" text="View Staff Report" />
                                     </items>
                                 </Menu>
+                        <Menu fx:id="menuLogout" mnemonicParsing="false" text="Log out">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Confirm" />
+                          </items>
+                        </Menu>
                             </menus>
                         </MenuBar>
                     </children>
@@ -79,7 +83,7 @@
                         <Insets bottom="20.0" top="-10.0" />
                     </VBox.margin>
                 </Label>
-                <Pane id="ModifyStatusBox" maxWidth="-Infinity" prefHeight="335.0" prefWidth="553.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+                <Pane id="ModifyStatusBox" maxWidth="-Infinity" prefHeight="296.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
                     <Label fx:id="lblTagNr" contentDisplay="CENTER" layoutY="34.0" prefHeight="21.0" prefWidth="181.0" text="Tag Number">
                         <font>
                             <Font size="15.0" />
@@ -87,8 +91,8 @@
                         <padding>
                             <Insets left="40.0" />
                         </padding></Label>
-                    <ComboBox editable="true" layoutX="277.0" layoutY="32.0" prefHeight="25.0" prefWidth="185.0" promptText="Select Tag " />
-                    <Label fx:id="lblTagNr1" contentDisplay="CENTER" layoutY="95.0" prefHeight="21.0" prefWidth="181.0" text="Select Status">
+                    <ComboBox fx:id="selectTag" layoutX="233.0" layoutY="32.0" prefHeight="25.0" prefWidth="185.0" promptText="Select Tag " style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;" />
+                    <Label fx:id="lblTagNr1" contentDisplay="CENTER" layoutY="85.0" prefHeight="21.0" prefWidth="181.0" text="Select Status">
                         <font>
                             <Font size="15.0" />
                         </font>
@@ -96,30 +100,33 @@
                             <Insets left="40.0" />
                         </padding>
                     </Label>
-                    <VBox id="rbtStatus" layoutX="277.0" layoutY="93.0" prefHeight="133.0" prefWidth="185.0" style="-fx-padding: 5px; -fx-background-color: #F2F2F2;">
+                    <VBox id="rbtStatus" layoutX="226.0" layoutY="69.0" prefHeight="133.0" prefWidth="185.0" style="-fx-padding: 5px; -fx-background-color: #F2F2F2;">
                         <children>
-                            <RadioButton fx:id="rbtInCent" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="In Centre">
+                            <RadioButton fx:id="toggleInCentre" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="In Centre">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                        <toggleGroup>
+                           <ToggleGroup fx:id="toggleStatus" />
+                        </toggleGroup>
+                            </RadioButton>
+                            <RadioButton fx:id="toggleReleased" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="Released" toggleGroup="$toggleStatus">
                                 <font>
                                     <Font size="15.0" />
                                 </font>
                             </RadioButton>
-                            <RadioButton fx:id="rbtReleased" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="Released">
-                                <font>
-                                    <Font size="15.0" />
-                                </font>
-                            </RadioButton>
-                            <RadioButton fx:id="rbtDeceased" layoutX="15.0" layoutY="56.0" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="Deceased">
+                            <RadioButton fx:id="toggleDeceased" layoutX="15.0" layoutY="56.0" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="Deceased" toggleGroup="$toggleStatus">
                                 <font>
                                     <Font size="15.0" />
                                 </font>
                             </RadioButton>
                         </children>
                     </VBox>
-                    <Button fx:id="btnSave" layoutX="71.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 5px;" text="Save">
+                    <Button fx:id="btnSave" layoutX="36.0" layoutY="223.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Save">
                         <font>
                             <Font size="15.0" />
                         </font></Button>
-                    <Button fx:id="btnCancel" layoutX="367.0" layoutY="256.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 5px;" text="Cancel">
+                    <Button fx:id="btnCancel" layoutX="308.0" layoutY="223.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
                         <font>
                             <Font size="15.0" />
                         </font>
@@ -128,5 +135,10 @@
             </children>
         </VBox>
     </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblUserInformation" text="Label" />
+         </children></HBox>
+   </bottom>
 </BorderPane>
-

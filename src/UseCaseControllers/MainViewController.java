@@ -26,6 +26,9 @@ public class MainViewController {
     @FXML private Label lblRegAnimal;
     @FXML private ImageView imgModifyStaff;
     @FXML private Label lblModifyStaff;
+    @FXML private ImageView imgModifyAnimalStatus;
+    @FXML private Label lblModifyAnimalStatus;
+
 
     @FXML private Pane addStaffPane;
     @FXML private Pane modifyStaffPane;
@@ -102,6 +105,13 @@ public class MainViewController {
         lblModifyStaff.setOnMouseClicked(actionEvent -> {
             showModifyStaff();
         });
+
+        imgModifyAnimalStatus.setOnMouseClicked(actionEvent -> {
+            showUpdateAnimalStatus();
+        });
+        lblModifyAnimalStatus.setOnMouseClicked(actionEvent -> {
+            showUpdateAnimalStatus();
+        });
     }
 
     private void showAddStaff() {
@@ -114,7 +124,8 @@ public class MainViewController {
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(loginManager, scene, staffUser);
-        } catch (IOException ex) {
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -129,7 +140,8 @@ public class MainViewController {
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(loginManager, scene, staffUser);
-        } catch (IOException ex) {
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -144,7 +156,24 @@ public class MainViewController {
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(loginManager, scene, staffUser);
-        } catch (IOException ex) {
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showUpdateAnimalStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/modifyAnimalStatus.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            modifyAnimalStatusController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+
+            controller.initSessionID(loginManager, scene, staffUser);
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

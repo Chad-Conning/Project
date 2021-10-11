@@ -53,6 +53,19 @@ public class Database {
         }
     }
 
+    public ResultSet getAliveAnimals() {
+        ResultSet rs;
+        try {
+            String query = "SELECT * FROM Animal WHERE Animal_Status != 'Deceased'";
+            rs = statement.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query "+e.getMessage());
+            return null;
+        }
+    }
+
     public ResultSet getFoodList() {
         ResultSet rs;
         try {
@@ -206,7 +219,7 @@ public class Database {
         }
     }
 
-    public boolean modifyStaff(String staffID, String fName, String lName, String contact, String email, String taxNum, String empRole, Boolean isEmployed){
+    public boolean modifyStaff(String staffID, String fName, String lName, String contact, String email, String taxNum, String empRole, Boolean isEmployed) {
         try {
             PreparedStatement updateStatement = connection.prepareStatement("UPDATE Staff SET Staff_FName = ?, Staff_LName = ?, Staff_ContactNum = ?, Staff_Email = ?, Staff_TaxNumber = ?, Staff_Type = ?, is_Employed = ? " +
                     "WHERE Staff_ID = " + Integer.parseInt(staffID));
@@ -223,6 +236,20 @@ public class Database {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean modifyAnimalStatus(String tagNo, String status) {
+        try {
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE Animal SET Animal_Status = ? WHERE Tag_No = " + Integer.parseInt(tagNo));
+            updateStatement.setString(1, status);
+            updateStatement.execute();
+
+            return true;
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
             return false;
         }
     }

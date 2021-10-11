@@ -1,6 +1,7 @@
 package sample;
 
 import UseCaseControllers.addStaffController;
+import UseCaseControllers.modifyAnimalStatusController;
 import UseCaseControllers.modifyStaffController;
 import UseCaseControllers.regAnimalController;
 import javafx.fxml.FXML;
@@ -61,11 +62,17 @@ public class menuController {
         btnMenuAddAddS.setOnAction(event -> showAddStaff());
         btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
         btnMenuEditModS.setOnAction(event -> showModifyStaff());
+        btnMenuEditModA.setOnAction(event -> showUpdateAnimalStatus());
 
     }
 
     public menuController(final LoginManager loginManager, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
                           MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS) {
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         this.loginManager = loginManager;
 
         this.btnMenuAddRegisterA = btnMenuAddRegisterA;
@@ -124,7 +131,8 @@ public class menuController {
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(loginManager, scene, staffUser);
-        } catch (IOException ex) {
+            connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -139,7 +147,8 @@ public class menuController {
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(loginManager, scene, staffUser);
-        } catch (IOException ex) {
+            connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -154,7 +163,24 @@ public class menuController {
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(loginManager, scene, staffUser);
-        } catch (IOException ex) {
+            connection.close();
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showUpdateAnimalStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/modifyAnimalStatus.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            modifyAnimalStatusController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+
+            controller.initSessionID(loginManager, scene, staffUser);
+            connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
