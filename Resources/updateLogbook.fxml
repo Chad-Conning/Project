@@ -87,65 +87,67 @@
                 <Insets bottom="20.0" top="-10.0" />
             </VBox.margin>
         </Label>
-        <Pane fx:id="UpdateLogbookBox" maxWidth="-Infinity" prefHeight="416.0" prefWidth="628.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+        <Pane fx:id="UpdateLogbookBox" maxWidth="-Infinity" prefHeight="416.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
             <children>
-                <Label fx:id="lblDate" contentDisplay="CENTER" layoutX="32.0" layoutY="35.0" prefHeight="21.0" prefWidth="100.0" text="Date">
+                <Label fx:id="lblDate" contentDisplay="CENTER" layoutX="40.0" layoutY="35.0" prefHeight="21.0" prefWidth="100.0" text="Date">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblTagNo" contentDisplay="CENTER" layoutX="32.0" layoutY="80.0" prefHeight="21.0" prefWidth="100.0" text="Tag Number">
+                <Label fx:id="lblTagNo" contentDisplay="CENTER" layoutX="40.0" layoutY="85.0" prefHeight="21.0" prefWidth="100.0" text="Tag Number">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblCentre" layoutX="32.0" layoutY="125.0" text="Centre">
+                <Label fx:id="lblCentre" layoutX="40.0" layoutY="135.0" text="Centre">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblCondition" layoutX="32.0" layoutY="215.0" text="Condition">
+                <Label fx:id="lblCondition" layoutX="40.0" layoutY="185.0" text="Condition">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblFoodDesc" layoutX="32.0" layoutY="260" text="Food Description">
+                <Label fx:id="lblFoodDesc" layoutX="40.0" layoutY="235.0" text="Food Description">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblMedDesc" layoutX="32.0" layoutY="305.0" text="Medication Description">
+                <Label fx:id="lblMedDesc" layoutX="40.0" layoutY="285.0" text="Medication Description">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
 
-                <DatePicker fx:id="dateLog" layoutX="307.0" layoutY="23.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Log Date" />
-                <ComboBox editable="true" layoutX="307.0" layoutY="68.0" prefHeight="25.0" prefWidth="175.0" fx:id="cbxTagNo" promptText="Select Tag Number" />
-                <VBox layoutX="307.0" layoutY="115.0" prefHeight="74.0" prefWidth="175.0" style="-fx-padding: 5px;">
-                    <children>
-                        <RadioButton mnemonicParsing="false" style="-fx-label-padding: 5px;" text="ICU" fx:id="rbtICU">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <toggleGroup>
-                                <ToggleGroup fx:id="Centre" />
-                            </toggleGroup>
-                        </RadioButton>
-                        <RadioButton layoutX="15.0" layoutY="15.0" mnemonicParsing="false" selected="true" style="-fx-label-padding: 5px;" fx:id="rbtRehab" text="Rehab" toggleGroup="$Centre">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                        </RadioButton>
-                    </children>
-                </VBox>
-                <ComboBox layoutX="307.0" layoutY="213.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Condition" fx:id="cbxCondition"/>
-                <ComboBox editable="true" layoutX="307.0" layoutY="258.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Food" fx:id="cbxFood" />
+                <DatePicker fx:id="dateLog" layoutX="233.0" layoutY="33.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Log Date" />
+                <ComboBox fx:id="cbxTagNo" editable="true" layoutX="233.0" layoutY="83.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Tag Number" />
+                <VBox layoutX="307.0" layoutY="115.0" prefHeight="74.0" prefWidth="175.0" style="-fx-padding: 5px;" />
+                <ComboBox fx:id="cbxCondition" layoutX="233.0" layoutY="183.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Condition" />
+                <ComboBox fx:id="cbxFood" editable="true" layoutX="233.0" layoutY="233.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Food" />
 
-                <ComboBox editable="true" layoutX="307.0" layoutY="303.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Medication" fx:id="cbxMedication"/>
-                <Button layoutX="107.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Save" fx:id="btnSave">
-                </Button>
-                <Button layoutX="421.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Cancel" fx:id="btnCancel"/>
+                <ComboBox fx:id="cbxMedication" editable="true" layoutX="233.0" layoutY="283.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Medication" />
+                <Button fx:id="btnSave" layoutX="40.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2;" text="Save">
+                  <font>
+                     <Font size="15.0" />
+                  </font></Button>
+                <Button fx:id="btnCancel" layoutX="298.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
+                  <font>
+                     <Font size="15.0" />
+                  </font></Button>
+                  <RadioButton fx:id="rbtICU" layoutX="233.0" layoutY="115.0" mnemonicParsing="false" style="-fx-label-padding: 5px;" text="ICU">
+                      <font>
+                          <Font size="15.0" />
+                      </font>
+                  <toggleGroup>
+                          <ToggleGroup fx:id="Centre" />
+                  </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rbtRehab" layoutX="233.0" layoutY="141.0" mnemonicParsing="false" selected="true" style="-fx-label-padding: 5px;" text="Rehab" toggleGroup="$Centre">
+                      <font>
+                          <Font size="15.0" />
+                      </font>
+                  </RadioButton>
             </children>
 
         </Pane>

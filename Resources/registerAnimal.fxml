@@ -91,7 +91,7 @@
                   <Insets bottom="20.0" top="-10.0" />
                </VBox.margin>
             </Label>
-            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="417.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="410.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
                <children>
                   <Label fx:id="labelName" contentDisplay="CENTER" layoutX="6.0" layoutY="47.0" prefHeight="21.0" prefWidth="180.0" text="Name">
                      <font>
@@ -135,7 +135,7 @@
                      <font>
                         <Font size="15.0" />
                      </font></RadioButton>
-                  <Button fx:id="btnARegister" layoutX="41.0" layoutY="333.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
+                  <Button fx:id="btnARegister" layoutX="43.0" layoutY="333.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
