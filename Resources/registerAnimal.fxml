@@ -100,8 +100,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField fx:id="tfieldName" alignment="CENTER" layoutX="233.0" layoutY="43.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="labelGender" contentDisplay="CENTER" layoutX="6.0" layoutY="121.0" prefHeight="21.0" prefWidth="181.0" text="Gender">
+
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -115,7 +114,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label fx:id="labelStaffType" contentDisplay="CENTER" layoutX="6.0" layoutY="263.0" prefHeight="21.0" prefWidth="184.0" text="Species">
+
                      <font>
                         <Font size="15.0" />
                      </font>
