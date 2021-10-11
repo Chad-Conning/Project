@@ -40,6 +40,45 @@ public class Database {
         }
     }
 
+    public ResultSet getAnimalList() {
+        ResultSet rs;
+        try {
+            String query = "SELECT * FROM Animal";
+            rs = statement.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query "+e.getMessage());
+            return null;
+        }
+    }
+
+    public ResultSet getFoodList() {
+        ResultSet rs;
+        try {
+            String query = "SELECT * FROM Food_Intake";
+            rs = statement.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query "+e.getMessage());
+            return null;
+        }
+    }
+
+    public ResultSet getMedsList() {
+        ResultSet rs;
+        try {
+            String query = "SELECT * FROM Medication_Given";
+            rs = statement.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query "+e.getMessage());
+            return null;
+        }
+    }
+
     public boolean regAnimal(String aName, Boolean isAdult, String aGender, String aStatus, String aSpecies) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Animal(Animal_Name, is_Adult, Animal_Gender, Animal_Status, Animal_Species) VALUES(?,?,?,?,?) ");
