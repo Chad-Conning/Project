@@ -80,11 +80,11 @@ public class menuController {
 
     public menuController(final LoginManager loginManager, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
                           MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS) {
-        try {
-            connection.close();
+        /*try {
+          //  connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
+        }*/
         this.loginManager = loginManager;
 
         this.btnMenuAddRegisterA = btnMenuAddRegisterA;
