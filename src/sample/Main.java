@@ -15,7 +15,7 @@ public class Main extends Application {
         LoginManager loginManager = new LoginManager(scene);
         loginManager.showLoginScreen();
 
-        primaryStage.setTitle("Database");
+        primaryStage.setTitle("Bay Marine Rescue");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

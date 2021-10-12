@@ -82,7 +82,7 @@ public class Database {
     public boolean updateLogbook(LocalDate LogDate, String TagNo, String Centre, String Condition, String StaffID, int FoodCode, int MedCode)
     {
         try{
-            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO LogbookEntry(Log_Date, Tag_No, Centre, Condition, Staff_ID, Food_Code, Medication_ID) VALUES(?,?,?,?,?,?,?)");
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Logbook_Entry(Log_Date, Tag_No, Centre, Condition, Staff_ID, Food_Code, Medication_ID) VALUES(?,?,?,?,?,?,?)");
             insertStatement.setDate(1, Date.valueOf(LogDate));
             insertStatement.setString(2, TagNo);
             insertStatement.setString(3, Centre);

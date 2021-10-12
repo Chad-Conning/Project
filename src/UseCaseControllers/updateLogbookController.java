@@ -86,7 +86,7 @@ public class updateLogbookController {
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
             menu.btnMenuAddUpdateL.setDisable(true);
-            ResultSet TagNoList = queries.getAnimalList();
+            ResultSet TagNoList = queries.getAliveAnimals();
             ResultSet FoodDesc = queries.getFoodList();
             ResultSet MedsDesc = queries.getMedsList();
 
@@ -115,7 +115,6 @@ public class updateLogbookController {
 
     public void AddLog() {
         connection = queries.connection;
-
         String TagNo = (String) cbxTagNo.getValue();
         String Centre;
         if (rbtRehab.isSelected()) {
@@ -131,17 +130,17 @@ public class updateLogbookController {
         LocalDate logDate = dateLog.getValue();
 
         if (queries.updateLogbook(logDate, TagNo, Centre, Condition, StaffID, getFoodCode(Food), getMedCode(Medication))) {
-            try {
-                queries.connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-
             Alert added = new Alert(Alert.AlertType.INFORMATION, "The new log has been added.");
             added.showAndWait();
         } else {
             Alert added = new Alert(Alert.AlertType.INFORMATION, "The new log could not be added");
             added.showAndWait();
+        }
+
+        try {
+            queries.connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
 
         showMainView();
