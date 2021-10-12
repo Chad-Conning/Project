@@ -98,7 +98,9 @@ public class addStaffController {
         String txtStaffType = comboStaffType.getValue().toString();
 
         if (queries.addStaff(txtPassword, txtfName, txtlName, txtContact, txtEmail, txtTaxNum, txtStaffType)) {
-            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new staff member has been added.");
+            Staff temp = queries.getStaffBySurname(txtlName);
+
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "Staff member with Staff_ID " + temp.getStaffID() + " has been added.");
             added.showAndWait();
         } else {
             Alert added = new Alert(Alert.AlertType.INFORMATION, "The new staff member could not be added.");

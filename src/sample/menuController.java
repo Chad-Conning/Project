@@ -56,11 +56,26 @@ public class menuController {
 
         menuLogout.setOnAction(event -> logout());
 
-        btnMenuAddAddS.setOnAction(event -> showAddStaff());
-        btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
-        btnMenuEditModS.setOnAction(event -> showModifyStaff());
         btnMenuEditModA.setOnAction(event -> showUpdateAnimalStatus());
-        btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
+
+        if (staffUser.getStaffType().equals("Administrator")) {
+            btnMenuAddAddS.setOnAction(event -> showAddStaff());
+            btnMenuEditModS.setOnAction(event -> showModifyStaff());
+            btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
+            btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
+        } else if (staffUser.getStaffType().equals("Handler")) {
+            btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
+            btnMenuAddRegisterA.setDisable(true);
+            btnMenuAddAddS.setDisable(true);
+            btnMenuEditModS.setDisable(true);
+            btnMenuDisplayS.setDisable(true);
+        } else if (staffUser.getStaffType().equals("Admission")) {
+            btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
+            btnMenuAddUpdateL.setDisable(true);
+            btnMenuAddAddS.setDisable(true);
+            btnMenuEditModS.setDisable(true);
+            btnMenuDisplayS.setDisable(true);
+        }
     }
 
     public menuController(final LoginManager loginManager, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,

@@ -35,8 +35,7 @@ public class MainViewController {
     @FXML private Pane modifyStaffPane;
     @FXML private Pane viewStaffPane;
     @FXML private Pane registerAnimalPane;
-    @FXML private Pane admitAnimalPane;
-    @FXML private Pane viewLogsPane;
+    @FXML private Pane updateLogbookPane;
     @FXML private Pane logbookPane;
     @FXML private Label txtIntroHeading;
     @FXML private Label lblUserInformation;
@@ -66,11 +65,9 @@ public class MainViewController {
                 registerAnimalPane.setOpacity(0.4);
                 registerAnimalPane.setDisable(true);
 
-                admitAnimalPane.setOpacity(0.4);
-                admitAnimalPane.setDisable(true);
             } else if (staffUser.getStaffType().equals("Admission")) {
-                viewLogsPane.setOpacity(0.4);
-                viewLogsPane.setDisable(true);
+                updateLogbookPane.setOpacity(0.4);
+                updateLogbookPane.setDisable(true);
 
                 logbookPane.setOpacity(0.4);
                 logbookPane.setDisable(true);
