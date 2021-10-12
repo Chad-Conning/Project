@@ -1,9 +1,6 @@
 package sample;
 
-import UseCaseControllers.addStaffController;
-import UseCaseControllers.modifyAnimalStatusController;
-import UseCaseControllers.modifyStaffController;
-import UseCaseControllers.regAnimalController;
+import UseCaseControllers.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -63,7 +60,7 @@ public class menuController {
         btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
         btnMenuEditModS.setOnAction(event -> showModifyStaff());
         btnMenuEditModA.setOnAction(event -> showUpdateAnimalStatus());
-
+        btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
     }
 
     public menuController(final LoginManager loginManager, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
@@ -176,6 +173,22 @@ public class menuController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             modifyAnimalStatusController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+
+            controller.initSessionID(loginManager, scene, staffUser);
+            connection.close();
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showUpdateLogbook() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/updateLogbook.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            updateLogbookController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(loginManager, scene, staffUser);
