@@ -126,9 +126,9 @@ public class menuController {
             scene.setRoot(loader.load());   // create scene for mainView screen
             addStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
-
-            controller.initSessionID(loginManager, scene, staffUser);
             connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -142,9 +142,9 @@ public class menuController {
             scene.setRoot(loader.load());   // create scene for mainView screen
             modifyStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
-
-            controller.initSessionID(loginManager, scene, staffUser);
             connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -158,9 +158,9 @@ public class menuController {
             scene.setRoot(loader.load());   // create scene for mainView screen
             regAnimalController controller =
                     loader.getController();   // gets the controller specified in the fxml
-
-            controller.initSessionID(loginManager, scene, staffUser);
             connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -174,9 +174,9 @@ public class menuController {
             scene.setRoot(loader.load());   // create scene for mainView screen
             modifyAnimalStatusController controller =
                     loader.getController();   // gets the controller specified in the fxml
-
-            controller.initSessionID(loginManager, scene, staffUser);
             connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -190,9 +190,9 @@ public class menuController {
             scene.setRoot(loader.load());   // create scene for mainView screen
             updateLogbookController controller =
                     loader.getController();   // gets the controller specified in the fxml
-
-            controller.initSessionID(loginManager, scene, staffUser);
             connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
