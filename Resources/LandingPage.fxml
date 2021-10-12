@@ -217,7 +217,7 @@
                   </HBox>
                   <HBox fx:id="LandingPageRow12" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="1209.0">
                      <children>
-                        <Pane prefHeight="158.0" prefWidth="403.0">
+                        <Pane fx:id="updateLogbookPane" prefHeight="158.0" prefWidth="403.0">
                            <children>
                               <Button fx:id="btnModifyAnimalStatus" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="380.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
                               <HBox layoutX="12.0" layoutY="12.0" prefHeight="135.0" prefWidth="380.0">
