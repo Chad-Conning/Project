@@ -60,8 +60,8 @@ public class updateLogbookController {
     @FXML
     public Menu menuLogout;
 
-    private HashMap FoodGiven;
-    private HashMap Medications;
+    private HashMap FoodGiven = new HashMap();
+    private HashMap Medications = new HashMap();
 
     Database queries = new Database();
     Connection connection;
@@ -85,7 +85,7 @@ public class updateLogbookController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
-            menu.btnMenuEditModS.setDisable(true);
+            menu.btnMenuAddUpdateL.setDisable(true);
             ResultSet TagNoList = queries.getAnimalList();
             ResultSet FoodDesc = queries.getFoodList();
             ResultSet MedsDesc = queries.getMedsList();
@@ -109,8 +109,7 @@ public class updateLogbookController {
             e.printStackTrace();
         }
 
-        btnUpdateLogbookSave.setOnAction(
-                actionEvent -> AddLog());
+        btnUpdateLogbookSave.setOnAction(actionEvent -> AddLog());
         btnUpdateLogbookCancel.setOnAction(actionEvent -> CancelLog());
     }
 
@@ -167,7 +166,7 @@ public class updateLogbookController {
 
     private int getMedCode(String MedDesc)
     {
-        return (int)Medications.get(MedDesc);
+        return (int) Medications.get(MedDesc);
     }
 
 

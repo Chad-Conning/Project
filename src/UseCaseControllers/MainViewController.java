@@ -28,7 +28,8 @@ public class MainViewController {
     @FXML private Label lblModifyStaff;
     @FXML private ImageView imgModifyAnimalStatus;
     @FXML private Label lblModifyAnimalStatus;
-
+    @FXML private ImageView imgUpdateLogbook;
+    @FXML private Label lblUpdateLogbook;
 
     @FXML private Pane addStaffPane;
     @FXML private Pane modifyStaffPane;
@@ -112,6 +113,13 @@ public class MainViewController {
         lblModifyAnimalStatus.setOnMouseClicked(actionEvent -> {
             showUpdateAnimalStatus();
         });
+
+        imgUpdateLogbook.setOnMouseClicked(actionEvent -> {
+            showUpdateLogbook();
+        });
+        lblUpdateLogbook.setOnMouseClicked(actionEvent -> {
+            showUpdateLogbook();
+        });
     }
 
     private void showAddStaff() {
@@ -169,6 +177,22 @@ public class MainViewController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             modifyAnimalStatusController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+
+            controller.initSessionID(loginManager, scene, staffUser);
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showUpdateLogbook() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/updateLogbook.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            updateLogbookController controller =
                     loader.getController();   // gets the controller specified in the fxml
 
             controller.initSessionID(loginManager, scene, staffUser);
