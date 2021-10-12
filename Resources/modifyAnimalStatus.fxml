@@ -27,11 +27,16 @@
                                 <Insets />
                             </opaqueInsets>
                         </HBox>
-                        <Label fx:id="titleLabel" contentDisplay="CENTER" text="Bay Marine Rescue" textFill="WHITE" translateX="205.0">
-                            <font>
-                                <Font size="50.0" />
-                            </font>
-                        </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                              <Label fx:id="titleLabel" contentDisplay="CENTER" text="Bay Marine Rescue" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                  <font>
+                                      <Font size="50.0" />
+                                  </font>
+                              </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
                     </children>
                 </HBox>
                 <AnchorPane prefHeight="29.0" prefWidth="1205.0">
