@@ -79,6 +79,26 @@ public class Database {
         }
     }
 
+    public boolean updateLogbook(LocalDate LogDate, String TagNo, String Centre, String Condition, String StaffID, int FoodCode, int MedCode)
+    {
+        try{
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO LogbookEntry(Log_Date, Tag_No, Centre, Condition, Staff_ID, Food_Code, Medication_Given) VALUES(?,?,?,?,?,?,?)");
+            insertStatement.setDate(1, Date.valueOf(LogDate));
+            insertStatement.setString(2, TagNo);
+            insertStatement.setString(3, Centre);
+            insertStatement.setString(4, Condition);
+            insertStatement.setString(5, StaffID);
+            insertStatement.setInt(6, FoodCode);
+            insertStatement.setInt(7, MedCode);
+            insertStatement.execute();
+            return true;
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
+    }
+
     public ResultSet getMedsList() {
         ResultSet rs;
         try {
@@ -197,6 +217,8 @@ public class Database {
             return false;
         }
     }
+
+
 
     public boolean addStaff(String password, String fName, String lName, String contact, String email, String taxNum, String empRole) {
         try {

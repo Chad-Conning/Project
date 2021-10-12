@@ -127,11 +127,11 @@
                 <ComboBox fx:id="cbxFood" editable="true" layoutX="233.0" layoutY="233.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Food" />
 
                 <ComboBox fx:id="cbxMedication" editable="true" layoutX="233.0" layoutY="283.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Medication" />
-                <Button fx:id="btnSave" layoutX="40.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2;" text="Save">
+                <Button fx:id="btnUpdateLogbookSave" layoutX="40.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2;" text="Save">
                   <font>
                      <Font size="15.0" />
                   </font></Button>
-                <Button fx:id="btnCancel" layoutX="298.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
+                <Button fx:id="btnUpdateLogbookCancel" layoutX="298.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
                   <font>
                      <Font size="15.0" />
                   </font></Button>
