@@ -18,47 +18,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class updateLogbookController {
-    @FXML
-    private DatePicker dateLog;
-    @FXML
-    private ComboBox cbxTagNo;
-    @FXML
-    private RadioButton rbtICU;
-    @FXML
-    private RadioButton rbtRehab;
-    @FXML
-    private ComboBox cbxCondition;
-    @FXML
-    private ComboBox cbxFood;
-    @FXML
-    private ComboBox cbxMedication;
-    @FXML
-    private Button btnUpdateLogbookSave;
-    @FXML
-    private Button btnUpdateLogbookCancel;
+    @FXML private DatePicker dateLog;
+    @FXML private ComboBox cbxTagNo;
+    @FXML private RadioButton rbtICU;
+    @FXML private RadioButton rbtRehab;
+    @FXML private ComboBox cbxCondition;
+    @FXML private ComboBox cbxFood;
+    @FXML private ComboBox cbxMedication;
+    @FXML private Button btnUpdateLogbookSave;
+    @FXML private Button btnUpdateLogbookCancel;
+    @FXML private Label lblUserInformation;
 
-    @FXML
-    public MenuItem btnMenuAddRegisterA;
-    @FXML
-    public MenuItem btnMenuAddAddS;
-    @FXML
-    public MenuItem btnMenuAddUpdateL;
-    @FXML
-    public MenuItem btnMenuEditModA;
-    @FXML
-    public MenuItem btnMenuEditModS;
-    @FXML
-    public MenuItem btnMenuDisplayAdmis;
-    @FXML
-    public MenuItem btnMenuDisplayLog;
-    @FXML
-    public MenuItem btnMenuDisplayAR;
-    @FXML
-    public MenuItem btnMenuDisplayLogsA;
-    @FXML
-    public MenuItem btnMenuDisplayS;
-    @FXML
-    public Menu menuLogout;
+    @FXML public MenuItem btnMenuAddRegisterA;
+    @FXML public MenuItem btnMenuAddAddS;
+    @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuEditModA;
+    @FXML public MenuItem btnMenuEditModS;
+    @FXML public MenuItem btnMenuDisplayAdmis;
+    @FXML public MenuItem btnMenuDisplayLog;
+    @FXML public MenuItem btnMenuDisplayAR;
+    @FXML public MenuItem btnMenuDisplayLogsA;
+    @FXML public MenuItem btnMenuDisplayS;
+    @FXML public Menu menuLogout;
 
     private HashMap FoodGiven = new HashMap();
     private HashMap Medications = new HashMap();
@@ -79,6 +60,8 @@ public class updateLogbookController {
         dateLog.setValue(LocalDate.now());
         int foodCount = 0;
         int MedCount = 0;
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
 
         cbxCondition.getItems().addAll("Recovered", "Stable", "Critical");
         try {

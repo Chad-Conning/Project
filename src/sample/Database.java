@@ -218,8 +218,6 @@ public class Database {
         }
     }
 
-
-
     public boolean addStaff(String password, String fName, String lName, String contact, String email, String taxNum, String empRole) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Staff(Password, Staff_FName, Staff_LName, Staff_ContactNum, Staff_Email, Staff_TaxNumber, Staff_Type, is_Employed) VALUES(?,?,?,?,?,?,?,?)");

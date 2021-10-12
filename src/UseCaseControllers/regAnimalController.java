@@ -46,14 +46,14 @@ public class regAnimalController {
 
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
-        comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
+        comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Sting ray", "Unknown");
         comboSpecies.getSelectionModel().select("Seal");
 
         setUp(loginManager, scene, staffUser);
     }
 
     public void initOtherSession(final LoginManager loginManager, Scene scene, Staff staffUser, String name, String gender, Boolean isAdult, String species) {
-        comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Unknown");
+        comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Sting ray","Unknown");
         comboSpecies.getSelectionModel().select(species);
 
         tfieldName.setText(name);
@@ -124,7 +124,7 @@ public class regAnimalController {
 
             showAdmitAnimals(newAnimal);
 
-            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal has been registered.");
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal with Tag_No " + tagNo + " has been registered.");
             added.showAndWait();
         } else {
             Alert added = new Alert(Alert.AlertType.INFORMATION, "The new animal could not be registered.");
