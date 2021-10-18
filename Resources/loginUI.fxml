@@ -62,7 +62,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="user" prefWidth="185.0" promptText="Use &quot;Staff ID&quot; to login" style="-fx-border-color: #000000; -fx-border-width: 2;">
+                        <TextField fx:id="user" prefWidth="185.0" promptText="Use your Staff ID" style="-fx-border-color: #000000; -fx-border-width: 2;">
                            <HBox.margin>
                               <Insets left="135.0" />
                            </HBox.margin>
@@ -79,7 +79,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="password" prefWidth="185.0" promptText="Use &quot;Staff password&quot; to login" style="-fx-border-color: #000000; -fx-border-width: 2;">
+                        <TextField fx:id="password" prefWidth="185.0" promptText="Use your Staff password" style="-fx-border-color: #000000; -fx-border-width: 2;">
                            <HBox.margin>
                               <Insets left="137.0" />
                            </HBox.margin>

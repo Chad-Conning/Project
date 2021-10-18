@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import net.ucanaccess.jdbc.DeleteResultSet;
-import sample.Database;
-import sample.LoginManager;
-import sample.Staff;
-import sample.menuController;
+import sample.*;
 
 import java.io.IOException;
 import java.sql.*;
@@ -28,6 +25,7 @@ public class updateLogbookController {
     @FXML private Button btnUpdateLogbookSave;
     @FXML private Button btnUpdateLogbookCancel;
     @FXML private Label lblUserInformation;
+    @FXML private TextField tfieldSpecies;
 
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
@@ -68,6 +66,15 @@ public class updateLogbookController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+
+            dateLog.setDayCellFactory(param -> new DateCell() {
+                @Override
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
+                }
+            });
+
             menu.btnMenuAddUpdateL.setDisable(true);
             ResultSet TagNoList = queries.getAliveAnimals();
             ResultSet FoodDesc = queries.getFoodList();
@@ -92,8 +99,22 @@ public class updateLogbookController {
             e.printStackTrace();
         }
 
+        cbxTagNo.setOnAction(actionEvent -> populateFields(cbxTagNo.getValue().toString()));
+
         btnUpdateLogbookSave.setOnAction(actionEvent -> AddLog());
+
         btnUpdateLogbookCancel.setOnAction(actionEvent -> CancelLog());
+
+    }
+
+    private void populateFields(String tagNo) {
+        Animal temp = queries.getAnimalByTag(tagNo);
+        if (temp == null)
+            return;
+        else {
+            tfieldSpecies.setText(temp.getSpecies());
+        }
+
     }
 
     public void AddLog() {
@@ -111,6 +132,7 @@ public class updateLogbookController {
         String StaffID = staffUser.getStaffID();
 
         LocalDate logDate = dateLog.getValue();
+
 
         if (queries.updateLogbook(logDate, TagNo, Centre, Condition, StaffID, getFoodCode(Food), getMedCode(Medication))) {
             Alert added = new Alert(Alert.AlertType.INFORMATION, "The new log has been added.");
@@ -131,7 +153,7 @@ public class updateLogbookController {
 
     private void CancelLog()
     {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Cancelling will delete the log. Would you like to cancel logging process?", ButtonType.YES, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel logging process?", ButtonType.YES, ButtonType.CANCEL);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES)

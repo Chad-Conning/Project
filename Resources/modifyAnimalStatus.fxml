@@ -88,16 +88,16 @@
                         <Insets bottom="20.0" top="-10.0" />
                     </VBox.margin>
                 </Label>
-                <Pane id="ModifyStatusBox" maxWidth="-Infinity" prefHeight="296.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
-                    <Label fx:id="lblTagNr" contentDisplay="CENTER" layoutY="34.0" prefHeight="21.0" prefWidth="181.0" text="Tag Number">
+                <Pane id="ModifyStatusBox" maxWidth="-Infinity" prefHeight="341.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+                    <Label fx:id="lblTagNr" contentDisplay="CENTER" layoutY="35.0" prefHeight="21.0" prefWidth="181.0" text="Tag Number">
                         <font>
                             <Font size="15.0" />
                         </font>
                         <padding>
                             <Insets left="40.0" />
                         </padding></Label>
-                    <ComboBox fx:id="selectTag" layoutX="233.0" layoutY="32.0" prefHeight="25.0" prefWidth="185.0" promptText="Select Tag " style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;" />
-                    <Label fx:id="lblTagNr1" contentDisplay="CENTER" layoutY="85.0" prefHeight="21.0" prefWidth="181.0" text="Select Status">
+                    <ComboBox fx:id="selectTag" layoutX="233.0" layoutY="32.0" prefHeight="28.0" prefWidth="185.0" promptText="Select Tag " />
+                    <Label fx:id="lblTagNr1" contentDisplay="CENTER" layoutX="1.0" layoutY="135.0" prefHeight="21.0" prefWidth="181.0" text="Select Status">
                         <font>
                             <Font size="15.0" />
                         </font>
@@ -105,7 +105,7 @@
                             <Insets left="40.0" />
                         </padding>
                     </Label>
-                    <VBox id="rbtStatus" layoutX="226.0" layoutY="69.0" prefHeight="133.0" prefWidth="185.0" style="-fx-padding: 5px; -fx-background-color: #F2F2F2;">
+                    <VBox id="rbtStatus" layoutX="233.0" layoutY="118.0" prefHeight="133.0" prefWidth="185.0" style="-fx-padding: 5px; -fx-background-color: #F2F2F2;">
                         <children>
                             <RadioButton fx:id="toggleInCentre" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="In Centre">
                                 <font>
@@ -120,22 +120,31 @@
                                     <Font size="15.0" />
                                 </font>
                             </RadioButton>
-                            <RadioButton fx:id="toggleDeceased" layoutX="15.0" layoutY="56.0" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="Deceased" toggleGroup="$toggleStatus">
+                            <RadioButton fx:id="toggleDeceased" mnemonicParsing="false" style="-fx-label-padding: 10px;" text="Deceased" toggleGroup="$toggleStatus">
                                 <font>
                                     <Font size="15.0" />
                                 </font>
                             </RadioButton>
                         </children>
                     </VBox>
-                    <Button fx:id="btnSave" layoutX="36.0" layoutY="223.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Save">
+                    <Button fx:id="btnSave" layoutX="36.0" layoutY="267.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Save">
                         <font>
                             <Font size="15.0" />
                         </font></Button>
-                    <Button fx:id="btnCancel" layoutX="308.0" layoutY="223.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
+                    <Button fx:id="btnCancel" layoutX="308.0" layoutY="267.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
                         <font>
                             <Font size="15.0" />
                         </font>
                     </Button>
+               <Label contentDisplay="CENTER" layoutY="85.0" prefWidth="181.0" text="Animal Name">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+                  <padding>
+                     <Insets left="40.0" />
+                  </padding>
+               </Label>
+               <TextField fx:id="tfieldName" layoutX="233.0" layoutY="81.0" prefHeight="25.0" prefWidth="185.0" style="-fx-border-color: black; -fx-border-width: 2;" />
                 </Pane>
             </children>
         </VBox>

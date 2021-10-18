@@ -141,14 +141,28 @@ public class Database {
 
     public String getTagNo(String name) {
         try {
-            PreparedStatement deleteStatement = connection.prepareStatement("SELECT * FROM Animal WHERE Animal_Name = '" + name + "'");
-            ResultSet rs = deleteStatement.executeQuery();
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Animal WHERE Animal_Name = '" + name + "'");
+            ResultSet rs = statement.executeQuery();
             rs.next();
             return rs.getString("Tag_No");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return "";
+    }
+
+    public Animal getAnimalByTag(String tagNo) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Animal WHERE Tag_No = '" + tagNo + "'");
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            Animal temp = new Animal(rs.getString("Tag_No"), rs.getString("Animal_Name"), rs.getBoolean("is_Adult"), rs.getString("Animal_Gender"), rs.getString("Animal_Species"));
+            temp.setStatus(rs.getString("Animal_Status"));
+            return temp;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 
     public Staff getStaff(String staffID) {
