@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -52,6 +54,19 @@ public class Database {
             return null;
         }
     }
+
+//    public ObservableList getObservableAnimalList() {
+//        ObservableList rs;
+//        try {
+//            String query = "SELECT * FROM Animal";
+//            rs = statement.executeQuery(query);
+//            return rs;
+//        }
+//        catch (Exception e) {
+//            System.out.println("Failed to execute query "+e.getMessage());
+//            return null;
+//        }
+//    }
 
     public ResultSet getAliveAnimals() {
         ResultSet rs;

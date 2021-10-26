@@ -1,5 +1,6 @@
 package UseCaseControllers;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +11,8 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,7 +34,10 @@ public class viewAnimalsController {
     @FXML public Menu menuLogout;
     @FXML public Button btnVARClose;
     @FXML public Button btnVARExport;
-    @FXML public ListView listViewAnimalsReport;
+    @FXML public TableView tableView;
+
+    private ObservableList<ObservableList> data;
+    //https://stackoverflow.com/questions/18941093/how-to-fill-up-a-tableview-with-database-data
 
 
 
@@ -56,8 +62,10 @@ public class viewAnimalsController {
             ResultSet rs = queries.getAnimalList();
             while (rs.next()) {
                 //unsure about this - need to add the other fields
-                listViewAnimalsReport.getItems().add(rs.getString("Tag_No"));
+                //tableView.getItems().add(rs.getString("Tag_No"));
+
             }
+
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
