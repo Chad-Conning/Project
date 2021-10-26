@@ -3,6 +3,7 @@ package UseCaseControllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -34,6 +35,8 @@ public class dailyAdmissionsController {
     @FXML public MenuItem btnMenuDisplayS;
     @FXML public Menu menuLogout;
 
+    @FXML private Button btnClose;
+
     Staff staffUser;
     Scene scene;
 
@@ -50,10 +53,13 @@ public class dailyAdmissionsController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+            menu.btnMenuDisplayAdmis.setDisable(true);
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+
+        btnClose.setOnAction(actionEvent -> showMainView());
     }
 
 

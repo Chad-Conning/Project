@@ -33,8 +33,6 @@ public class viewAnimalsController {
     @FXML public Button btnVARExport;
     @FXML public ListView listViewAnimalsReport;
 
-
-
     Staff staffUser;
     Scene scene;
 
