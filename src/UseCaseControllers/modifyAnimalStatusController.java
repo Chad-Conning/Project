@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import sample.Database;
-import sample.LoginManager;
-import sample.Staff;
-import sample.menuController;
+import sample.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -39,9 +36,11 @@ public class modifyAnimalStatusController {
     @FXML private Button btnSave;
     @FXML private Button btnCancel;
     @FXML private Label lblUserInformation;
+    @FXML private TextField tfieldName;
 
     Staff staffUser;
     Scene scene;
+    String status;
 
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
@@ -64,18 +63,30 @@ public class modifyAnimalStatusController {
             e.printStackTrace();
         }
 
+        selectTag.setOnAction(actionEvent -> populateFields(selectTag.getValue().toString()));
+
         btnSave.setOnAction(actionEvent -> updateStatus());
 
         btnCancel.setOnAction(actionEvent -> showMainView());
     }
 
+    private void populateFields(String tagNo) {
+        Animal temp = queries.getAnimalByTag(tagNo);
+        if (temp == null)
+            return;
+        else {
+            tfieldName.setText(temp.getName());
+            status = temp.getStatus();
+            toggleInCentre.setSelected(true);
+        }
+
+    }
+
     private void updateStatus() {
         connection = queries.connection;
         String tagNo = selectTag.getValue().toString();
-        String status = "";
-        if (toggleInCentre.isSelected())
-            status = "In Centre";
-        else if (toggleReleased.isSelected())
+
+        if (toggleReleased.isSelected())
             status = "Released";
         else if (toggleDeceased.isSelected())
             status = "Deceased";

@@ -135,8 +135,8 @@ public class addStaffController {
         boolean name = dataValidation.checkValidation(tfieldName,vLabelName,1,"");
         boolean surname = dataValidation.checkValidation(tfieldSurname,vLabelSurname,1,"");
         boolean email = dataValidation.checkValidation(tfieldEmail,vLabelEmail,3,"");
-        boolean phone = dataValidation.checkValidation(tfieldPhone,vLabelPhone,2, "10");
-        boolean tax = dataValidation.checkValidation(tfieldTax,vLabelTax,2,"10");
+        boolean phone = dataValidation.checkNumberValidity(tfieldPhone,vLabelPhone, "10");
+        boolean tax = dataValidation.checkNumberValidity(tfieldTax, vLabelTax, "10");
         boolean password = dataValidation.checkValidation(tfieldPassword,vLabelPassword,4,"");
 
         if (name && surname && email && phone && tax && password)

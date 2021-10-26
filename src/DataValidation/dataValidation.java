@@ -15,8 +15,8 @@ public class dataValidation {
                 case 1:
                     return textAlphabet(inputTextField, inputLabel, "Field may only contain letters");
                 case 2:
-                    Boolean numeric = textNumeric(inputTextField, inputLabel, "Field may only contain numbers");
                     Boolean length = dataLength(inputTextField, inputLabel, "Number must be 10 digits", numberLength);
+                    Boolean numeric = textNumeric(inputTextField, inputLabel, "Field may only contain numbers");
                     if (numeric && length)
                         return true;
                     else return false;
@@ -28,6 +28,24 @@ public class dataValidation {
                 }
             }
         }
+    }
+
+    public static boolean checkNumberValidity(TextField inputTextField, Label inputLabel, String numberLength) {
+        if (inputTextField.getText().isEmpty()) {
+            inputLabel.setText("Field cannot be empty");
+            return false;
+        } else
+        {
+            Boolean length = dataLength(inputTextField, inputLabel, "Number must be 10 digits", numberLength);
+            if (length) {
+                Boolean numeric = textNumeric(inputTextField, inputLabel, "Field may only contain numbers");
+                if (numeric)
+                    return true;
+                else return false;
+            } else
+                return false;
+        }
+
     }
 
 //     data length form validation

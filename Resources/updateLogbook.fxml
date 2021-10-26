@@ -87,55 +87,54 @@
                 <Insets bottom="20.0" top="-10.0" />
             </VBox.margin>
         </Label>
-        <Pane fx:id="UpdateLogbookBox" maxWidth="-Infinity" prefHeight="416.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+        <Pane fx:id="UpdateLogbookBox" maxWidth="-Infinity" prefHeight="463.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
             <children>
                 <Label fx:id="lblDate" contentDisplay="CENTER" layoutX="40.0" layoutY="35.0" prefHeight="21.0" prefWidth="100.0" text="Date">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblTagNo" contentDisplay="CENTER" layoutX="40.0" layoutY="85.0" prefHeight="21.0" prefWidth="100.0" text="Tag Number">
+                <Label fx:id="lblTagNo" contentDisplay="CENTER" layoutX="40.0" layoutY="135.0" prefHeight="21.0" prefWidth="100.0" text="Tag Number">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblCentre" layoutX="40.0" layoutY="135.0" text="Centre">
+                <Label fx:id="lblCentre" layoutX="40.0" layoutY="185.0" text="Centre">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblCondition" layoutX="40.0" layoutY="185.0" text="Condition">
+                <Label fx:id="lblCondition" layoutX="40.0" layoutY="235.0" text="Condition">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblFoodDesc" layoutX="40.0" layoutY="235.0" text="Food Description">
+                <Label fx:id="lblFoodDesc" layoutX="40.0" layoutY="285.0" text="Food Description">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblMedDesc" layoutX="40.0" layoutY="285.0" text="Medication Description">
+                <Label fx:id="lblMedDesc" layoutX="40.0" layoutY="335.0" text="Medication Description">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
 
-                <DatePicker fx:id="dateLog" layoutX="233.0" layoutY="33.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Log Date" />
-                <ComboBox fx:id="cbxTagNo" editable="true" layoutX="233.0" layoutY="83.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Tag Number" />
-                <VBox layoutX="307.0" layoutY="115.0" prefHeight="74.0" prefWidth="175.0" style="-fx-padding: 5px;" />
-                <ComboBox fx:id="cbxCondition" layoutX="233.0" layoutY="183.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Condition" />
-                <ComboBox fx:id="cbxFood" editable="true" layoutX="233.0" layoutY="233.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Food" />
+                <DatePicker fx:id="dateLog" layoutX="233.0" layoutY="32.0" prefHeight="28.0" prefWidth="185.0" promptText="Select Log Date" />
+                <ComboBox fx:id="cbxTagNo" layoutX="233.0" layoutY="132.0" prefHeight="28.0" prefWidth="185.0" promptText="Select Tag Number" />
+                <ComboBox fx:id="cbxCondition" layoutX="233.0" layoutY="232.0" prefHeight="28.0" prefWidth="185.0" promptText="Select Condition" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;" />
+                <ComboBox fx:id="cbxFood" layoutX="233.0" layoutY="282.0" prefHeight="28.0" prefWidth="185.0" promptText="Select Food" style="-fx-border-color: black; -fx-border-width: 2; -fx-background-color: white;" />
 
-                <ComboBox fx:id="cbxMedication" editable="true" layoutX="233.0" layoutY="283.0" prefHeight="25.0" prefWidth="175.0" promptText="Select Medication" />
-                <Button fx:id="btnUpdateLogbookSave" layoutX="40.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2;" text="Save">
+                <ComboBox fx:id="cbxMedication" layoutX="233.0" layoutY="332.0" prefHeight="28.0" prefWidth="185.0" promptText="Select Medication" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2;" />
+                <Button fx:id="btnUpdateLogbookSave" layoutX="42.0" layoutY="389.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2;" text="Save">
                   <font>
                      <Font size="15.0" />
                   </font></Button>
-                <Button fx:id="btnUpdateLogbookCancel" layoutX="298.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
+                <Button fx:id="btnUpdateLogbookCancel" layoutX="308.0" layoutY="389.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: Black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
                   <font>
                      <Font size="15.0" />
                   </font></Button>
-                  <RadioButton fx:id="rbtICU" layoutX="233.0" layoutY="115.0" mnemonicParsing="false" style="-fx-label-padding: 5px;" text="ICU">
+                  <RadioButton fx:id="rbtICU" layoutX="233.0" layoutY="180.0" mnemonicParsing="false" style="-fx-label-padding: 5px;" text="ICU">
                       <font>
                           <Font size="15.0" />
                       </font>
@@ -143,11 +142,17 @@
                           <ToggleGroup fx:id="Centre" />
                   </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="rbtRehab" layoutX="233.0" layoutY="141.0" mnemonicParsing="false" selected="true" style="-fx-label-padding: 5px;" text="Rehab" toggleGroup="$Centre">
+                  <RadioButton fx:id="rbtRehab" layoutX="326.0" layoutY="180.0" mnemonicParsing="false" selected="true" style="-fx-label-padding: 5px;" text="Rehab" toggleGroup="$Centre">
                       <font>
                           <Font size="15.0" />
                       </font>
                   </RadioButton>
+               <Label layoutX="40.0" layoutY="85.0" text="Animal Species">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="tfieldSpecies" layoutX="233.0" layoutY="81.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-color: black; -fx-border-width: 2;" />
             </children>
 
         </Pane>
