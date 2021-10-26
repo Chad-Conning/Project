@@ -29,9 +29,9 @@
                         </HBox>
                   <HBox alignment="CENTER" prefHeight="105.0" prefWidth="426.0" HBox.hgrow="ALWAYS">
                      <children>
-                              <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="73.0" prefWidth="419.0" text="Bay Marine Rescue" textFill="WHITE">
+                              <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="73.0" prefWidth="460.0" text="Bay Marine Rescue" textFill="WHITE">
                                   <font>
-                                      <Font size="50.0" />
+                                      <Font name="Roboto Light" size="50.0" />
                                   </font>
                            <HBox.margin>
                               <Insets />
