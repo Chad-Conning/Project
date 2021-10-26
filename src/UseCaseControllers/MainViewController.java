@@ -30,6 +30,9 @@ public class MainViewController {
     @FXML private Label lblModifyAnimalStatus;
     @FXML private ImageView imgUpdateLogbook;
     @FXML private Label lblUpdateLogbook;
+    @FXML private ImageView imgViewAnimalReports;
+    @FXML private Label lblViewAnimalReports;
+
 
     @FXML private Pane addStaffPane;
     @FXML private Pane modifyStaffPane;
@@ -42,6 +45,8 @@ public class MainViewController {
     Staff staffUser;
 
     private Scene scene;
+
+
 
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
@@ -117,7 +122,16 @@ public class MainViewController {
         lblUpdateLogbook.setOnMouseClicked(actionEvent -> {
             showUpdateLogbook();
         });
+
+        imgViewAnimalReports.setOnMouseClicked(actionEvent -> {
+            showViewAnimalsReport();
+        });
+        lblViewAnimalReports.setOnMouseClicked(actionEvent -> {
+            showViewAnimalsReport();
+        });
     }
+
+
 
     private void showAddStaff() {
         try {
@@ -190,6 +204,22 @@ public class MainViewController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             updateLogbookController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewAnimalsReport() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewAnimalsReport.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            viewAnimalsController controller =
                     loader.getController();   // gets the controller specified in the fxml
             queries.connection.close();
             controller.initSessionID(loginManager, scene, staffUser);
