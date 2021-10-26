@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.dailyAdmissionsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.dailyAdmissionsController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
@@ -110,7 +96,7 @@
                   <Label fx:id="vLabelEmail" layoutX="234.0" layoutY="209.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
                   <Label fx:id="vLabelTax" layoutX="234.0" layoutY="259.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
                   <Label fx:id="vLabelPassword" layoutX="234.0" layoutY="359.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
-                  <TableView fx:id="admissionsTable" layoutX="42.0" layoutY="59.0" prefHeight="395.0" prefWidth="720.0">
+                  <TableView fx:id="admissionsTable" layoutX="42.0" layoutY="62.0" prefHeight="392.0" prefWidth="720.0">
                     <columns>
                       <TableColumn editable="false" prefWidth="59.0" text="Tag No" />
                       <TableColumn editable="false" prefWidth="173.0" text="Name" />
@@ -139,6 +125,15 @@
                      <font>
                         <Font size="15.0" />
                      </font>
+                  </Button>
+                  <Button fx:id="btnFilter" layoutX="286.0" layoutY="18.0" mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="24.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/Images/filter.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children></Pane>
          </children>
