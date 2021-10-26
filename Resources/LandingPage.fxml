@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-style: solid; -fx-border-width: 2; -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.MainViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-style: solid; -fx-border-width: 2; -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.MainViewController">
     <top>
         <VBox prefHeight="104.0" prefWidth="1209.0" BorderPane.alignment="TOP_CENTER">
             <children>
@@ -64,7 +64,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                              <Label fx:id="txtIntroHeading" alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="626.0" text="Welcome to Bay Marine Rescue" textAlignment="CENTER">
+                              <Label fx:id="txtIntroHeading" alignment="CENTER" contentDisplay="CENTER" prefHeight="77.0" prefWidth="626.0" text="Welcome to Bay Marine Rescue" textAlignment="CENTER">
                                   <font>
                                       <Font size="40.0" />
                                   </font>
