@@ -1,11 +1,11 @@
 package sample;
 
 public class Animal {
-    String tagNo;
-    String name;
-    Boolean isAdult;
-    String gender;
-    String species;
+    static String tagNo;
+    static String name;
+    static Boolean isAdult;
+    static String gender;
+    static String species;
 
     public Animal(String tagNo, String name, Boolean isAdult, String gender, String species) {
         this.tagNo = tagNo;
@@ -15,23 +15,23 @@ public class Animal {
         this.species = species;
     }
 
-    public String getTagNo() {
+    public static String getTagNo() {
         return tagNo;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public Boolean getAdult() {
+    public static Boolean getAdult() {
         return isAdult;
     }
 
-    public String getGender() {
+    public static String getGender() {
         return gender;
     }
 
-    public String getSpecies() {
+    public static String getSpecies() {
         return species;
     }
 }

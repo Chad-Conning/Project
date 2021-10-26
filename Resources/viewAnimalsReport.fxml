@@ -113,7 +113,7 @@
                         </HBox>
                      </top>
                      <center>
-                        <ListView BorderPane.alignment="CENTER">
+                        <ListView fx:id="listViewAnimalsReport" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets left="30.0" right="10.0" />
                            </BorderPane.margin>
@@ -122,7 +122,7 @@
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Export">
+                              <Button fx:id="btnVARExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Export">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -130,7 +130,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Close">
+                              <Button fx:id="btnVARClose" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Close">
                                  <HBox.margin>
                                     <Insets right="50.0" />
                                  </HBox.margin>
