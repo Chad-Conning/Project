@@ -88,7 +88,7 @@
                   <Insets bottom="20.0" top="-10.0" />
                </VBox.margin>
             </Label>
-            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="527.0" prefWidth="1110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;" VBox.vgrow="SOMETIMES">
+            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="527.0" prefWidth="1110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
                <children>
                   <BorderPane prefHeight="528.0" prefWidth="1109.0">
                      <top>
@@ -113,7 +113,7 @@
                         </HBox>
                      </top>
                      <center>
-                        <ListView prefHeight="417.0" prefWidth="1095.0" BorderPane.alignment="CENTER">
+                        <ListView BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets left="30.0" right="10.0" />
                            </BorderPane.margin>
