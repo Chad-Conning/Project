@@ -63,6 +63,7 @@ public class menuController {
             btnMenuEditModS.setOnAction(event -> showModifyStaff());
             btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
             btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
+            btnMenuDisplayS.setOnAction(event -> showViewStaffReport());
         } else if (staffUser.getStaffType().equals("Handler")) {
             btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
             btnMenuAddRegisterA.setDisable(true);
@@ -204,6 +205,22 @@ public class menuController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             updateLogbookController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewStaffReport() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewStaffReports.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            viewStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
             connection.close();
             controller.initSessionID(loginManager, scene, staffUser);
