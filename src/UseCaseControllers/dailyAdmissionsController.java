@@ -73,8 +73,9 @@ public class dailyAdmissionsController {
                     loader.getController();   // gets the controller specified in the fxml
 
             LoginManager loginManager = new LoginManager(scene);
+            queries.connection.close();
             controller.initSessionID(loginManager, this.scene, staffUser);
-        } catch (IOException ex) {
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
