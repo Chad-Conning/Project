@@ -73,6 +73,7 @@ public class modifyStaffController {
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
             menu.btnMenuEditModS.setDisable(true);
+
             ResultSet rs = queries.getStaffList();
             while (rs.next()) {
                 comboSelectStaff.getItems().add(rs.getString("Staff_ID"));
@@ -83,7 +84,7 @@ public class modifyStaffController {
 
         btnMSRegister.setOnAction(actionEvent -> {
             //if all validation checks pass then modify staff
-            if(validationControl())
+            if (validationControl())
              modifyStaff();
         });
 
@@ -114,8 +115,9 @@ public class modifyStaffController {
         tfieldMSEmail.setText(temp.getEmail());
         tfieldMSTax.setText(temp.getTaxNum());
         comboMSStaffType.getSelectionModel().select(temp.getStaffType());
-        if (!temp.isBoolEmp())
-            radioNotEmployed.setSelected(true);
+        if (temp.isBoolEmp())
+            radioEmployed.setSelected(true);
+        else radioNotEmployed.setSelected(true);
     }
 
     private void populateFields(String staffID) {

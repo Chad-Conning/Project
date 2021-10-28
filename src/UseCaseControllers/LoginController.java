@@ -71,6 +71,9 @@ public class LoginController {
             emp.setStaffType(rs.getString("Staff_Type"));
             emp.setfName(rs.getString("Staff_FName"));
             emp.setlName(rs.getString("Staff_LName"));
+            emp.setBoolEmp(rs.getBoolean("is_Employed"));
+            if (!emp.boolEmpProperty().get())
+                return false;
             if (emp.getStaffID().equals(user.getText()) && emp.getStaffPassword().equals(password.getText())) {
                 staffUser = emp;
 

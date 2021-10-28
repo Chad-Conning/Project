@@ -101,13 +101,13 @@
                       <TableColumn fx:id="Tag_No" editable="false" prefWidth="59.0" text="Tag No" />
                       <TableColumn fx:id="Animal_Name" editable="false" prefWidth="173.0" text="Name" />
                         <TableColumn fx:id="Animal_Gender" editable="false" prefWidth="60.0" text="Gender" />
-                        <TableColumn fx:id="Animal_Status" editable="false" prefWidth="58.0" text="Adult" />
+                        <TableColumn fx:id="is_Adult" editable="false" prefWidth="58.0" text="Adult" />
                         <TableColumn fx:id="Animal_Species" editable="false" prefWidth="111.0" text="Species" />
                         <TableColumn fx:id="Location_Retrieved" editable="false" prefWidth="159.0" text="Location Retrieved" />
                         <TableColumn fx:id="Admission_Date" editable="false" prefWidth="99.0" text="Date" />
                     </columns>
                   </TableView>
-                  <CheckBox fx:id="comboAdultFilter" layoutX="355.0" layoutY="24.0" mnemonicParsing="false" />
+                  <CheckBox fx:id="checkAdultFilter" layoutX="355.0" layoutY="24.0" mnemonicParsing="false" />
                   <TextField fx:id="txtFieldSpeciesFilter" layoutX="400.0" layoutY="20.0" prefHeight="25.0" prefWidth="98.0" promptText="Enter a species" />
                   <TextField fx:id="txtFieldLocationFilter" layoutX="515.0" layoutY="20.0" prefHeight="25.0" prefWidth="134.0" promptText="Enter a location" />
                   <DatePicker fx:id="dateFilter" layoutX="663.0" layoutY="20.0" prefHeight="25.0" prefWidth="99.0" promptText="Select Date" />
