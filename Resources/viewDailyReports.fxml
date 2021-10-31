@@ -111,27 +111,27 @@
                      <children>
                         <TableView layoutX="37.0" layoutY="14.0" prefHeight="228.0" prefWidth="677.0" style="-fx-border-color: black; -fx-border-width: 2;">
                           <columns>
-                            <TableColumn prefWidth="45.0" style="border-color: black;" text="C1" />
-                            <TableColumn prefWidth="130.0" text="C2" />
-                              <TableColumn prefWidth="93.0" text="C2" />
-                              <TableColumn prefWidth="129.0" text="C2" />
-                              <TableColumn prefWidth="97.0" text="C2" />
-                              <TableColumn prefWidth="106.0" text="C2" />
-                              <TableColumn prefWidth="72.0" text="C2" />
+                            <TableColumn fx:id="colTagNo" prefWidth="56.0" style="border-color: black;" text="Tag No" />
+                            <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />
+                              <TableColumn fx:id="colCentre" prefWidth="93.0" text="Centre" />
+                              <TableColumn fx:id="colCondition" prefWidth="129.0" text="Condition" />
+                              <TableColumn fx:id="colFoodGiven" prefWidth="97.0" text="Food Given" />
+                              <TableColumn fx:id="colMedication" prefWidth="106.0" text="Medication" />
+                              <TableColumn fx:id="colAction" prefWidth="72.0" text="Action" />
                           </columns>
                         </TableView>
                         <HBox layoutX="15.0" layoutY="255.0" prefHeight="60.0" prefWidth="721.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="90.0" style="-fx-border-color: black; -fx-border-width: 2;" text="New Log">
+                              <Button fx:id="btnNewLog" mnemonicParsing="false" prefHeight="29.0" prefWidth="90.0" style="-fx-border-color: black; -fx-border-width: 2;" text="New Log">
                                  <HBox.margin>
                                     <Insets left="6.0" />
                                  </HBox.margin></Button>
-                              <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="90.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Export">
+                              <Button fx:id="btnExport" mnemonicParsing="false" prefHeight="29.0" prefWidth="90.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Export">
                                  <HBox.margin>
                                     <Insets left="385.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Close">
+                              <Button fx:id="btnClose" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Close">
                                  <HBox.margin>
                                     <Insets left="25.0" />
                                  </HBox.margin>
