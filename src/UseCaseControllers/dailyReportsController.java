@@ -3,9 +3,7 @@ package UseCaseControllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import sample.Database;
 import sample.LoginManager;
 import sample.Staff;
@@ -33,6 +31,20 @@ public class dailyReportsController {
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
     @FXML public Menu menuLogout;
+
+    @FXML private DatePicker dtpDailyLogReportDate;
+
+    @FXML private TableColumn colTagNo;
+    @FXML private TableColumn colName;
+    @FXML private TableColumn colCentre;
+    @FXML private TableColumn colCondition;
+    @FXML private TableColumn colFoodGiven;
+    @FXML private TableColumn colMedication;
+    @FXML private TableColumn colAction;
+
+    @FXML private Button btnNewLog;
+    @FXML private Button btnExport;
+    @FXML private Button btnClose;
 
     Staff staffUser;
     Scene scene;
