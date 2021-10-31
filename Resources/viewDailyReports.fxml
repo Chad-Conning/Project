@@ -131,7 +131,7 @@
                                     <Insets left="385.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Button">
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Close">
                                  <HBox.margin>
                                     <Insets left="25.0" />
                                  </HBox.margin>
