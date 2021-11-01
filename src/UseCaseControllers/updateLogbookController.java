@@ -174,8 +174,6 @@ public class updateLogbookController {
         return (int) Medications.get(MedDesc);
     }
 
-
-
     private void showMainView() {
         try {
             FXMLLoader loader = new FXMLLoader(

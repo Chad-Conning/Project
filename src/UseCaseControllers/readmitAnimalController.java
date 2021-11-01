@@ -57,12 +57,11 @@ public class readmitAnimalController {
         this.scene = scene;
         this.staffUser = staffUser;
 
-        menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
-                btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
-        menu.btnMenuAddReadmitA.setDisable(true);
-
         try {
             queries.connectDB();
+            menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
+            menu.btnMenuAddReadmitA.setDisable(true);
             ResultSet rs = queries.getAnimalsToAdmit();
             while (rs.next()) {
                 if (!comboTagNumber.getItems().contains(rs.getString("Tag_No")))
@@ -113,7 +112,8 @@ public class readmitAnimalController {
 
             LoginManager loginManager = new LoginManager(scene);
             controller.initSessionID(loginManager, this.scene, staffUser);
-        } catch (IOException ex) {
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

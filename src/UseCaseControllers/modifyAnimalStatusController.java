@@ -80,7 +80,6 @@ public class modifyAnimalStatusController {
             status = temp.getStatus();
             toggleInCentre.setSelected(true);
         }
-
     }
 
     private void updateStatus() {
