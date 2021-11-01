@@ -112,13 +112,6 @@
                            </children>
                         </HBox>
                      </top>
-                     <center>
-                        <ListView fx:id="listViewAnimalsReport" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets left="30.0" right="10.0" />
-                           </BorderPane.margin>
-                        </ListView>
-                     </center>
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
@@ -147,7 +140,26 @@
                               <Insets right="20.0" />
                            </BorderPane.margin>
                         </Slider>
-                     </right></BorderPane>
+                     </right>
+                     <center>
+                        <TableView fx:id="tableView" prefHeight="417.0" prefWidth="979.0" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn fx:id="colTagNo" prefWidth="75.0" text="Tag No" />
+                            <TableColumn fx:id="colName" prefWidth="269.0" text="Name" />
+                              <TableColumn fx:id="colAdult" prefWidth="93.0" text="Adult" />
+                              <TableColumn fx:id="colGender" prefWidth="122.0" text="Animal Gender" />
+                              <TableColumn fx:id="colStatus" prefWidth="136.0" text="Animal Status" />
+                              <TableColumn fx:id="colSpecies" prefWidth="219.0" text="Animal Species" />
+                              <TableColumn fx:id="colAction" prefWidth="110.0" text="Action" />
+                          </columns>
+                           <BorderPane.margin>
+                              <Insets left="30.0" right="15.0" />
+                           </BorderPane.margin>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </center></BorderPane>
                </children></Pane>
          </children>
       </VBox>
