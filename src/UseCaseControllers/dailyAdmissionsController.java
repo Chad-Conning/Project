@@ -1,9 +1,14 @@
 package UseCaseControllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import sample.*;
 
 import java.io.IOException;
@@ -11,6 +16,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,6 +60,9 @@ public class dailyAdmissionsController {
     Staff staffUser;
     Scene scene;
 
+    ObservableList<AnimalAdmission> tableData = FXCollections.observableArrayList();
+    FilteredList<AnimalAdmission> adults = new FilteredList<>(tableData, p -> true);
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
@@ -71,6 +82,7 @@ public class dailyAdmissionsController {
             Animal_Name.setCellValueFactory(cellData -> cellData.getValue().animalNameProperty());
             Animal_Gender.setCellValueFactory(cellData -> cellData.getValue().animalGenderProperty());
             is_Adult.setCellValueFactory(cellData -> cellData.getValue().isAdultProperty());
+            is_Adult.setCellFactory(column -> new CheckBoxTableCell<>());
             Animal_Species.setCellValueFactory(cellData -> cellData.getValue().animalSpeciesProperty());
             Location_Retrieved.setCellValueFactory(cellData -> cellData.getValue().locationRetrievedProperty());
             Admission_Date.setCellValueFactory(cellData -> cellData.getValue().admissionDateProperty());
@@ -78,7 +90,9 @@ public class dailyAdmissionsController {
             ResultSet rs = queries.getAnimalAdmissions();
             populateTableView(rs);
 
-            dateFilter.setValue(LocalDate.now());
+            /*DateTimeFormatter fmt = new DateTimeFormatterBuilder()
+                    .appendPattern("yyyy-MM-dd").toFormatter();
+            dateFilter.setValue(LocalDate.parse(LocalDate.now().toString(), fmt));*/
 
             dateFilter.setDayCellFactory(param -> new DateCell() {
                 @Override
@@ -100,23 +114,57 @@ public class dailyAdmissionsController {
         });
 
         btnFilter.setOnAction(actionEvent -> filterAdmissions());
+
+        /////////////////
+        changeData();
+
+        checkAdultFilter.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            adults.setPredicate(animalAdmission -> {
+                Boolean isAdult = newValue;
+                if (animalAdmission.getIsAdult() == isAdult)
+                    return true;
+                else return false;
+            });
+            SortedList<AnimalAdmission> sortedData = new SortedList<>(adults);
+
+            sortedData.comparatorProperty().bind(admissionsTable.comparatorProperty());
+
+            admissionsTable.setItems(sortedData);
+        });
+        /////////////////
+
+    }
+
+    private void changeData() {
+        tableData = admissionsTable.getItems();
+        adults = new FilteredList<>(tableData, p -> true);
     }
 
     private void filterAdmissions() {
-        Boolean isAdult = checkAdultFilter.isSelected();
+        //Boolean isAdult = checkAdultFilter.isSelected();
         String species = txtFieldSpeciesFilter.getText();
         String location = txtFieldLocationFilter.getText();
-        LocalDate admissionDate = dateFilter.getValue();
+
+        /*DateTimeFormatter fmt = new DateTimeFormatterBuilder()
+                .appendPattern("yyyy-MM-dd")
+                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+                .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+                .toFormatter();
+        LocalDate admissionDate = LocalDate.parse(dateFilter.getValue().toString(), fmt);*/
+        ResultSet rs = queries.getFilteredAnimalList(species.toLowerCase(), location.toLowerCase(), dateFilter.getValue());
+        populateTableView(rs);
     }
 
     private void populateTableView(ResultSet rs) {
         connection = queries.connection;
-        List<AnimalAdmission> admissionData = populateList(rs);
-        admissionsTable.getItems().setAll(admissionData);
+        ObservableList<AnimalAdmission> admissionData = populateList(rs);
+        //admissionsTable.getItems().setAll(admissionData);
+        admissionsTable.setItems(admissionData);
+        changeData();
     }
 
-    private List<AnimalAdmission> populateList(ResultSet rs) {
-        List<AnimalAdmission> admissionData = new ArrayList<>();
+    private ObservableList<AnimalAdmission> populateList(ResultSet rs) {
+        ObservableList<AnimalAdmission> admissionData = FXCollections.observableArrayList();
         try {
             AnimalAdmission emp;
             while (rs.next()) {
@@ -127,7 +175,7 @@ public class dailyAdmissionsController {
                 emp.setIsAdult(rs.getBoolean("is_Adult"));
                 emp.setAnimalSpecies(rs.getString("Animal_Species"));
                 emp.setLocationRetrieved(rs.getString("Location_Retrieved"));
-                emp.setAdmissionDate(rs.getString("Admission_Date"));
+                emp.setAdmissionDate(rs.getString("Admission_Date").substring(0, 10));
                 admissionData.add(emp);
             }
         } catch (SQLException throwables) {

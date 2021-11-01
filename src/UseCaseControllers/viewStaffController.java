@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Database;
 import sample.LoginManager;
@@ -77,6 +78,7 @@ public class viewStaffController {
             Staff_TaxNumber.setCellValueFactory(cellData -> cellData.getValue().taxNumProperty());
             Staff_Type.setCellValueFactory(cellData -> cellData.getValue().staffTypeProperty());
             isEmployed.setCellValueFactory(cellData -> cellData.getValue().boolEmpProperty());
+            isEmployed.setCellFactory(column -> new CheckBoxTableCell<>());
 
             ResultSet rs = queries.getStaffList();
             populateTableView(rs);
@@ -103,7 +105,8 @@ public class viewStaffController {
 
         List<Staff> searchStaff = new ArrayList<>();
         for (int i = 0; i <= staffData.size() - 1; i++) {
-            if (staffData.get(i).getStaffID().equals(searchString) || staffData.get(i).getfName().equals(searchString) || staffData.get(i).getlName().equals(searchString))
+            if (staffData.get(i).getStaffID().equals(searchString) || staffData.get(i).getfName().equalsIgnoreCase(searchString)
+                    || staffData.get(i).getlName().equalsIgnoreCase(searchString))
                 searchStaff.add(staffData.get(i));
         }
         staffTable.getItems().setAll(searchStaff);

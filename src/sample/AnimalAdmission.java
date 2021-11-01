@@ -48,7 +48,7 @@ public class AnimalAdmission {
         this.animalGender.set(animalGender);
     }
 
-    public boolean isIsAdult() {
+    public boolean getIsAdult() {
         return isAdult.get();
     }
 

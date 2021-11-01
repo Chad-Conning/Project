@@ -66,6 +66,61 @@ public class Database {
         }
     }
 
+    public ResultSet getFilteredAnimalList(String species, String location, LocalDate date) {
+        ResultSet rs;
+        String query = "";
+        if (location.equals("") && date == null) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Animal_Species = '" + species.toLowerCase() + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (species.equals("") && date == null) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Location_Retrieved = '" + location.toLowerCase() + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (species.equals("") && location.equals("")) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Admission_Date = '" + date + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (date == null) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Animal_Species = '" + species.toLowerCase() +
+                    " 'AND Location_Retrieved = '" + location.toLowerCase() + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (species.equals("")) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Location_Retrieved = '" + location.toLowerCase() +
+                    " 'AND Admission_Date = '" + date + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (location.equals("")) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Animal_Species = '" + species.toLowerCase() +
+                    " 'AND Admission_Date = '" + date + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        try {
+            /*String query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "ORDER BY Admission_Date DESC";*/
+            rs = statement.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query "+e.getMessage());
+            return null;
+        }
+    }
+
     public ResultSet getAliveAnimals() {
         ResultSet rs;
         try {
