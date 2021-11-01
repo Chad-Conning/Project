@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import sample.Database;
-import sample.LoginManager;
-import sample.Staff;
-import sample.menuController;
+import sample.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -34,12 +31,13 @@ public class logsPerAnimalController {
 
     @FXML private ComboBox cmbxTagNo;
 
-    @FXML private TableColumn colName;
-    @FXML private TableColumn colDate;
-    @FXML private TableColumn colCentre;
-    @FXML private TableColumn colCondition;
-    @FXML private TableColumn colFoodGiven;
-    @FXML private TableColumn colMedication;
+    @FXML private TableView<Animal> AnimalLogs;
+    @FXML private TableColumn<Animal, String> colName;
+    @FXML private TableColumn<Animal, String> colDate;
+    @FXML private TableColumn<Animal, String> colCentre;
+    @FXML private TableColumn<Animal, String> colCondition;
+    @FXML private TableColumn<Animal, String> colFoodGiven;
+    @FXML private TableColumn<Animal, String> colMedication;
 
     @FXML private Button btnNewLog;
     @FXML private Button btnExport;
