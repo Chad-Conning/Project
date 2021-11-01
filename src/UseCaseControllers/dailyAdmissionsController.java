@@ -32,6 +32,7 @@ public class dailyAdmissionsController {
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
     @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuAddReadmitA;
     @FXML public MenuItem btnMenuEditModA;
     @FXML public MenuItem btnMenuEditModS;
     @FXML public MenuItem btnMenuDisplayAdmis;
@@ -75,7 +76,7 @@ public class dailyAdmissionsController {
         try {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
-                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
             menu.btnMenuDisplayAdmis.setDisable(true);
 
             Tag_No.setCellValueFactory(cellData -> cellData.getValue().tagNoProperty());

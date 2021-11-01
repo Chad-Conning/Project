@@ -24,6 +24,7 @@ public class viewAnimalsController {
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
     @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuAddReadmitA;
     @FXML public MenuItem btnMenuEditModA;
     @FXML public MenuItem btnMenuEditModS;
     @FXML public MenuItem btnMenuDisplayAdmis;
@@ -54,7 +55,7 @@ public class viewAnimalsController {
         try {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
-                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
 
             menu.btnMenuDisplayAR.setDisable(true);
             ResultSet rs = queries.getAnimalList();

@@ -139,7 +139,7 @@ public class Database {
     public ResultSet getAliveAnimals() {
         ResultSet rs;
         try {
-            String query = "SELECT * FROM Animal WHERE Animal_Status != 'Deceased'";
+            String query = "SELECT * FROM Animal WHERE Animal_Status = 'In center'";
             rs = statement.executeQuery(query);
             return rs;
         }
@@ -371,10 +371,10 @@ public class Database {
         }
     }
 
-    /*public ResultSet getAnimalsToAdmit() {
+    public ResultSet getAnimalsToAdmit() {
         ResultSet rs;
         try {
-            String query = "SELECT Tag_No FROM Animal NATURAL JOIN Admission";
+            String query = "SELECT Tag_No FROM Animal NATURAL JOIN Admission WHERE Animal_Status = 'Released'";
             rs = statement.executeQuery(query);
             return rs;
         }
@@ -382,5 +382,5 @@ public class Database {
             System.out.println("Failed to execute query "+e.getMessage());
             return null;
         }
-    }*/
+    }
 }

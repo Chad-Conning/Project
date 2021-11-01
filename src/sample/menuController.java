@@ -20,6 +20,7 @@ public class menuController {
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
     @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuAddReadmitA;
     @FXML public MenuItem btnMenuEditModA;
     @FXML public MenuItem btnMenuEditModS;
     @FXML public MenuItem btnMenuDisplayAdmis;
@@ -35,7 +36,7 @@ public class menuController {
     Staff staffUser;
 
     public menuController(Connection connection, Menu menuLogout, final LoginManager loginManager, Scene scene, Staff staffUser, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
-                          MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS) {
+                          MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS, MenuItem btnMenuAddReadmitA) {
         this.loginManager = loginManager;
         this.connection = connection;
 
@@ -45,6 +46,7 @@ public class menuController {
         this.btnMenuAddRegisterA = btnMenuAddRegisterA;
         this.btnMenuAddAddS = btnMenuAddAddS;
         this.btnMenuAddUpdateL = btnMenuAddUpdateL;
+        this.btnMenuAddReadmitA = btnMenuAddReadmitA;
         this.btnMenuEditModA = btnMenuEditModA;
         this.btnMenuEditModS = btnMenuEditModS;
         this.btnMenuDisplayAdmis = btnMenuDisplayAdmis;
@@ -65,6 +67,7 @@ public class menuController {
             btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
             btnMenuDisplayS.setOnAction(event -> showViewStaffReport());
             btnMenuDisplayAdmis.setOnAction(event -> showViewAdmissionsReport());
+            btnMenuAddReadmitA.setOnAction(event -> showReadmitAnimals());
         } else if (staffUser.getStaffType().equals("Handler")) {
             btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
             btnMenuAddRegisterA.setDisable(true);
@@ -74,6 +77,7 @@ public class menuController {
         } else if (staffUser.getStaffType().equals("Admission")) {
             btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
             btnMenuDisplayAdmis.setOnAction(event -> showViewAdmissionsReport());
+            btnMenuAddReadmitA.setOnAction(event -> showReadmitAnimals());
             btnMenuAddUpdateL.setDisable(true);
             btnMenuAddAddS.setDisable(true);
             btnMenuEditModS.setDisable(true);
@@ -82,7 +86,7 @@ public class menuController {
     }
 
     public menuController(final LoginManager loginManager, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
-                          MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS) {
+                          MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS, MenuItem btnMenuAddReadmitA) {
         /*try {
           //  connection.close();
         } catch (SQLException throwables) {
@@ -93,6 +97,7 @@ public class menuController {
         this.btnMenuAddRegisterA = btnMenuAddRegisterA;
         this.btnMenuAddAddS = btnMenuAddAddS;
         this.btnMenuAddUpdateL = btnMenuAddUpdateL;
+        this.btnMenuAddReadmitA = btnMenuAddReadmitA;
         this.btnMenuEditModA = btnMenuEditModA;
         this.btnMenuEditModS = btnMenuEditModS;
         this.btnMenuDisplayAdmis = btnMenuDisplayAdmis;
@@ -106,6 +111,7 @@ public class menuController {
         btnMenuAddRegisterA.setOnAction(event -> showAlert());
         btnMenuAddAddS.setOnAction(event -> showAlert());
         btnMenuAddUpdateL.setOnAction(event -> showAlert());
+        btnMenuAddReadmitA.setOnAction(event -> showAlert());
         btnMenuEditModA.setOnAction(event -> showAlert());
         btnMenuEditModS.setOnAction(event -> showAlert());
         btnMenuDisplayAdmis.setOnAction(event -> showAlert());
@@ -175,6 +181,22 @@ public class menuController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             regAnimalController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showReadmitAnimals() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/reAdmitAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            readmitAnimalController controller =
                     loader.getController();   // gets the controller specified in the fxml
             connection.close();
             controller.initSessionID(loginManager, scene, staffUser);

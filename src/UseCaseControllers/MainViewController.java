@@ -36,6 +36,8 @@ public class MainViewController {
     @FXML private Label lblViewDailyAdmissions;
     @FXML private ImageView imgViewStaffReports;
     @FXML private Label lblViewStaffReports;
+    @FXML private ImageView imgReAdmitAnimal;
+    @FXML private Label lblReAdmitAnimal;
 
     @FXML private Pane addStaffPane;
     @FXML private Pane modifyStaffPane;
@@ -43,6 +45,7 @@ public class MainViewController {
     @FXML private Pane registerAnimalPane;
     @FXML private Pane updateLogbookPane;
     @FXML private Pane logbookPane;
+    @FXML private Pane readmitAnimalPane;
     @FXML private Label txtIntroHeading;
     @FXML private Label lblUserInformation;
     Staff staffUser;
@@ -67,9 +70,14 @@ public class MainViewController {
             viewStaffPane.setOpacity(0.4);
             viewStaffPane.setDisable(true);
 
+            readmitAnimalPane.setOpacity(0.4);
+            readmitAnimalPane.setDisable(true);
+
             if (staffUser.getStaffType().equals("Handler")) {
                 registerAnimalPane.setOpacity(0.4);
                 registerAnimalPane.setDisable(true);
+
+
 
             } else if (staffUser.getStaffType().equals("Admission")) {
                 updateLogbookPane.setOpacity(0.4);
@@ -144,6 +152,13 @@ public class MainViewController {
         lblViewStaffReports.setOnMouseClicked(actionEvent -> {
             showViewStaffReport();
         });
+
+        imgReAdmitAnimal.setOnMouseClicked(actionEvent -> {
+            showReadmitAnimals();
+        });
+        lblReAdmitAnimal.setOnMouseClicked(actionEvent -> {
+            showReadmitAnimals();
+        });
     }
 
     private void showAddStaff() {
@@ -185,6 +200,22 @@ public class MainViewController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             regAnimalController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showReadmitAnimals() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/reAdmitAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            readmitAnimalController controller =
                     loader.getController();   // gets the controller specified in the fxml
             queries.connection.close();
             controller.initSessionID(loginManager, scene, staffUser);
@@ -273,86 +304,4 @@ public class MainViewController {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-   /*
-
-    public Stage createEditingStage(Stage owner, int CDID) {
-        Stage stage = new Stage();
-        Button btnOK;
-
-        VBox root = new VBox();
-        root.setSpacing(10);
-        root.setFillWidth(true);
-        root.setPadding(new Insets(5));
-
-        if (CDID == 0) {
-            TextField txtTitle = new TextField();
-            txtTitle.setId("txtTitle");
-            TextField txtYear = new TextField();
-            txtYear.setId("txtYear");
-
-            btnOK = new Button("Save");
-            btnOK.setId("ok");
-            btnOK.setMaxWidth(Double.MAX_VALUE);
-
-            root.getChildren().addAll(
-                    new Label("Title"), txtTitle,
-                    new Label("Year"), txtYear,
-                    btnOK
-            );
-            // set stage details
-            stage.setTitle("Album details");
-            btnOK.setOnAction(event -> {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful. The CD table has been updated.");
-                alert.showAndWait();
-                stage.hide();
-            });
-        }
-        else {
-            TextField txtCDID = new TextField();
-            txtCDID.setId("txtCDID");
-            TextField txtTrackNum = new TextField();
-            txtTrackNum.setId("txtTrackNum");
-            TextField txtName = new TextField();
-            txtName.setId("txtName");
-            TextField txtArtist = new TextField();
-            txtArtist.setId("txtArtist");
-
-            btnOK = new Button("Save");
-            btnOK.setId("ok");
-            btnOK.setMaxWidth(Double.MAX_VALUE);
-
-            root.getChildren().addAll(
-                    new Label("CDID"), txtCDID,
-                    new Label("Track Number"), txtTrackNum,
-                    new Label("Name"), txtName,
-                    new Label("Artist"), txtArtist,
-                    btnOK
-            );
-            // set stage details
-            stage.setTitle("Song details");
-            btnOK.setOnAction(event -> {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Successful. The Track table has been updated.");
-                alert.showAndWait();
-                stage.hide();
-            });
-        }
-
-        // bit of a cheat, but really too simple to create a new controller
-
-        stage.setScene(new Scene(root));
-
-        // only has close button and cannot be resized
-        stage.initStyle(StageStyle.UTILITY);
-        stage.setResizable(false);
-
-        // rest of application cannot be interacted with until this stage is closed
-        stage.initModality(Modality.APPLICATION_MODAL);
-
-        // this stage belongs to another, i.e. will close if the owner does
-        stage.initOwner(owner);
-
-        return stage;
-    }*/
-
 }
