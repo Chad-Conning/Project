@@ -111,6 +111,9 @@ public class dailyAdmissionsController {
         btnViewAll.setOnAction(actionEvent -> {
             ResultSet rs = queries.getAnimalAdmissions();
             populateTableView(rs);
+            txtFieldSpeciesFilter.setText("");
+            txtFieldLocationFilter.setText("");
+            dateFilter.setValue(LocalDate.now());
         });
 
         btnFilter.setOnAction(actionEvent -> filterAdmissions());
