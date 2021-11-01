@@ -6,6 +6,7 @@ public class Animal {
     Boolean isAdult;
     String gender;
     String species;
+    String status;
 
     public Animal(String tagNo, String name, Boolean isAdult, String gender, String species) {
         this.tagNo = tagNo;
@@ -13,6 +14,7 @@ public class Animal {
         this.isAdult = isAdult;
         this.gender = gender;
         this.species = species;
+        status = "In Centre";
     }
 
     public String getTagNo() {
@@ -33,5 +35,13 @@ public class Animal {
 
     public String getSpecies() {
         return species;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String newStatus) {
+        status = newStatus;
     }
 }

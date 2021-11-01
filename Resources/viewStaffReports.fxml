@@ -80,7 +80,7 @@
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="688.0" prefWidth="1205.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="325.0" text="Add Staff Member" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="369.0" text="Staff Report" textAlignment="CENTER">
                <font>
                   <Font size="40.0" />
                </font>
@@ -88,79 +88,62 @@
                   <Insets bottom="20.0" top="-10.0" />
                </VBox.margin>
             </Label>
-            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="460.0" prefWidth="465.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="540.0" prefWidth="1000.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
                <children>
-                  <Label fx:id="labelName" contentDisplay="CENTER" layoutY="34.0" prefHeight="21.0" prefWidth="181.0" text="Name">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding></Label>
                   <Label fx:id="vLabelName" layoutX="264.0" layoutY="59.0" prefHeight="17.0" prefWidth="183.0" textFill="RED" translateX="-30.0" />
-                  <TextField fx:id="tfieldName" alignment="CENTER" layoutX="233.0" layoutY="30.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter first name" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets></TextField>
-                  <Label fx:id="labelSurname" contentDisplay="CENTER" layoutY="84.0" prefHeight="21.0" prefWidth="180.0" text="Surname">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding></Label>
                   <Label fx:id="vLabelSurname" layoutX="233.0" layoutY="109.0" prefHeight="17.0" prefWidth="185.0" textFill="RED" />
-                  <TextField fx:id="tfieldSurname" alignment="CENTER" layoutX="233.0" layoutY="80.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter surname" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="labelPhone" contentDisplay="CENTER" layoutY="134.0" prefHeight="21.0" prefWidth="181.0" text="Phone Number">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding></Label>
                   <Label fx:id="vLabelPhone" layoutX="234.0" layoutY="159.0" prefHeight="17.0" prefWidth="229.0" textFill="RED" />
-                  <TextField fx:id="tfieldPhone" alignment="CENTER" layoutX="233.0" layoutY="130.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter phone number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="labelEmail" contentDisplay="CENTER" layoutY="184.0" prefHeight="21.0" prefWidth="184.0" text="Email Address">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding></Label>
                   <Label fx:id="vLabelEmail" layoutX="234.0" layoutY="209.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
-                  <TextField fx:id="tfieldEmail" alignment="CENTER" layoutX="233.0" layoutY="180.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter email address" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="labelTax" contentDisplay="CENTER" layoutY="234.0" prefHeight="21.0" prefWidth="181.0" text="Tax Number">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding></Label>
                   <Label fx:id="vLabelTax" layoutX="234.0" layoutY="259.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
-                  <TextField fx:id="tfieldTax" alignment="CENTER" layoutX="233.0" layoutY="230.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter tax number" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="labelStaffType" contentDisplay="CENTER" layoutY="284.0" prefHeight="21.0" prefWidth="184.0" text="Staff Type">
+                  <Label fx:id="vLabelPassword" layoutX="234.0" layoutY="359.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
+                  <TableView fx:id="staffTable" layoutX="42.0" layoutY="68.0" prefHeight="386.0" prefWidth="917.0">
+                    <columns>
+                      <TableColumn fx:id="Staff_ID" editable="false" prefWidth="59.0" text="Staff ID" />
+                      <TableColumn fx:id="Staff_FName" editable="false" prefWidth="116.0" text="First Name" />
+                        <TableColumn fx:id="Staff_LName" editable="false" prefWidth="117.0" text="Last Name" />
+                        <TableColumn fx:id="Staff_ContactNum" editable="false" prefWidth="83.0" text="Number" />
+                        <TableColumn fx:id="Staff_Email" editable="false" prefWidth="180.0" text="Email" />
+                        <TableColumn fx:id="Staff_TaxNumber" editable="false" prefWidth="99.0" text="Tax Number" />
+                        <TableColumn fx:id="Staff_Type" editable="false" prefWidth="125.0" text="Staff Type" />
+                        <TableColumn fx:id="isEmployed" editable="false" prefWidth="71.0" text="Employed" />
+                        <TableColumn fx:id="editAction" editable="false" prefWidth="66.0" text="Action" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="tfieldFilter" layoutX="215.0" layoutY="20.0" prefHeight="29.0" prefWidth="183.0" promptText="Staff ID, First name, Last name" style="-fx-border-color: black; -fx-border-width: 2;" />
+                  <Button fx:id="btnAddStaff" layoutX="42.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2;" text="Add Staff">
                      <font>
                         <Font size="15.0" />
                      </font>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding></Label>
-                  <ComboBox fx:id="comboStaffType" layoutX="233.0" layoutY="280.0" prefHeight="28.0" prefWidth="185.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-background-color: white;" />
-                  <Button fx:id="btnSRegister" layoutX="37.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Register">
+                  </Button>
+                  <Button fx:id="btnClose" layoutX="849.0" layoutY="480.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="Close">
                      <font>
                         <Font size="15.0" />
-                     </font></Button>
-                  <Button fx:id="btnSCancel" layoutX="308.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Cancel">
+                     </font>
+                  </Button>
+                  <Button fx:id="btnExport" layoutX="711.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="Export">
                      <font>
                         <Font size="15.0" />
-                     </font></Button>
-                  <Label layoutX="41.0" layoutY="334.0" text="Password">
+                     </font>
+                  </Button>
+                  <Label layoutX="42.0" layoutY="24.0" text="Search Staff Member">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tfieldPassword" alignment="CENTER" layoutX="233.0" layoutY="330.0" prefHeight="28.0" prefWidth="185.0" promptText="Enter a password" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid;" />
-                  <Label fx:id="vLabelPassword" layoutX="234.0" layoutY="359.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
+                  <Button fx:id="btnSearch" layoutX="405.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="25.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/Images/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnViewAll" layoutX="180.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="View All">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
                </children></Pane>
          </children>
       </VBox>

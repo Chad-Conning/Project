@@ -63,6 +63,8 @@ public class menuController {
             btnMenuEditModS.setOnAction(event -> showModifyStaff());
             btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
             btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
+            btnMenuDisplayS.setOnAction(event -> showViewStaffReport());
+            btnMenuDisplayAdmis.setOnAction(event -> showViewAdmissionsReport());
         } else if (staffUser.getStaffType().equals("Handler")) {
             btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
             btnMenuAddRegisterA.setDisable(true);
@@ -71,6 +73,7 @@ public class menuController {
             btnMenuDisplayS.setDisable(true);
         } else if (staffUser.getStaffType().equals("Admission")) {
             btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
+            btnMenuDisplayAdmis.setOnAction(event -> showViewAdmissionsReport());
             btnMenuAddUpdateL.setDisable(true);
             btnMenuAddAddS.setDisable(true);
             btnMenuEditModS.setDisable(true);
@@ -80,11 +83,11 @@ public class menuController {
 
     public menuController(final LoginManager loginManager, MenuItem btnMenuAddRegisterA, MenuItem btnMenuAddAddS, MenuItem btnMenuAddUpdateL, MenuItem btnMenuEditModA, MenuItem btnMenuEditModS,
                           MenuItem btnMenuDisplayAdmis, MenuItem btnMenuDisplayLog, MenuItem btnMenuDisplayAR, MenuItem btnMenuDisplayLogsA, MenuItem btnMenuDisplayS) {
-        try {
-            connection.close();
+        /*try {
+          //  connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
+        }*/
         this.loginManager = loginManager;
 
         this.btnMenuAddRegisterA = btnMenuAddRegisterA;
@@ -204,6 +207,38 @@ public class menuController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             updateLogbookController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewStaffReport() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewStaffReports.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            viewStaffController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewAdmissionsReport() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewAdmissionsReport.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            dailyAdmissionsController controller =
                     loader.getController();   // gets the controller specified in the fxml
             connection.close();
             controller.initSessionID(loginManager, scene, staffUser);
