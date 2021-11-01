@@ -9,6 +9,7 @@ import sample.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +34,7 @@ public class logsPerAnimalController {
 
     @FXML private TableView<Animal> AnimalLogs;
     @FXML private TableColumn<Animal, String> colName;
-    @FXML private TableColumn<Animal, String> colDate;
+    @FXML private TableColumn<Animal, Date> colDate;
     @FXML private TableColumn<Animal, String> colCentre;
     @FXML private TableColumn<Animal, String> colCondition;
     @FXML private TableColumn<Animal, String> colFoodGiven;
