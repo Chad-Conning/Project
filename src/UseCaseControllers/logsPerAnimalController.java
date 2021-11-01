@@ -3,17 +3,13 @@ package UseCaseControllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import sample.Database;
-import sample.LoginManager;
-import sample.Staff;
-import sample.menuController;
+import javafx.scene.control.*;
+import sample.*;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +29,20 @@ public class logsPerAnimalController {
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
     @FXML public Menu menuLogout;
+
+    @FXML private ComboBox cmbxTagNo;
+
+    @FXML private TableView<Animal> AnimalLogs;
+    @FXML private TableColumn<Animal, String> colName;
+    @FXML private TableColumn<Animal, Date> colDate;
+    @FXML private TableColumn<Animal, String> colCentre;
+    @FXML private TableColumn<Animal, String> colCondition;
+    @FXML private TableColumn<Animal, String> colFoodGiven;
+    @FXML private TableColumn<Animal, String> colMedication;
+
+    @FXML private Button btnNewLog;
+    @FXML private Button btnExport;
+    @FXML private Button btnClose;
 
     Staff staffUser;
     Scene scene;
