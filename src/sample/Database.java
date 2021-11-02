@@ -357,6 +357,20 @@ public class Database {
         }
     }
 
+    public ResultSet getLogsPerDate(Date toFind)
+    {
+        try {
+            ResultSet RS ;
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT Tag_No, Centre, Condition, Food_Code, Medication_ID WHERE Log_Date = # + toFind + #");
+            RS = selectStatement.executeQuery();
+            return RS;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query " + e.getMessage());
+            return null;
+        }
+    }
+
     public boolean modifyAnimalStatus(String tagNo, String status) {
         try {
             PreparedStatement updateStatement = connection.prepareStatement("UPDATE Animal SET Animal_Status = ? WHERE Tag_No = " + Integer.parseInt(tagNo));

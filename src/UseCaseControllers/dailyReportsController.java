@@ -1,5 +1,6 @@
 package UseCaseControllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,7 +9,10 @@ import sample.*;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,7 +69,18 @@ public class dailyReportsController {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+
+        dtpDailyLogReportDate.setValue(LocalDate.now());
+        dtpDailyLogReportDate.setDayCellFactory(param -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
+            }
+        });
+
     }
+
 
 
     private void showMainView() {
@@ -82,5 +97,20 @@ public class dailyReportsController {
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void DateChanged(ActionEvent actionEvent) throws SQLException {
+        //When date is changed (selected)
+        LocalDate toFind = dtpDailyLogReportDate.getValue();
+        Date ToFind = Date.valueOf(toFind);
+
+        //Call the select statement
+        ResultSet Animals = queries.getLogsPerDate(ToFind);
+
+        while (Animals.next())
+        {
+
+        }
+
     }
 }
