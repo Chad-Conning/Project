@@ -54,7 +54,7 @@ public class dailyReportsController {
     Scene scene;
 
     LoginManager loginManager;
-    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) throws SQLException {
         this.loginManager = loginManager;
         this.staffUser = staffUser;
 
@@ -66,6 +66,7 @@ public class dailyReportsController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
+            doOnDateChange();
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -79,9 +80,32 @@ public class dailyReportsController {
                 setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
             }
         });
+        btnClose.setOnAction(ActionEvent -> showMainView());
+        btnExport.setOnAction(ActionEvent -> ExportDailyLogs());
+        btnNewLog.setOnAction(ActionEvent -> NewLog());
 
     }
 
+    private void NewLog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/updateLogbook.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            MainViewController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+
+            LoginManager loginManager = new LoginManager(scene);
+            controller.initSessionID(loginManager, this.scene, staffUser);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+
+    private void ExportDailyLogs() {
+    }
 
 
     private void showMainView() {
@@ -101,7 +125,11 @@ public class dailyReportsController {
     }
 
     public void DateChanged(ActionEvent actionEvent) throws SQLException {
-        //When date is changed (selected)
+        doOnDateChange();
+    }
+
+    public void doOnDateChange() throws SQLException {
+//When date is changed (selected)
         LocalDate toFind = dtpDailyLogReportDate.getValue();
         Date ToFind = Date.valueOf(toFind);
 
@@ -135,9 +163,10 @@ public class dailyReportsController {
         {
             tblDailyReports.getItems().add(AnimalsLogs.get(i));
         }
-
     }
 }
+
+
 
 class AnimalForDailyLogs{
     String TagNo, Name, Centre, Condition, Food, Medication;
