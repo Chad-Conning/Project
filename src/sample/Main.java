@@ -23,8 +23,7 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("file:Resources/Images/Images/penguin (2).png"));
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
+        
     }
 
     public static void main(String[] args) {

@@ -20,7 +20,6 @@ public class modifyAnimalStatusController {
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
     @FXML public MenuItem btnMenuAddUpdateL;
-    @FXML public MenuItem btnMenuAddReadmitA;
     @FXML public MenuItem btnMenuEditModA;
     @FXML public MenuItem btnMenuEditModS;
     @FXML public MenuItem btnMenuDisplayAdmis;
@@ -54,7 +53,7 @@ public class modifyAnimalStatusController {
         try {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
-                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
             menu.btnMenuEditModA.setDisable(true);
             ResultSet rs = queries.getAliveAnimals();
             while (rs.next()) {
@@ -80,6 +79,7 @@ public class modifyAnimalStatusController {
             status = temp.getStatus();
             toggleInCentre.setSelected(true);
         }
+
     }
 
     private void updateStatus() {
