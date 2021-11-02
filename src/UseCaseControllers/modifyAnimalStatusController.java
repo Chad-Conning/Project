@@ -17,6 +17,10 @@ public class modifyAnimalStatusController {
     Database queries = new Database();
     Connection connection;
 
+    Staff staffUser;
+    Scene scene;
+    String status;
+
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
     @FXML public MenuItem btnMenuAddUpdateL;
@@ -38,10 +42,6 @@ public class modifyAnimalStatusController {
     @FXML private Button btnCancel;
     @FXML private Label lblUserInformation;
     @FXML private TextField tfieldName;
-
-    Staff staffUser;
-    Scene scene;
-    String status;
 
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
