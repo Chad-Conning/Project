@@ -43,7 +43,6 @@ public class dailyReportsController {
     @FXML private TableColumn<Animal, String> colCondition;
     @FXML private TableColumn<Animal, String> colFoodGiven;
     @FXML private TableColumn<Animal, String> colMedication;
-    @FXML private TableColumn<Animal, String> colAction;
 
     @FXML private Button btnNewLog;
     @FXML private Button btnExport;
@@ -109,6 +108,23 @@ public class dailyReportsController {
 
         while (Animals.next())
         {
+            //While there are still animals in the resultant set
+            String AnimalTagNo = Animals.getString("Tag_No");
+
+            Animal temp = queries.getAnimalByTag(AnimalTagNo);
+            String AnimalName = temp.getName();
+
+            String Centre = Animals.getString("Centre");
+            String Condition = Animals.getString("Condition");
+
+            int FoodGiven = Animals.getInt("Food_Code");
+            String FoodDesc = queries.getFoodByID(FoodGiven);
+
+            int MedID = Animals.getInt("Medication_ID");
+            String MedDesc = queries.getMedsByID(MedID);
+
+
+
 
         }
 

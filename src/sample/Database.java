@@ -182,6 +182,34 @@ public class Database {
         }
     }
 
+    public String getMedsByID(int MedID)
+    {
+        try{
+            //Will return Meds Name
+            String query = "SELECT Med_Description FROM Medication_Given WHERE Medication_ID = MedID";
+            ResultSet rs = statement.executeQuery(query);
+            return rs.getString("Med_Description");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getFoodByID(int FoodID)
+    {
+        try
+        {
+            String query = "SELECT Food_Description FROM Food_Intake WHERE Food_Code = FoodID";
+            ResultSet rs = statement.executeQuery(query);
+            return rs.getString("Food_Description");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+
+    }
+
     public ResultSet getMedsList() {
         ResultSet rs;
         try {
@@ -397,4 +425,6 @@ public class Database {
             return null;
         }
     }
+
+
 }
