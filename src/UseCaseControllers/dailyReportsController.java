@@ -92,12 +92,12 @@ public class dailyReportsController {
                     getClass().getResource("/updateLogbook.fxml")   // load fxml
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
-            MainViewController controller =
+            addStaffController controller =
                     loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
 
-            LoginManager loginManager = new LoginManager(scene);
-            controller.initSessionID(loginManager, this.scene, staffUser);
-        } catch (IOException ex) {
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -105,6 +105,7 @@ public class dailyReportsController {
 
 
     private void ExportDailyLogs() {
+        //Add code for export daily logs
     }
 
 
