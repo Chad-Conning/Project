@@ -100,7 +100,7 @@
                         </Pane>
                         <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="277.0">
                            <children>
-                              <DatePicker fx:id="dtpDailyLogReportDate" layoutX="52.0" layoutY="17.0" promptText="Select Date" />
+                              <DatePicker fx:id="dtpDailyLogReportDate" layoutX="52.0" layoutY="17.0" onAction="#DateChanged" promptText="Select Date" />
                            </children>
                         </Pane>
                      </children>
