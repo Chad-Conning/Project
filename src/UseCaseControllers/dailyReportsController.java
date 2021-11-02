@@ -13,6 +13,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,13 +38,13 @@ public class dailyReportsController {
 
     @FXML private DatePicker dtpDailyLogReportDate;
 
-    @FXML private TableView<Animal> tblDailyReports;
-    @FXML private TableColumn<Animal, String> colTagNo;
-    @FXML private TableColumn<Animal, String> colName;
-    @FXML private TableColumn<Animal, String> colCentre;
-    @FXML private TableColumn<Animal, String> colCondition;
-    @FXML private TableColumn<Animal, String> colFoodGiven;
-    @FXML private TableColumn<Animal, String> colMedication;
+    @FXML private TableView<AnimalForDailyLogs> tblDailyReports;
+    @FXML private TableColumn<AnimalForDailyLogs, String> colTagNo;
+    @FXML private TableColumn<AnimalForDailyLogs, String> colName;
+    @FXML private TableColumn<AnimalForDailyLogs, String> colCentre;
+    @FXML private TableColumn<AnimalForDailyLogs, String> colCondition;
+    @FXML private TableColumn<AnimalForDailyLogs, String> colFoodGiven;
+    @FXML private TableColumn<AnimalForDailyLogs, String> colMedication;
 
     @FXML private Button btnNewLog;
     @FXML private Button btnExport;
@@ -106,6 +108,7 @@ public class dailyReportsController {
         //Call the select statement
         ResultSet Animals = queries.getLogsPerDate(ToFind);
 
+        List<AnimalForDailyLogs> AnimalsLogs = new ArrayList<>();
         while (Animals.next())
         {
             //While there are still animals in the resultant set
@@ -115,6 +118,7 @@ public class dailyReportsController {
             String AnimalName = temp.getName();
 
             String Centre = Animals.getString("Centre");
+
             String Condition = Animals.getString("Condition");
 
             int FoodGiven = Animals.getInt("Food_Code");
@@ -123,10 +127,27 @@ public class dailyReportsController {
             int MedID = Animals.getInt("Medication_ID");
             String MedDesc = queries.getMedsByID(MedID);
 
-
-
-
+            AnimalForDailyLogs Temp = new AnimalForDailyLogs(AnimalTagNo, AnimalName, Centre, Condition, FoodDesc, MedDesc);
+            AnimalsLogs.add(Temp);
         }
 
+        for (int i = 0; i < AnimalsLogs.size(); i++)
+        {
+            tblDailyReports.getItems().add(AnimalsLogs.get(i));
+        }
+
+    }
+}
+
+class AnimalForDailyLogs{
+    String TagNo, Name, Centre, Condition, Food, Medication;
+
+    public AnimalForDailyLogs(String tagNo, String name, String centre, String condition, String food, String medication) {
+        TagNo = tagNo;
+        Name = name;
+        Centre = centre;
+        Condition = condition;
+        Food = food;
+        Medication = medication;
     }
 }
