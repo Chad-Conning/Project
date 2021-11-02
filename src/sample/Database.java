@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -53,10 +55,91 @@ public class Database {
         }
     }
 
+    public ResultSet getAnimalAdmissions() {
+        ResultSet rs;
+        try {
+            String query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal NATURAL JOIN Admission";
+            rs = statement.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query "+e.getMessage());
+            return null;
+        }
+    }
+
+//    public ObservableList getObservableAnimalList() {
+//        ObservableList rs;
+//        try {
+//            String query = "SELECT * FROM Animal";
+//            rs = statement.executeQuery(query);
+//            return rs;
+//        }
+//        catch (Exception e) {
+//            System.out.println("Failed to execute query "+e.getMessage());
+//            return null;
+//        }
+//    }
+
+    public ResultSet getFilteredAnimalList(String species, String location, LocalDate date) {
+        ResultSet rs;
+        String query = "";
+        if (location.equals("") && date == null) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Animal_Species = '" + species.toLowerCase() + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (species.equals("") && date == null) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Location_Retrieved = '" + location.toLowerCase() + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (species.equals("") && location.equals("")) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Admission_Date = '" + date + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (date == null) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Animal_Species = '" + species.toLowerCase() +
+                    " 'AND Location_Retrieved = '" + location.toLowerCase() + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (species.equals("")) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Location_Retrieved = '" + location.toLowerCase() +
+                    " 'AND Admission_Date = '" + date + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        else if (location.equals("")) {
+            query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "WHERE Animal_Species = '" + species.toLowerCase() +
+                    " 'AND Admission_Date = '" + date + "'" +
+                    " ORDER BY Admission_Date DESC";
+        }
+        try {
+            /*String query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
+                    "NATURAL JOIN Admission " +
+                    "ORDER BY Admission_Date DESC";*/
+            rs = statement.executeQuery(query);
+            return rs;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to execute query "+e.getMessage());
+            return null;
+        }
+    }
+
     public ResultSet getAliveAnimals() {
         ResultSet rs;
         try {
-            String query = "SELECT * FROM Animal WHERE Animal_Status != 'Deceased'";
+            String query = "SELECT * FROM Animal WHERE Animal_Status = 'In center'";
             rs = statement.executeQuery(query);
             return rs;
         }
@@ -288,10 +371,10 @@ public class Database {
         }
     }
 
-    /*public ResultSet getAnimalsToAdmit() {
+    public ResultSet getAnimalsToAdmit() {
         ResultSet rs;
         try {
-            String query = "SELECT Tag_No FROM Animal NATURAL JOIN Admission";
+            String query = "SELECT Tag_No FROM Animal NATURAL JOIN Admission WHERE Animal_Status = 'Released'";
             rs = statement.executeQuery(query);
             return rs;
         }
@@ -299,5 +382,5 @@ public class Database {
             System.out.println("Failed to execute query "+e.getMessage());
             return null;
         }
-    }*/
+    }
 }

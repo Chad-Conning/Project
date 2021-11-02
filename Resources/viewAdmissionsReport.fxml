@@ -48,6 +48,7 @@
                               <MenuItem fx:id="btnMenuAddRegisterA" mnemonicParsing="false" text="Register Animal" />
                               <MenuItem fx:id="btnMenuAddAddS" mnemonicParsing="false" text="Add Staff" />
                               <MenuItem fx:id="btnMenuAddUpdateL" mnemonicParsing="false" text="Update Logbook" />
+                              <MenuItem fx:id="btnMenuAddReadmitA" mnemonicParsing="false" text="Readmit Animal" />
                            </items>
                       </Menu>
                       <Menu fx:id="btnMenuEdit" mnemonicParsing="false" text="Edit">
@@ -88,7 +89,7 @@
                   <Insets bottom="20.0" top="-10.0" />
                </VBox.margin>
             </Label>
-            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="540.0" prefWidth="800.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;">
+            <Pane id="addStaffBox" maxWidth="-Infinity" prefHeight="540.0" prefWidth="800.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;" VBox.vgrow="ALWAYS">
                <children>
                   <Label fx:id="vLabelName" layoutX="264.0" layoutY="59.0" prefHeight="17.0" prefWidth="183.0" textFill="RED" translateX="-30.0" />
                   <Label fx:id="vLabelSurname" layoutX="233.0" layoutY="109.0" prefHeight="17.0" prefWidth="185.0" textFill="RED" />
@@ -98,19 +99,19 @@
                   <Label fx:id="vLabelPassword" layoutX="234.0" layoutY="359.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
                   <TableView fx:id="admissionsTable" layoutX="42.0" layoutY="62.0" prefHeight="392.0" prefWidth="720.0">
                     <columns>
-                      <TableColumn editable="false" prefWidth="59.0" text="Tag No" />
-                      <TableColumn editable="false" prefWidth="173.0" text="Name" />
-                        <TableColumn editable="false" prefWidth="60.0" text="Gender" />
-                        <TableColumn editable="false" prefWidth="58.0" text="Adult" />
-                        <TableColumn editable="false" prefWidth="111.0" text="Species" />
-                        <TableColumn editable="false" prefWidth="159.0" text="Location Retrieved" />
-                        <TableColumn editable="false" prefWidth="99.0" text="Date" />
+                      <TableColumn fx:id="Tag_No" editable="false" prefWidth="59.0" text="Tag No" />
+                      <TableColumn fx:id="Animal_Name" editable="false" prefWidth="173.0" text="Name" />
+                        <TableColumn fx:id="Animal_Gender" editable="false" prefWidth="60.0" text="Gender" />
+                        <TableColumn fx:id="is_Adult" editable="false" prefWidth="58.0" text="Adult" />
+                        <TableColumn fx:id="Animal_Species" editable="false" prefWidth="111.0" text="Species" />
+                        <TableColumn fx:id="Location_Retrieved" editable="false" prefWidth="159.0" text="Location Retrieved" />
+                        <TableColumn fx:id="Admission_Date" editable="false" prefWidth="99.0" text="Date" />
                     </columns>
                   </TableView>
-                  <CheckBox fx:id="comboAdultFilter" layoutX="355.0" layoutY="24.0" mnemonicParsing="false" />
-                  <TextField fx:id="txtFieldSpeciesFilter" layoutX="400.0" layoutY="20.0" prefHeight="25.0" prefWidth="98.0" />
-                  <TextField fx:id="txtFieldLocationFilter" layoutX="515.0" layoutY="20.0" prefHeight="25.0" prefWidth="134.0" />
-                  <DatePicker fx:id="dateFilter" layoutX="663.0" layoutY="20.0" prefHeight="25.0" prefWidth="99.0" />
+                  <CheckBox fx:id="checkAdultFilter" layoutX="355.0" layoutY="24.0" mnemonicParsing="false" />
+                  <TextField fx:id="txtFieldSpeciesFilter" layoutX="400.0" layoutY="20.0" prefHeight="25.0" prefWidth="98.0" promptText="Enter a species" />
+                  <TextField fx:id="txtFieldLocationFilter" layoutX="515.0" layoutY="20.0" prefHeight="25.0" prefWidth="134.0" promptText="Enter a location" />
+                  <DatePicker fx:id="dateFilter" layoutX="663.0" layoutY="20.0" prefHeight="25.0" prefWidth="99.0" promptText="Select Date" />
                   <Button fx:id="btnViewAll" layoutX="42.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2;" text="View All">
                      <font>
                         <Font size="15.0" />

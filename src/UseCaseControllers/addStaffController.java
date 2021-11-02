@@ -42,6 +42,7 @@ public class addStaffController {
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
     @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuAddReadmitA;
     @FXML public MenuItem btnMenuEditModA;
     @FXML public MenuItem btnMenuEditModS;
     @FXML public MenuItem btnMenuDisplayAdmis;
@@ -69,7 +70,7 @@ public class addStaffController {
         try {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
-                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
             menu.btnMenuAddAddS.setDisable(true);
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -125,7 +126,8 @@ public class addStaffController {
 
             LoginManager loginManager = new LoginManager(scene);
             controller.initSessionID(loginManager, this.scene, staffUser);
-        } catch (IOException ex) {
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

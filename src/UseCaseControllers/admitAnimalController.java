@@ -23,16 +23,15 @@ public class admitAnimalController {
     @FXML private Button btnAdmit;
     @FXML private Button btnACancel;
     @FXML private TextField tfieldTag;
-    //@FXML private ComboBox<String> tfieldTag;
     @FXML private DatePicker datePicker;
     @FXML private ComboBox<String> comboLocation;
     @FXML private TextArea txtNotes;
     @FXML private Label lblUserInformation;
-    @FXML private Label lblTagMsg;
 
     @FXML public MenuItem btnMenuAddRegisterA;
     @FXML public MenuItem btnMenuAddAddS;
     @FXML public MenuItem btnMenuAddUpdateL;
+    @FXML public MenuItem btnMenuAddReadmitA;
     @FXML public MenuItem btnMenuEditModA;
     @FXML public MenuItem btnMenuEditModS;
     @FXML public MenuItem btnMenuDisplayAdmis;
@@ -58,7 +57,7 @@ public class admitAnimalController {
         this.newAnimal = newAnimal;
 
         menuController menu = new menuController(loginManager, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
-                btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS);
+                btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
 
         //tfieldTag.getSelectionModel().select(newAnimal.getTagNo());
         tfieldTag.setText(newAnimal.getTagNo());

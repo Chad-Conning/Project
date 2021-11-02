@@ -29,9 +29,9 @@
                         </HBox>
                   <HBox alignment="CENTER" prefHeight="105.0" prefWidth="426.0" HBox.hgrow="ALWAYS">
                      <children>
-                              <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="73.0" prefWidth="419.0" text="Bay Marine Rescue" textFill="WHITE">
+                              <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="73.0" prefWidth="460.0" text="Bay Marine Rescue" textFill="WHITE">
                                   <font>
-                                      <Font size="50.0" />
+                                      <Font name="Roboto Light" size="50.0" />
                                   </font>
                            <HBox.margin>
                               <Insets />
@@ -62,12 +62,15 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="76.0" prefWidth="1065.0" HBox.hgrow="ALWAYS">
                      <children>
-                              <Label fx:id="txtIntroHeading" alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="626.0" text="Welcome to Bay Marine Rescue" textAlignment="CENTER">
+                              <Label fx:id="txtIntroHeading" alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="626.0" text="Welcome to Bay Marine Rescue" textAlignment="CENTER">
                                   <font>
-                                      <Font size="40.0" />
+                                      <Font name="Roboto Thin" size="40.0" />
                                   </font>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
                               </Label>
                      </children>
                   </HBox>
@@ -93,7 +96,7 @@
                                     </ImageView>
                                     <Label fx:id="lblAddStaff" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Add Staff">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -115,7 +118,7 @@
                                     </ImageView>
                                     <Label fx:id="lblModifyStaff" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Modify Staff">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -127,7 +130,7 @@
                               <Button fx:id="btnViewStaffReports" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="380.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
                               <HBox layoutX="12.0" layoutY="12.0" prefHeight="135.0" prefWidth="380.0">
                                  <children>
-                                    <ImageView fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="imgViewStaffReports" fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
@@ -135,9 +138,9 @@
                                           <Image url="@Images/Images/viewStaffReports2.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Staff Reports">
+                                    <Label fx:id="lblViewStaffReports" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Staff Reports">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -162,7 +165,7 @@
                                     </ImageView>
                                     <Label fx:id="lblRegAnimal" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Register Animal">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -184,7 +187,7 @@
                                     </ImageView>
                                     <Label fx:id="lblModifyAnimalStatus" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Modify Animal Status">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -206,7 +209,7 @@
                                     </ImageView>
                                     <Label fx:id="lblViewDailyAdmissions" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Daily Admissions">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -232,7 +235,7 @@
                                     </ImageView>
                                     <Label fx:id="lblUpdateLogbook" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Update Logbook">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -254,7 +257,7 @@
                                     </ImageView>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Logs Per Animal">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -276,7 +279,7 @@
                                     </ImageView>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Daily Logs">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -285,15 +288,31 @@
                         </Pane>
                      </children>
                   </HBox>
-                  <HBox fx:id="LandingPageRow111" alignment="TOP_CENTER" layoutX="10.0" layoutY="168.0" prefHeight="158.0" prefWidth="1209.0">
+                  <HBox fx:id="LandingPageRow111" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="1209.0">
                      <children>
-                        <Pane prefHeight="158.0" prefWidth="201.5" />
-                        <Pane layoutX="413.0" layoutY="10.0" prefHeight="158.0" prefWidth="403.0">
+                        <Pane fx:id="readmitAnimalPane" prefHeight="158.0" prefWidth="403.0">
+                           <children>
+                              <Button layoutX="12.0" layoutY="12.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="380.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: black;" />
+                              <HBox layoutX="12.0" layoutY="12.0" prefHeight="135.0" prefWidth="380.0">
+                                 <children>
+                                    <ImageView fx:id="imgReAdmitAnimal" fitHeight="110.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </HBox.margin></ImageView>
+                                    <Label fx:id="lblReAdmitAnimal" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Readmit Animal">
+                                       <font>
+                                          <Font name="Roboto Light" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children></Pane>
+                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="403.0">
                            <children>
                               <Button fx:id="btnViewAnimalReports" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="380.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
                               <HBox layoutX="12.0" layoutY="12.0" prefHeight="135.0" prefWidth="380.0">
                                  <children>
-                                    <ImageView fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="imgViewAnimalReports" fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
@@ -301,16 +320,15 @@
                                           <Image url="@Images/Images/viewAnimalReport.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Animal Reports">
+                                    <Label fx:id="lblViewAnimalReports" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Animal Reports">
                                        <font>
-                                          <Font size="20.0" />
+                                          <Font name="Roboto Light" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </HBox>
                            </children>
                         </Pane>
-                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="158.0" prefWidth="201.5" />
                      </children>
                   </HBox>
                </children></VBox>
@@ -323,7 +341,10 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblUserInformation" text="Label" />
+            <Label fx:id="lblUserInformation" text="Label">
+               <font>
+                  <Font name="Roboto Light" size="12.0" />
+               </font></Label>
          </children>
       </HBox>
    </bottom>
