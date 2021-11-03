@@ -141,11 +141,12 @@ public class logsPerAnimalController {
             String Cond = Anims.getString("Condition");
             toDisp.setCondition(Cond);
 
-            String FoodCode = Anims.getString("Food_Code");
-            toDisp.setFoodGiven(queries.getFoodByID(Integer.parseInt(FoodCode)));
+            //System.out.println(queries.getFoodByID(Integer.parseInt(Anims.getString("Food_Code"))));
+            String FoodCode = (queries.getFoodByID(Integer.parseInt(Anims.getString("Food_Code"))));
+            toDisp.setFood(FoodCode);
 
-            String MedCode = Anims.getString("Medication_ID");
-            toDisp.setMedicationGiven(queries.getMedsByID(Integer.parseInt(MedCode)));
+            String MedCode = (queries.getMedsByID(Integer.parseInt(Anims.getString("Medication_ID"))));
+            toDisp.setMedication(MedCode);
 
             ret.add(toDisp);
         }
