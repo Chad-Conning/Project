@@ -118,7 +118,7 @@ public class dailyAdmissionsController {
             populateTableView(rs);
             txtFieldSpeciesFilter.setText("");
             txtFieldLocationFilter.setText("");
-            dateFilter.setValue(LocalDate.now());
+            //dateFilter.setValue(LocalDate.now());
         });
 
         btnFilter.setOnAction(actionEvent -> filterAdmissions());
