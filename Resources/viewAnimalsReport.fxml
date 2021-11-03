@@ -162,7 +162,6 @@
                               <TableColumn fx:id="colGender" prefWidth="122.0" text="Animal Gender" />
                               <TableColumn fx:id="colStatus" prefWidth="136.0" text="Animal Status" />
                               <TableColumn fx:id="colSpecies" prefWidth="219.0" text="Animal Species" />
-                              <TableColumn fx:id="colAction" prefWidth="110.0" text="Action" />
                           </columns>
                            <BorderPane.margin>
                               <Insets left="30.0" right="30.0" />
