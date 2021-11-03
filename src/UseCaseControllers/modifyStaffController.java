@@ -89,7 +89,15 @@ public class modifyStaffController {
              modifyStaff();
         });
 
-        btnMSCancel.setOnAction(actionEvent -> showMainView());
+        btnMSCancel.setOnAction(actionEvent -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showMainView();
+            }
+        });
 
         comboSelectStaff.setOnAction(actionEvent -> populateFields(comboSelectStaff.getValue()));
 
@@ -131,7 +139,15 @@ public class modifyStaffController {
                 modifyStaff();
         });
 
-        btnMSCancel.setOnAction(actionEvent -> showMainView());
+        btnMSCancel.setOnAction(actionEvent -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showMainView();
+            }
+        });
 
         comboSelectStaff.setOnAction(actionEvent -> populateFields(comboSelectStaff.getValue()));
 

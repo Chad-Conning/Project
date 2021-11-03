@@ -143,6 +143,8 @@ public class dailyAdmissionsController {
         btnExport.setOnAction(actionEvent -> {
             try {
                 writeExcel();
+                Alert added = new Alert(Alert.AlertType.INFORMATION, "The file has been saved.");
+                added.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }

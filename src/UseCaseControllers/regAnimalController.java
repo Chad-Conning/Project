@@ -95,7 +95,15 @@ public class regAnimalController {
                 regAnimal();
         });
 
-        btnACancel.setOnAction(actionEvent -> showMainView());
+        btnACancel.setOnAction(actionEvent -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showMainView();
+            }
+        });
     }
 
     private void regAnimal(){

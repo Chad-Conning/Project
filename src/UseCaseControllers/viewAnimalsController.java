@@ -246,6 +246,8 @@ public class viewAnimalsController {
             writer.close();
             System.out.println("File saved!");
             queries.connection.close();
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The file has been saved.");
+            added.showAndWait();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

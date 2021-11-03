@@ -12,6 +12,7 @@ import sample.*;
 import javax.swing.text.html.HTML;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -55,6 +56,7 @@ public class logsPerAnimalController {
     @FXML private Button btnClose;
 
     private HashMap<String, String> Animals = new HashMap<>();
+    ObservableList<AnimalForAnimalLog> excelData = FXCollections.observableArrayList();
 
     Staff staffUser;
     Scene scene;
@@ -93,7 +95,7 @@ public class logsPerAnimalController {
 
             btnClose.setOnAction(ActionEvent -> closeForm());
             btnNewLog.setOnAction(ActionEvent -> viewNewLog());
-            btnExport.setOnAction(ActionEvent -> ExportToExcel());
+            btnExport.setOnAction(ActionEvent -> WriteToExcel());
             cmbxTagNo.setOnAction(ActionEvent -> {
                 try {
                     AnimalTagChanged();
@@ -145,7 +147,7 @@ public class logsPerAnimalController {
 
             btnClose.setOnAction(ActionEvent -> closeForm());
             btnNewLog.setOnAction(ActionEvent -> viewNewLog());
-            btnExport.setOnAction(ActionEvent -> ExportToExcel());
+            btnExport.setOnAction(ActionEvent -> WriteToExcel());
             cmbxTagNo.setOnAction(ActionEvent -> {
                 try {
                     AnimalTagChanged();
@@ -167,8 +169,37 @@ public class logsPerAnimalController {
         AnimalLogs.setItems(Disp);
     }
 
-    private void ExportToExcel() {
+    private void WriteToExcel() {
         //Add export to excel
+        excelData = AnimalLogs.getItems();
+        try (PrintWriter writer = new PrintWriter("out/Reports/"+ Animals.get((String)cmbxTagNo.getValue()) +"Logs.csv.")) {
+            StringBuilder sb = new StringBuilder();
+            //String columns = "Tag No,Name,Gender,Adult,Species,Location Retrieved,Date,\n";
+            //sb.append(columns);
+            for (AnimalForAnimalLog animal : excelData) {
+                sb.append(animal.getName());
+                sb.append(',');
+                sb.append(animal.getDate());
+                sb.append(',');
+                sb.append(animal.getCentre());
+                sb.append(',');
+                sb.append(animal.getCondition());
+                sb.append(',');
+                sb.append(animal.getFood());
+                sb.append(',');
+                sb.append(animal.getMedication());
+                sb.append("\n");
+                /*String text = animal.getTagNo() + "," + animal.getAnimalName() + "," + animal.getAnimalGender() + "," + animal.getIsAdult() + ","
+                        + animal.getAnimalSpecies() + animal.getLocationRetrieved() + animal.getAdmissionDate() + "\n";*/
+            }
+            writer.write(sb.toString());
+            writer.close();
+            System.out.println("File saved!");
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The file has been saved.");
+            added.showAndWait();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private ObservableList<AnimalForAnimalLog> populateList(ResultSet Anims, String TagNo) throws SQLException {

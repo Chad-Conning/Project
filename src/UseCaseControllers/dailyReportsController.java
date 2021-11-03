@@ -14,6 +14,7 @@ import javafx.util.Callback;
 import sample.*;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -55,6 +56,8 @@ public class dailyReportsController {
     @FXML private Button btnNewLog;
     @FXML private Button btnExport;
     @FXML private Button btnClose;
+
+    ObservableList<AnimalForDailyLogs> excelData = FXCollections.observableArrayList();
 
     Staff staffUser;
     Scene scene;
@@ -184,6 +187,35 @@ public class dailyReportsController {
 
     private void ExportDailyLogs() {
         //Add code for export daily logs
+        excelData = tblDailyLogs.getItems();
+        try (PrintWriter writer = new PrintWriter("out/Reports/"+ dtpDailyLogReportDate.getValue().toString() +"Logs.csv.")) {
+            StringBuilder sb = new StringBuilder();
+            //String columns = "Tag No,Name,Gender,Adult,Species,Location Retrieved,Date,\n";
+            //sb.append(columns);
+            for (AnimalForDailyLogs animal : excelData) {
+                sb.append(animal.getTagNo());
+                sb.append(',');
+                sb.append(animal.getName());
+                sb.append(',');
+                sb.append(animal.getCentre());
+                sb.append(',');
+                sb.append(animal.getCondition());
+                sb.append(',');
+                sb.append(animal.getFood());
+                sb.append(',');
+                sb.append(animal.getMedication());
+                sb.append("\n");
+                /*String text = animal.getTagNo() + "," + animal.getAnimalName() + "," + animal.getAnimalGender() + "," + animal.getIsAdult() + ","
+                        + animal.getAnimalSpecies() + animal.getLocationRetrieved() + animal.getAdmissionDate() + "\n";*/
+            }
+            writer.write(sb.toString());
+            writer.close();
+            System.out.println("File saved!");
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The file has been saved.");
+            added.showAndWait();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 
@@ -227,6 +259,7 @@ public class dailyReportsController {
     public void doOnDateChange(ResultSet rs) throws SQLException {
         ObservableList<AnimalForDailyLogs> dailyLogs = populateList(rs);
         tblDailyLogs.setItems(dailyLogs);
+        queries.connection.close();
 
 //When date is changed (selected)
 

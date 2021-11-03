@@ -68,7 +68,15 @@ public class modifyAnimalStatusController {
 
         btnSave.setOnAction(actionEvent -> updateStatus());
 
-        btnCancel.setOnAction(actionEvent -> showMainView());
+        btnCancel.setOnAction(actionEvent -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showMainView();
+            }
+        });
     }
 
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, String tagNo) {
@@ -107,7 +115,15 @@ public class modifyAnimalStatusController {
 
         btnSave.setOnAction(actionEvent -> updateStatus());
 
-        btnCancel.setOnAction(actionEvent -> showMainView());
+        btnCancel.setOnAction(actionEvent -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showMainView();
+            }
+        });
     }
 
     private void populateFields(String tagNo) {

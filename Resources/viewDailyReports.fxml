@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.dailyReportsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.dailyReportsController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
@@ -110,7 +110,7 @@
                <children>
                   <Pane layoutX="218.0" layoutY="14.0" prefHeight="329.0" prefWidth="750.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-width: 2;">
                      <children>
-                        <TableView fx:id="tblDailyLogs" layoutX="37.0" layoutY="14.0" prefHeight="228.0" prefWidth="677.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                        <TableView fx:id="tblDailyLogs" layoutX="37.0" layoutY="14.0" prefHeight="228.0" prefWidth="669.0" style="-fx-border-color: black; -fx-border-width: 2;">
                           <columns>
                             <TableColumn fx:id="colTagNo" prefWidth="56.0" style="border-color: black;" text="Tag No" />
                             <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />

@@ -157,7 +157,7 @@ public class updateLogbookController {
 
     private void CancelLog()
     {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel logging process?", ButtonType.YES, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES)
