@@ -90,12 +90,15 @@ public class updateLogbookController {
                 foodCount++;
                 FoodGiven.put(FoodDesc.getString("Food_Description"), foodCount);
             }
+            cbxFood.getSelectionModel().select(0);
 
             while (MedsDesc.next()) {
                 cbxMedication.getItems().add(MedsDesc.getString("Med_Description"));
                 MedCount++;
                 Medications.put(MedsDesc.getString("Med_Description"), MedCount);
             }
+            cbxMedication.getSelectionModel().select(0);
+            cbxCondition.getSelectionModel().select(1);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
