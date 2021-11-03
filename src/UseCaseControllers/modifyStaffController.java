@@ -117,6 +117,8 @@ public class modifyStaffController {
                 comboSelectStaff.getItems().add(rs.getString("Staff_ID"));
             }
 
+            //Staff staff = queries.getStaff(staffID);
+            comboSelectStaff.getSelectionModel().select(staffID);
             populateFields(comboSelectStaff.getValue());
 
         } catch (ClassNotFoundException | SQLException e) {
