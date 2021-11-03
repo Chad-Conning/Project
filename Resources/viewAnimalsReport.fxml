@@ -96,18 +96,18 @@
                         <HBox prefHeight="51.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
                               <Label alignment="CENTER" prefHeight="54.0" prefWidth="107.0" text="Search Animal">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
                                     <Insets left="30.0" />
-                                 </HBox.margin></Label>
-                              <TextField fx:id="tfieldFilter" prefHeight="32.0" prefWidth="149.0" promptText="Tag No, Name">
+                                 </HBox.margin>
                                  <font>
                                     <Font size="15.0" />
                                  </font>
+                                 <padding>
+                                    <Insets top="2.0" />
+                                 </padding></Label>
+                              <TextField fx:id="tfieldFilter" promptText="Tag No, Name">
                                  <HBox.margin>
-                                    <Insets left="10.0" top="10.0" />
+                                    <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                               </TextField>
                               <Button fx:id="btnSearchAnimal" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0">
@@ -154,7 +154,7 @@
                         </HBox>
                      </bottom>
                      <center>
-                        <TableView fx:id="animalsTable" prefHeight="417.0" prefWidth="979.0" BorderPane.alignment="CENTER">
+                        <TableView fx:id="animalsTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="1049.0" BorderPane.alignment="CENTER">
                           <columns>
                             <TableColumn fx:id="colTagNo" prefWidth="75.0" text="Tag No" />
                             <TableColumn fx:id="colName" prefWidth="269.0" text="Name" />
