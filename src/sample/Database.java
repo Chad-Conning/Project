@@ -200,7 +200,7 @@ public class Database {
     {
         ResultSet rs;
 
-        String selectStatement = "SELECT Tag_No, Date, Centre, Condition, Food_Code, Medication_ID FROM Logbook_Entry WHERE Tag_No = " + TagNo;
+        String selectStatement = "SELECT Tag_No, Log_Date, Centre, Condition, Food_Code, Medication_ID FROM Logbook_Entry WHERE Tag_No = " + TagNo;
         try {
             rs = statement.executeQuery(selectStatement);
             return rs;
