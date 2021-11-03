@@ -190,6 +190,11 @@ public class viewAnimalsController {
         //admissionsTable.getItems().setAll(admissionData);
         animalsTable.setItems(viewData);
         changeData();
+        try {
+            queries.connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     private ObservableList<ViewAnimal> populateList(ResultSet rs) {
@@ -241,6 +246,7 @@ public class viewAnimalsController {
             writer.write(sb.toString());
             writer.close();
             System.out.println("File saved!");
+            queries.connection.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

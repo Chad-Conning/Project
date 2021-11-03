@@ -98,7 +98,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="cmbxTagNo" editable="true" prefWidth="150.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                        <ComboBox fx:id="cmbxTagNo" editable="true" prefWidth="150.0" promptText="Select Tag Number" style="-fx-border-color: black; -fx-border-width: 2;">
                            <HBox.margin>
                               <Insets left="35.0" />
                            </HBox.margin>
