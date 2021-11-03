@@ -196,6 +196,20 @@ public class Database {
         }
     }
 
+    public ResultSet getAnimalLogs(String TagNo)
+    {
+        ResultSet rs;
+
+        String selectStatement = "SELECT Tag_No, Centre, Condition, Food_Code, Medication_ID FROM Logbook_Entry WHERE Tag_No = " + TagNo;
+        try {
+            rs = statement.executeQuery(selectStatement);
+            return rs;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
     public String getFoodByID(int FoodID)
     {
         try
