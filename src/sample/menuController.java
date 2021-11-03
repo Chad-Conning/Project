@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
@@ -58,27 +59,136 @@ public class menuController {
 
         menuLogout.setOnAction(event -> logout());
 
-        btnMenuEditModA.setOnAction(event -> showUpdateAnimalStatus());
-        btnMenuDisplayAdmis.setOnAction(event -> showViewAdmissionsReport());
-        btnMenuDisplayAR.setOnAction(event -> showViewAnimalsReport());
-        btnMenuDisplayLog.setOnAction(event -> showViewDailyReports());
-        btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
-        btnMenuDisplayLogsA.setOnAction(event -> showViewLogsPerAnimal());
+        btnMenuEditModA.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showUpdateAnimalStatus();
+            }
+        });
+        btnMenuDisplayAdmis.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showViewAdmissionsReport();
+            }
+
+        });
+        btnMenuDisplayAR.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showViewAnimalsReport();
+            }
+
+        });
+        btnMenuDisplayLog.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showViewDailyReports();
+            }
+        });
+        btnMenuAddUpdateL.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showUpdateLogbook();
+            }
+        });
+        btnMenuDisplayLogsA.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES)
+            {
+                showViewLogsPerAnimal();
+            }
+        });
 
         if (staffUser.getStaffType().equals("Administrator")) {
-            btnMenuAddAddS.setOnAction(event -> showAddStaff());
-            btnMenuEditModS.setOnAction(event -> showModifyStaff());
-            btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
-            btnMenuDisplayS.setOnAction(event -> showViewStaffReport());
-            btnMenuAddReadmitA.setOnAction(event -> showReadmitAnimals());
+            btnMenuAddAddS.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES)
+                {
+                    showAddStaff();
+                }
+
+            });
+            btnMenuEditModS.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES)
+                {
+                    showModifyStaff();
+                }
+
+            });
+            btnMenuAddRegisterA.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES)
+                {
+                    showRegAnimals();
+                }
+            });
+            btnMenuDisplayS.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES)
+                {
+                    showViewStaffReport();
+                }
+
+            });
+            btnMenuAddReadmitA.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES)
+                {
+                    showReadmitAnimals();
+                }
+            });
         } else if (staffUser.getStaffType().equals("Handler")) {
             btnMenuAddRegisterA.setDisable(true);
             btnMenuAddAddS.setDisable(true);
             btnMenuEditModS.setDisable(true);
             btnMenuDisplayS.setDisable(true);
         } else if (staffUser.getStaffType().equals("Admission")) {
-            btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
-            btnMenuAddReadmitA.setOnAction(event -> showReadmitAnimals());
+            btnMenuAddRegisterA.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES)
+                {
+                    showRegAnimals();
+                }
+            });
+            btnMenuAddReadmitA.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to cancel this process?", ButtonType.YES, ButtonType.CANCEL);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES)
+                {
+                    showReadmitAnimals();
+                }
+            });
             btnMenuAddAddS.setDisable(true);
             btnMenuEditModS.setDisable(true);
             btnMenuDisplayS.setDisable(true);
