@@ -7,10 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.Database;
-import sample.LoginManager;
-import sample.Staff;
-import sample.menuController;
+import javafx.scene.layout.HBox;
+import javafx.util.Callback;
+import sample.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -52,7 +51,6 @@ public class viewStaffController {
     @FXML private TableColumn<Staff, String> Staff_TaxNumber;
     @FXML private TableColumn<Staff, String> Staff_Type;
     @FXML private TableColumn<Staff, Boolean> isEmployed;
-    @FXML private TableColumn editAction;
     Button editButton = new Button("Edit");
 
     Staff staffUser;
@@ -82,7 +80,7 @@ public class viewStaffController {
             Staff_Type.setCellValueFactory(cellData -> cellData.getValue().staffTypeProperty());
             isEmployed.setCellValueFactory(cellData -> cellData.getValue().boolEmpProperty());
             isEmployed.setCellFactory(column -> new CheckBoxTableCell<>());
-            editAction.setCellFactory(column -> editButton);
+            addButtonToTable();
 
             editButton.setOnAction((ActionEvent event) -> {
                 showModifyStaff(Staff_ID.getId());
@@ -106,6 +104,40 @@ public class viewStaffController {
             ResultSet rs = queries.getStaffList();
             populateTableView(rs);
         });
+    }
+
+    private void addButtonToTable() {
+        TableColumn<Staff, Void> colBtn = new TableColumn("Action");
+
+        Callback<TableColumn<Staff, Void>, TableCell<Staff, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<Staff, Void> call(final TableColumn<Staff, Void> param) {
+                final TableCell<Staff, Void> cell = new TableCell<>() {
+
+                    private final Button btnEdit = new Button("Edit");
+
+                    {
+                        btnEdit.setOnAction((ActionEvent event) -> {
+                            showModifyStaff(getTableView().getItems().get(getIndex()).getStaffID());
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btnEdit);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        colBtn.setCellFactory(cellFactory);
+
+        staffTable.getColumns().add(colBtn);
     }
 
     private void displaySearch(String searchString) {

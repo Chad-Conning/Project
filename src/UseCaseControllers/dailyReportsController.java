@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 import sample.*;
 
 import java.io.IOException;
@@ -88,6 +90,7 @@ public class dailyReportsController {
             colCondition.setCellValueFactory(cellData -> cellData.getValue().conditionProperty());
             colFoodGiven.setCellValueFactory(cellData -> cellData.getValue().foodProperty());
             colMedication.setCellValueFactory(cellData -> cellData.getValue().medicationProperty());
+            addButtonToTable();
             //colTagNo.setCellValueFactory(cellData -> cellData.getValue().tagNoProperty());
 
             LocalDate date = dtpDailyLogReportDate.getValue();
@@ -111,6 +114,56 @@ public class dailyReportsController {
                 throwables.printStackTrace();
             }
         });
+    }
+
+    private void addButtonToTable() {
+        TableColumn<AnimalForDailyLogs, Void> colBtn = new TableColumn("Action");
+
+        Callback<TableColumn<AnimalForDailyLogs, Void>, TableCell<AnimalForDailyLogs, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<AnimalForDailyLogs, Void> call(final TableColumn<AnimalForDailyLogs, Void> param) {
+                final TableCell<AnimalForDailyLogs, Void> cell = new TableCell<>() {
+
+                    private final Button btnLogs = new Button("Logs");
+
+                    {
+                        btnLogs.setOnAction((ActionEvent event) -> {
+                            showViewLogsPerAnimal();
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btnLogs);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        colBtn.setCellFactory(cellFactory);
+
+        tblDailyLogs.getColumns().add(colBtn);
+    }
+
+    private void showViewLogsPerAnimal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewLogsPerAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            logsPerAnimalController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void NewLog() {
