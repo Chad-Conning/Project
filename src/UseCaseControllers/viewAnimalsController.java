@@ -1,10 +1,13 @@
 package UseCaseControllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import sample.*;
 
 import java.io.*;
@@ -35,9 +38,17 @@ public class viewAnimalsController {
     @FXML public Menu menuLogout;
     @FXML public Button btnVARClose;
     @FXML public Button btnVARExport;
-    @FXML public TableView tableView;
+    @FXML public TableView<ViewAnimal> animalsTable;
+    @FXML private TableColumn<ViewAnimal, String> colTagNo;
+    @FXML private TableColumn<ViewAnimal, String> colName;
+    @FXML private TableColumn<ViewAnimal, Boolean> colAdult;
+    @FXML private TableColumn<ViewAnimal, String> colGender;
+    @FXML private TableColumn<ViewAnimal, String> colStatus;
+    @FXML private TableColumn<ViewAnimal, String> colSpecies;
 
-    private ObservableList<ObservableList> data;
+    ObservableList<ViewAnimal> tableData = FXCollections.observableArrayList();
+    ObservableList<ViewAnimal> excelData = FXCollections.observableArrayList();
+    FilteredList<ViewAnimal> adults = new FilteredList<>(tableData, p -> true);
     //https://stackoverflow.com/questions/18941093/how-to-fill-up-a-tableview-with-database-data
 
     Staff staffUser;
@@ -56,21 +67,36 @@ public class viewAnimalsController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
-
             menu.btnMenuDisplayAR.setDisable(true);
-            ResultSet rs = queries.getAnimalList();
-            while (rs.next()) {
-                //unsure about this - need to add the other fields
-                //tableView.getItems().add(rs.getString("Tag_No"));
 
-            }
+            colTagNo.setCellValueFactory(cellData -> cellData.getValue().tagNoProperty());
+            colName.setCellValueFactory(cellData -> cellData.getValue().animalNameProperty());
+            colAdult.setCellValueFactory(cellData -> cellData.getValue().isAdultProperty());
+            colAdult.setCellFactory(column -> new CheckBoxTableCell<>());
+            colGender.setCellValueFactory(cellData -> cellData.getValue().animalGenderProperty());
+            colSpecies.setCellValueFactory(cellData -> cellData.getValue().animalStatusProperty());
+            colStatus.setCellValueFactory(cellData -> cellData.getValue().animalSpeciesProperty());
+
+            ResultSet rs = queries.getAnimalList();
+            populateTableView(rs);
+//            while (rs.next()) {
+//                //unsure about this - need to add the other fields
+//                //tableView.getItems().add(rs.getString("Tag_No"));
+//
+//            }
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         btnVARClose.setOnAction(actionEvent -> showMainView());
 
-        //btnVARExport.setOnAction(actionEvent -> writeExcel());
+        btnVARExport.setOnAction(actionEvent -> {
+            try {
+                writeExcel();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
@@ -89,6 +115,39 @@ public class viewAnimalsController {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    private void populateTableView(ResultSet rs) {
+        connection = queries.connection;
+        ObservableList<ViewAnimal> viewData = populateList(rs);
+        //admissionsTable.getItems().setAll(admissionData);
+        animalsTable.setItems(viewData);
+        changeData();
+    }
+    private ObservableList<ViewAnimal> populateList(ResultSet rs) {
+        ObservableList<ViewAnimal> viewData = FXCollections.observableArrayList();
+        try {
+            ViewAnimal emp;
+            while (rs.next()) {
+                emp = new ViewAnimal();
+                emp.setTagNo(rs.getString("Tag_No"));
+                emp.setName(rs.getString("Animal_Name"));
+                emp.setAdult(rs.getBoolean("is_Adult"));
+                emp.setGender(rs.getString("Animal_Gender"));
+                emp.setStatus(rs.getString("Animal_Status"));
+                emp.setSpecies(rs.getString("Animal_Species"));
+                viewData.add(emp);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return viewData;
+    }
+
+    private void changeData() {
+        tableData = animalsTable.getItems();
+        adults = new FilteredList<>(tableData, p -> true);
+    }
+
 
 //    public void writeExcel() throws Exception {
 //        Writer writer = null;
@@ -110,4 +169,38 @@ public class viewAnimalsController {
 //            writer.close();
 //        }
 //    }
+
+    public void writeExcel() throws Exception {
+        excelData = animalsTable.getItems();
+        //NOTE CHANGE PATH
+        try (PrintWriter writer = new PrintWriter("C:\\Users\\user pc\\Desktop\\AnimalReport.csv.")) {
+            StringBuilder sb = new StringBuilder();
+            String columns = "Tag No,Name,Adult,Gender,Status,Species,\n";
+            sb.append(columns);
+            for (ViewAnimal animal : excelData) {
+                sb.append(animal.getTagNo());
+                sb.append(',');
+                sb.append(animal.getName());
+                sb.append(',');
+                sb.append(animal.getAdult());
+                sb.append(',');
+                sb.append(animal.getGender());
+                sb.append(',');
+                sb.append(animal.getStatus());
+                sb.append(',');
+                sb.append(animal.getSpecies());
+                sb.append(',');
+                sb.append("\n");
+            }
+            writer.write(sb.toString());
+            writer.close();
+            System.out.println("File saved!");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+       /* finally {
+            writer.flush();
+            writer.close();
+        }*/
+    }
 }

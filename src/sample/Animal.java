@@ -1,6 +1,7 @@
 package sample;
 
 public class Animal {
+    //original declarations
     String tagNo;
     String name;
     Boolean isAdult;
@@ -8,6 +9,8 @@ public class Animal {
     String species;
     String status;
 
+
+    //original animal constructor
     public Animal(String tagNo, String name, Boolean isAdult, String gender, String species) {
         this.tagNo = tagNo;
         this.name = name;
@@ -16,6 +19,7 @@ public class Animal {
         this.species = species;
         status = "In Centre";
     }
+
 
     public String getTagNo() {
         return tagNo;
@@ -44,4 +48,6 @@ public class Animal {
     public void setStatus(String newStatus) {
         status = newStatus;
     }
+
+
 }
