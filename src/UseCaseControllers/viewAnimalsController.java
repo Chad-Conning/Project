@@ -108,7 +108,7 @@ public class viewAnimalsController {
             }
         });
     }
-
+    
     private void addButtonToTable() {
         TableColumn<ViewAnimal, Void> colBtn = new TableColumn("Action");
 
