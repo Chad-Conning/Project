@@ -96,6 +96,45 @@ public class modifyStaffController {
         btnSearch.setOnAction(actionEvent -> populateFromSurname(tfieldMSSurname.getText()));
     }
 
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, String staffID) {
+        this.loginManager = loginManager;
+        this.staffUser = staffUser;
+        this.scene = scene;
+
+        comboMSStaffType.getItems().addAll("Administrator", "Admission", "Handler");
+        comboMSStaffType.getSelectionModel().select("Administrator");
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
+
+        try {
+            queries.connectDB();
+            menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
+            menu.btnMenuEditModS.setDisable(true);
+
+            ResultSet rs = queries.getStaffList();
+            while (rs.next()) {
+                comboSelectStaff.getItems().add(rs.getString("Staff_ID"));
+            }
+
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        btnMSRegister.setOnAction(actionEvent -> {
+            //if all validation checks pass then modify staff
+            if (validationControl())
+                modifyStaff();
+        });
+
+        btnMSCancel.setOnAction(actionEvent -> showMainView());
+
+        comboSelectStaff.setOnAction(actionEvent -> populateFields(comboSelectStaff.getValue()));
+
+        btnSearch.setOnAction(actionEvent -> populateFromSurname(tfieldMSSurname.getText()));
+    }
+
     private void populateFromSurname(String surname) {
         if (surname.equals(""))
             return;

@@ -71,6 +71,45 @@ public class modifyAnimalStatusController {
         btnCancel.setOnAction(actionEvent -> showMainView());
     }
 
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, String tagNo) {
+        this.loginManager = loginManager;
+        this.staffUser = staffUser;
+        this.scene = scene;
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
+
+        try {
+            queries.connectDB();
+            menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
+            menu.btnMenuEditModA.setDisable(true);
+            ResultSet rs = queries.getAliveAnimals();
+            while (rs.next()) {
+                selectTag.getItems().add(rs.getString("Tag_No"));
+            }
+
+            selectTag.getSelectionModel().select(tagNo);
+            Animal animal = queries.getAnimalByTag(tagNo);
+            tfieldName.setText(animal.getName());
+            this.status = animal.getStatus();
+            toggleInCentre.setSelected(true);
+            if (!status.equals("In center")) {
+                toggleInCentre.setDisable(true);
+                toggleDeceased.setDisable(true);
+                toggleReleased.setDisable(true);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        selectTag.setOnAction(actionEvent -> populateFields(selectTag.getValue().toString()));
+
+        btnSave.setOnAction(actionEvent -> updateStatus());
+
+        btnCancel.setOnAction(actionEvent -> showMainView());
+    }
+
     private void populateFields(String tagNo) {
         Animal temp = queries.getAnimalByTag(tagNo);
         if (temp == null)

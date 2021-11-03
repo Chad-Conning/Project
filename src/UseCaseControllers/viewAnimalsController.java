@@ -6,16 +6,14 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import sample.*;
 
-import javax.swing.border.EmptyBorder;
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -54,6 +52,7 @@ public class viewAnimalsController {
     @FXML private TableColumn<ViewAnimal, String> colGender;
     @FXML private TableColumn<ViewAnimal, String> colStatus;
     @FXML private TableColumn<ViewAnimal, String> colSpecies;
+    @FXML private TableColumn<ViewAnimal, String> colAction;
 
     ObservableList<ViewAnimal> tableData = FXCollections.observableArrayList();
     ObservableList<ViewAnimal> excelData = FXCollections.observableArrayList();
@@ -112,7 +111,7 @@ public class viewAnimalsController {
             }
         });
     }
-
+    
     private void addButtonToTable() {
         TableColumn<ViewAnimal, Void> colBtn = new TableColumn("Action");
 
@@ -125,7 +124,7 @@ public class viewAnimalsController {
 
                     {
                         btnEdit.setOnAction((ActionEvent event) -> {
-                            showModifyAnimalStatus();
+                            showModifyAnimalStatus(getTableView().getItems().get(getIndex()).getTagNo());
                         });
                     }
 
@@ -251,7 +250,7 @@ public class viewAnimalsController {
         }*/
     }
 
-    private void showModifyAnimalStatus() {
+    private void showModifyAnimalStatus(String tagNo) {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/modifyAnimalStatus.fxml")   // load fxml
@@ -260,7 +259,7 @@ public class viewAnimalsController {
             modifyAnimalStatusController controller =
                     loader.getController();   // gets the controller specified in the fxml
             queries.connection.close();
-            controller.initSessionID(loginManager, scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser, tagNo);
 
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
