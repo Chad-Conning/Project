@@ -186,7 +186,7 @@ public class Database {
     {
         try{
             //Will return Meds Name
-            String query = "SELECT Med_Description FROM Medication_Given WHERE Medication_ID = " + MedID + "";
+            String query = "SELECT Med_Description FROM Medication_Given WHERE Medication_ID = " + MedID;
             ResultSet rs = statement.executeQuery(query);
             return rs.getString("Med_Description");
         } catch (SQLException throwables) {
@@ -199,7 +199,7 @@ public class Database {
     {
         try
         {
-            String query = "SELECT Food_Description FROM Food_Intake WHERE Food_Code = " + FoodID + "";
+            String query = "SELECT Food_Description FROM Food_Intake WHERE Food_Code = " + FoodID;
             ResultSet rs = statement.executeQuery(query);
             return rs.getString("Food_Description");
 
