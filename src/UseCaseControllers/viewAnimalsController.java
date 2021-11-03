@@ -6,12 +6,16 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import sample.*;
+
+import javax.swing.border.EmptyBorder;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -50,7 +54,6 @@ public class viewAnimalsController {
     @FXML private TableColumn<ViewAnimal, String> colGender;
     @FXML private TableColumn<ViewAnimal, String> colStatus;
     @FXML private TableColumn<ViewAnimal, String> colSpecies;
-    @FXML private TableColumn<ViewAnimal, String> colAction;
 
     ObservableList<ViewAnimal> tableData = FXCollections.observableArrayList();
     ObservableList<ViewAnimal> excelData = FXCollections.observableArrayList();
@@ -109,7 +112,7 @@ public class viewAnimalsController {
             }
         });
     }
-    
+
     private void addButtonToTable() {
         TableColumn<ViewAnimal, Void> colBtn = new TableColumn("Action");
 
