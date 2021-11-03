@@ -161,6 +161,7 @@ public class dailyReportsController {
                 temp.setName(rs.getString("Animal_Name"));
                 temp.setCentre(rs.getString("Centre"));
                 temp.setCondition(rs.getString("Condition"));
+                System.out.println(queries.getFoodByID(Integer.parseInt(rs.getString("Food_Code"))));
                 temp.setFood(queries.getFoodByID(Integer.parseInt(rs.getString("Food_Code"))));
                 temp.setMedication(queries.getMedsByID(Integer.parseInt(rs.getString("Medication_ID"))));
                 dailyLogs.add(temp);
