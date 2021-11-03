@@ -5,17 +5,15 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class ViewAnimal {
 
-    private SimpleStringProperty tagNo = new SimpleStringProperty();
-    private SimpleStringProperty name = new SimpleStringProperty();
-    private SimpleBooleanProperty isAdult = new SimpleBooleanProperty();
-    private SimpleStringProperty gender = new SimpleStringProperty();
-    private SimpleStringProperty status = new SimpleStringProperty();
-    private SimpleStringProperty species = new SimpleStringProperty();
-
+    private final SimpleStringProperty tagNo = new SimpleStringProperty();
+    private final SimpleStringProperty name = new SimpleStringProperty();
+    private final SimpleBooleanProperty isAdult = new SimpleBooleanProperty();
+    private final SimpleStringProperty gender = new SimpleStringProperty();
+    private final SimpleStringProperty status = new SimpleStringProperty();
+    private final SimpleStringProperty species = new SimpleStringProperty();
 
     public ViewAnimal() {
     }
-
 
     public String getTagNo() {
         return tagNo.get();
