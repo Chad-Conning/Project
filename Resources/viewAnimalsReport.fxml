@@ -102,7 +102,7 @@
                                  <HBox.margin>
                                     <Insets left="30.0" />
                                  </HBox.margin></Label>
-                              <TextField prefHeight="32.0" prefWidth="149.0" promptText="Search">
+                              <TextField fx:id="tfieldFilter" prefHeight="32.0" prefWidth="149.0" promptText="Tag No, Name">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -110,12 +110,30 @@
                                     <Insets left="10.0" top="10.0" />
                                  </HBox.margin>
                               </TextField>
+                              <Button fx:id="btnSearchAnimal" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/Images/search.png" />
+                                       </image></ImageView>
+                                 </graphic></Button>
                            </children>
                         </HBox>
                      </top>
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
+                              <Button fx:id="btnViewAll" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="View All">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                              </Button>
                               <Button fx:id="btnVARExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Export">
                                  <HBox.margin>
                                     <Insets right="30.0" />
@@ -126,7 +144,7 @@
                               </Button>
                               <Button fx:id="btnVARClose" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Close">
                                  <HBox.margin>
-                                    <Insets right="50.0" />
+                                    <Insets right="30.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="15.0" />
@@ -144,7 +162,6 @@
                               <TableColumn fx:id="colGender" prefWidth="122.0" text="Animal Gender" />
                               <TableColumn fx:id="colStatus" prefWidth="136.0" text="Animal Status" />
                               <TableColumn fx:id="colSpecies" prefWidth="219.0" text="Animal Species" />
-                              <TableColumn fx:id="colAction" prefWidth="110.0" text="Action" />
                           </columns>
                            <BorderPane.margin>
                               <Insets left="30.0" right="30.0" />

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.viewStaffController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.viewStaffController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
@@ -140,7 +140,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnViewAll" layoutX="180.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="View All">
+                  <Button fx:id="btnViewAll" layoutX="573.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="View All">
                      <font>
                         <Font size="15.0" />
                      </font>

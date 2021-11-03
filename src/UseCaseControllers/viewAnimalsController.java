@@ -3,16 +3,21 @@ package UseCaseControllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 import sample.*;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +40,9 @@ public class viewAnimalsController {
     @FXML public Menu menuLogout;
     @FXML public Button btnVARClose;
     @FXML public Button btnVARExport;
+    @FXML private Button btnSearchAnimal;
+    @FXML private Button btnViewAll;
+    @FXML private TextField tfieldFilter;
     @FXML public TableView<ViewAnimal> animalsTable;
     @FXML private TableColumn<ViewAnimal, String> colTagNo;
     @FXML private TableColumn<ViewAnimal, String> colName;
@@ -42,6 +50,7 @@ public class viewAnimalsController {
     @FXML private TableColumn<ViewAnimal, String> colGender;
     @FXML private TableColumn<ViewAnimal, String> colStatus;
     @FXML private TableColumn<ViewAnimal, String> colSpecies;
+    @FXML private TableColumn<ViewAnimal, String> colAction;
 
     ObservableList<ViewAnimal> tableData = FXCollections.observableArrayList();
     ObservableList<ViewAnimal> excelData = FXCollections.observableArrayList();
@@ -73,7 +82,7 @@ public class viewAnimalsController {
             colGender.setCellValueFactory(cellData -> cellData.getValue().animalGenderProperty());
             colStatus.setCellValueFactory(cellData -> cellData.getValue().animalStatusProperty());
             colSpecies.setCellValueFactory(cellData -> cellData.getValue().animalSpeciesProperty());
-
+            addButtonToTable();
 
             ResultSet rs = queries.getAnimalList();
             populateTableView(rs);
@@ -84,6 +93,14 @@ public class viewAnimalsController {
         }
         btnVARClose.setOnAction(actionEvent -> showMainView());
 
+        btnSearchAnimal.setOnAction(actionEvent -> displaySearch(tfieldFilter.getText()));
+        tfieldFilter.setOnKeyPressed(actionEvent -> displaySearch(tfieldFilter.getText()));
+
+        btnViewAll.setOnAction(actionEvent -> {
+            ResultSet rs = queries.getAnimalList();
+            populateTableView(rs);
+        });
+
         btnVARExport.setOnAction(actionEvent -> {
             try {
                 writeExcel();
@@ -91,6 +108,61 @@ public class viewAnimalsController {
                 e.printStackTrace();
             }
         });
+    }
+    
+    private void addButtonToTable() {
+        TableColumn<ViewAnimal, Void> colBtn = new TableColumn("Action");
+
+        Callback<TableColumn<ViewAnimal, Void>, TableCell<ViewAnimal, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<ViewAnimal, Void> call(final TableColumn<ViewAnimal, Void> param) {
+                final TableCell<ViewAnimal, Void> cell = new TableCell<>() {
+
+                    private final Button btnEdit = new Button("Edit");
+
+                    {
+                        btnEdit.setOnAction((ActionEvent event) -> {
+                            showModifyAnimalStatus();
+                        });
+                    }
+
+                    private final Button btnLogs = new Button("Logs");
+
+                    {
+                        btnLogs.setOnAction((ActionEvent event) -> {
+                            showViewLogsPerAnimal();
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            HBox pane = new HBox(btnEdit, btnLogs);
+                            setGraphic(pane);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        colBtn.setCellFactory(cellFactory);
+
+        animalsTable.getColumns().add(colBtn);
+    }
+
+    private void displaySearch(String searchString) {
+        ResultSet rs = queries.getAnimalList();
+        List<ViewAnimal> animalData = populateList(rs);
+
+        List<ViewAnimal> searchAnimal = new ArrayList<>();
+        for (int i = 0; i <= animalData.size() - 1; i++) {
+            if (animalData.get(i).getTagNo().equals(searchString) || animalData.get(i).getName().equalsIgnoreCase(searchString))
+                searchAnimal.add(animalData.get(i));
+        }
+        animalsTable.getItems().setAll(searchAnimal);
     }
 
     private void showMainView() {
@@ -174,6 +246,38 @@ public class viewAnimalsController {
             writer.flush();
             writer.close();
         }*/
+    }
+
+    private void showModifyAnimalStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/modifyAnimalStatus.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            modifyAnimalStatusController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewLogsPerAnimal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewLogsPerAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            logsPerAnimalController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     //    public void writeExcel() throws Exception {

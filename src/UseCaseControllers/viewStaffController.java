@@ -37,7 +37,6 @@ public class viewStaffController {
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
     @FXML public Menu menuLogout;
-
     @FXML private Button btnClose;
     @FXML private Button btnAddStaff;
     @FXML private Button btnSearch;
@@ -93,6 +92,7 @@ public class viewStaffController {
         btnAddStaff.setOnAction(actionEvent -> showAddStaff());
 
         btnSearch.setOnAction(actionEvent -> displaySearch(tfieldFilter.getText()));
+        tfieldFilter.setOnKeyPressed(actionEvent -> displaySearch(tfieldFilter.getText()));
 
         btnViewAll.setOnAction(actionEvent -> {
             ResultSet rs = queries.getStaffList();
