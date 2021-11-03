@@ -218,7 +218,7 @@ public class dailyAdmissionsController {
 
     public void writeExcel() throws Exception {
         excelData = admissionsTable.getItems();
-        try (PrintWriter writer = new PrintWriter("C:\\Users\\user pc\\Documents\\GitHub\\Project\\out\\AdmissionsReport.csv.")) {
+        try (PrintWriter writer = new PrintWriter("out/Reports/AdmissionsReport.csv.")) {
             StringBuilder sb = new StringBuilder();
             //String columns = "Tag No,Name,Gender,Adult,Species,Location Retrieved,Date,\n";
             //sb.append(columns);

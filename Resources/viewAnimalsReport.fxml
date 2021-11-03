@@ -135,13 +135,6 @@
                            </children>
                         </HBox>
                      </bottom>
-                     <right>
-                        <Slider orientation="VERTICAL" prefHeight="417.0" prefWidth="20.0" value="100.0" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets right="20.0" />
-                           </BorderPane.margin>
-                        </Slider>
-                     </right>
                      <center>
                         <TableView fx:id="animalsTable" prefHeight="417.0" prefWidth="979.0" BorderPane.alignment="CENTER">
                           <columns>
@@ -154,7 +147,7 @@
                               <TableColumn fx:id="colAction" prefWidth="110.0" text="Action" />
                           </columns>
                            <BorderPane.margin>
-                              <Insets left="30.0" right="15.0" />
+                              <Insets left="30.0" right="30.0" />
                            </BorderPane.margin>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

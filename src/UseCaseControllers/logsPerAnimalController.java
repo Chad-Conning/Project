@@ -6,10 +6,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import sample.*;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,9 +67,53 @@ public class logsPerAnimalController {
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
 
+            ResultSet TagNoList = queries.getAnimalList();
+
+            while (TagNoList.next())
+            {
+                String TagNo = TagNoList.getString("Tag_No");
+                String Name = TagNoList.getString("Animal_Name");
+                String ListAdd = TagNo + " - " + Name;
+                cmbxTagNo.getItems().add(ListAdd);
+            }
+
+            btnClose.setOnAction(ActionEvent -> closeForm());
+            btnNewLog.setOnAction(ActionEvent -> viewNewLog());
+            btnExport.setOnAction(ActionEvent -> ExportToExcel());
+            cmbxTagNo.setOnAction(ActionEvent -> AnimalTagChanged());
+
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void AnimalTagChanged() {
+        
+
+    }
+
+    private void ExportToExcel() {
+        //Add export to excel
+    }
+
+    private void viewNewLog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/updateLogbook.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            updateLogbookController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void closeForm() {
+        showMainView();
     }
 
 

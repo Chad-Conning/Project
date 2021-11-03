@@ -63,6 +63,7 @@ public class menuController {
         btnMenuDisplayAR.setOnAction(event -> showViewAnimalsReport());
         btnMenuDisplayLog.setOnAction(event -> showViewDailyReports());
         btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
+        btnMenuDisplayLogsA.setOnAction(event -> showViewLogsPerAnimal());
 
         if (staffUser.getStaffType().equals("Administrator")) {
             btnMenuAddAddS.setOnAction(event -> showAddStaff());
