@@ -11,7 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import sample.*;
 
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+//import static jdk.internal.net.http.common.Utils.close;
 
 public class dailyAdmissionsController {
     Database queries = new Database();
@@ -45,6 +47,7 @@ public class dailyAdmissionsController {
     @FXML private Button btnClose;
     @FXML private Button btnViewAll;
     @FXML private Button btnFilter;
+    @FXML private Button btnExport;
     @FXML private CheckBox checkAdultFilter;
     @FXML private TextField txtFieldSpeciesFilter;
     @FXML private TextField txtFieldLocationFilter;
@@ -62,6 +65,7 @@ public class dailyAdmissionsController {
     Scene scene;
 
     ObservableList<AnimalAdmission> tableData = FXCollections.observableArrayList();
+    ObservableList<AnimalAdmission> excelData = FXCollections.observableArrayList();
     FilteredList<AnimalAdmission> adults = new FilteredList<>(tableData, p -> true);
 
     LoginManager loginManager;
@@ -136,6 +140,13 @@ public class dailyAdmissionsController {
             admissionsTable.setItems(sortedData);
         });
         /////////////////
+        btnExport.setOnAction(actionEvent -> {
+            try {
+                writeExcel();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
     }
 
@@ -203,5 +214,41 @@ public class dailyAdmissionsController {
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void writeExcel() throws Exception {
+        excelData = admissionsTable.getItems();
+        try (PrintWriter writer = new PrintWriter("C:\\Users\\user pc\\Desktop\\AnimalReport.csv.")) {
+            StringBuilder sb = new StringBuilder();
+            String columns = "Tag No,Name,Gender,Adult,Species,Location Retrieved,Date,\n";
+            sb.append(columns);
+            for (AnimalAdmission animal : excelData) {
+                sb.append(animal.getTagNo());
+                sb.append(',');
+                sb.append(animal.getAnimalName());
+                sb.append(',');
+                sb.append(animal.getAnimalGender());
+                sb.append(',');
+                sb.append(animal.getIsAdult());
+                sb.append(',');
+                sb.append(animal.getAnimalSpecies());
+                sb.append(',');
+                sb.append(animal.getLocationRetrieved());
+                sb.append(',');
+                sb.append(animal.getAdmissionDate());
+                sb.append("\n");
+                /*String text = animal.getTagNo() + "," + animal.getAnimalName() + "," + animal.getAnimalGender() + "," + animal.getIsAdult() + ","
+                        + animal.getAnimalSpecies() + animal.getLocationRetrieved() + animal.getAdmissionDate() + "\n";*/
+            }
+            writer.write(sb.toString());
+            writer.close();
+            System.out.println("File saved!");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+       /* finally {
+            writer.flush();
+            writer.close();
+        }*/
     }
 }
