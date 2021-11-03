@@ -9,13 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import sample.*;
-
 import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,8 +50,8 @@ public class viewAnimalsController {
 
     Staff staffUser;
     Scene scene;
-
     LoginManager loginManager;
+
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
         this.staffUser = staffUser;
@@ -74,16 +71,13 @@ public class viewAnimalsController {
             colAdult.setCellValueFactory(cellData -> cellData.getValue().isAdultProperty());
             colAdult.setCellFactory(column -> new CheckBoxTableCell<>());
             colGender.setCellValueFactory(cellData -> cellData.getValue().animalGenderProperty());
-            colSpecies.setCellValueFactory(cellData -> cellData.getValue().animalStatusProperty());
-            colStatus.setCellValueFactory(cellData -> cellData.getValue().animalSpeciesProperty());
+            colStatus.setCellValueFactory(cellData -> cellData.getValue().animalStatusProperty());
+            colSpecies.setCellValueFactory(cellData -> cellData.getValue().animalSpeciesProperty());
+
 
             ResultSet rs = queries.getAnimalList();
             populateTableView(rs);
-//            while (rs.next()) {
-//                //unsure about this - need to add the other fields
-//                //tableView.getItems().add(rs.getString("Tag_No"));
-//
-//            }
+
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -99,7 +93,6 @@ public class viewAnimalsController {
         });
     }
 
-
     private void showMainView() {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -110,8 +103,9 @@ public class viewAnimalsController {
                     loader.getController();   // gets the controller specified in the fxml
 
             LoginManager loginManager = new LoginManager(scene);
+            queries.connection.close();
             controller.initSessionID(loginManager, this.scene, staffUser);
-        } catch (IOException ex) {
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -123,6 +117,7 @@ public class viewAnimalsController {
         animalsTable.setItems(viewData);
         changeData();
     }
+
     private ObservableList<ViewAnimal> populateList(ResultSet rs) {
         ObservableList<ViewAnimal> viewData = FXCollections.observableArrayList();
         try {
@@ -148,32 +143,9 @@ public class viewAnimalsController {
         adults = new FilteredList<>(tableData, p -> true);
     }
 
-
-//    public void writeExcel() throws Exception {
-//        Writer writer = null;
-//        try {
-//            File file = new File("C:\\AnimalReport.csv.");
-//            writer = new BufferedWriter(new FileWriter(file));
-//            for (Animal animal : Tag_No) {
-//
-//                String text = Animal.getTagNo() + "," + Animal.getName() + "," + Animal.getAdult() + "," + Animal.getGender() + "," + Animal.getSpecies() + "\n";
-//
-//                writer.write(text);
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        finally {
-//
-//            writer.flush();
-//            writer.close();
-//        }
-//    }
-
     public void writeExcel() throws Exception {
         excelData = animalsTable.getItems();
-        //NOTE CHANGE PATH
-        try (PrintWriter writer = new PrintWriter("C:\\Users\\user pc\\Desktop\\AnimalReport.csv.")) {
+        try (PrintWriter writer = new PrintWriter("out/Reports/AnimalReport.csv.")) {
             StringBuilder sb = new StringBuilder();
             String columns = "Tag No,Name,Adult,Gender,Status,Species,\n";
             sb.append(columns);
@@ -203,4 +175,25 @@ public class viewAnimalsController {
             writer.close();
         }*/
     }
+
+    //    public void writeExcel() throws Exception {
+//        Writer writer = null;
+//        try {
+//            File file = new File("C:\\AnimalReport.csv.");
+//            writer = new BufferedWriter(new FileWriter(file));
+//            for (Animal animal : Tag_No) {
+//
+//                String text = Animal.getTagNo() + "," + Animal.getName() + "," + Animal.getAdult() + "," + Animal.getGender() + "," + Animal.getSpecies() + "\n";
+//
+//                writer.write(text);
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        finally {
+//
+//            writer.flush();
+//            writer.close();
+//        }
+//    }
 }

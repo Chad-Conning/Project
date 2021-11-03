@@ -74,12 +74,12 @@ public class MainViewController {
             viewStaffPane.setOpacity(0.4);
             viewStaffPane.setDisable(true);
 
-            readmitAnimalPane.setOpacity(0.4);
-            readmitAnimalPane.setDisable(true);
-
             if (staffUser.getStaffType().equals("Handler")) {
                 registerAnimalPane.setOpacity(0.4);
                 registerAnimalPane.setDisable(true);
+
+                readmitAnimalPane.setOpacity(0.4);
+                readmitAnimalPane.setDisable(true);
 
             } else if (staffUser.getStaffType().equals("Admission")) {
                 updateLogbookPane.setOpacity(0.4);
@@ -175,7 +175,6 @@ public class MainViewController {
         lblViewLogsPerAnimal.setOnMouseClicked(actionEvent -> {
             showViewLogsPerAnimal();
         });
-
 
     }
 
