@@ -107,14 +107,64 @@ public class logsPerAnimalController {
         }
     }
 
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, String tagNo) {
+        this.loginManager = loginManager;
+        this.staffUser = staffUser;
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
+
+        this.scene = scene;
+
+        try {
+            queries.connectDB();
+            menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
+
+            colName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+            colDate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+            colCentre.setCellValueFactory(cellData -> cellData.getValue().centreProperty());
+            colCondition.setCellValueFactory(cellData -> cellData.getValue().conditionProperty());
+            colFoodGiven.setCellValueFactory(cellData -> cellData.getValue().foodProperty());
+            colMedication.setCellValueFactory(cellData -> cellData.getValue().medicationProperty());
+
+            ResultSet TagNoList = queries.getAnimalList();
+
+            while (TagNoList.next())
+            {
+                String TagNo = TagNoList.getString("Tag_No");
+                String Name = TagNoList.getString("Animal_Name");
+                String ListAdd = TagNo + " - " + Name;
+                cmbxTagNo.getItems().add(ListAdd);
+                Animals.put(ListAdd, TagNo);
+            }
+
+            Animal animal = queries.getAnimalByTag(tagNo);
+            cmbxTagNo.getSelectionModel().select(tagNo + " - " + animal.getName());
+            AnimalTagChanged();
+
+
+            btnClose.setOnAction(ActionEvent -> closeForm());
+            btnNewLog.setOnAction(ActionEvent -> viewNewLog());
+            btnExport.setOnAction(ActionEvent -> ExportToExcel());
+            cmbxTagNo.setOnAction(ActionEvent -> {
+                try {
+                    AnimalTagChanged();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            });
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void AnimalTagChanged() throws SQLException {
         String TagNo = Animals.get((String)cmbxTagNo.getValue()); //Gets the tagNo from the display for Select Statement
         ResultSet Anims = queries.getAnimalLogs(TagNo);
 
         ObservableList<AnimalForAnimalLog> Disp = populateList(Anims, TagNo);
         AnimalLogs.setItems(Disp);
-
-
     }
 
     private void ExportToExcel() {
