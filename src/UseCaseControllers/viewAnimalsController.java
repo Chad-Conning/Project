@@ -74,8 +74,9 @@ public class viewAnimalsController {
             colAdult.setCellValueFactory(cellData -> cellData.getValue().isAdultProperty());
             colAdult.setCellFactory(column -> new CheckBoxTableCell<>());
             colGender.setCellValueFactory(cellData -> cellData.getValue().animalGenderProperty());
-            colSpecies.setCellValueFactory(cellData -> cellData.getValue().animalStatusProperty());
-            colStatus.setCellValueFactory(cellData -> cellData.getValue().animalSpeciesProperty());
+            colStatus.setCellValueFactory(cellData -> cellData.getValue().animalStatusProperty());
+            colSpecies.setCellValueFactory(cellData -> cellData.getValue().animalSpeciesProperty());
+
 
             ResultSet rs = queries.getAnimalList();
             populateTableView(rs);
@@ -173,7 +174,7 @@ public class viewAnimalsController {
     public void writeExcel() throws Exception {
         excelData = animalsTable.getItems();
         //NOTE CHANGE PATH
-        try (PrintWriter writer = new PrintWriter("C:\\Users\\user pc\\Desktop\\AnimalReport.csv.")) {
+        try (PrintWriter writer = new PrintWriter("out/Reports/AnimalReport.csv.")) {
             StringBuilder sb = new StringBuilder();
             String columns = "Tag No,Name,Adult,Gender,Status,Species,\n";
             sb.append(columns);
