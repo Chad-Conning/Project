@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.dailyReportsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.dailyReportsController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
@@ -116,9 +116,8 @@
                             <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />
                               <TableColumn fx:id="colCentre" prefWidth="93.0" text="Centre" />
                               <TableColumn fx:id="colCondition" prefWidth="129.0" text="Condition" />
-                              <TableColumn fx:id="colFoodGiven" prefWidth="97.0" text="Food Given" />
-                              <TableColumn fx:id="colMedication" prefWidth="106.0" text="Medication" />
-                              <TableColumn fx:id="colAction" prefWidth="72.0" text="Action" />
+                              <TableColumn fx:id="colFoodGiven" prefWidth="116.0" text="Food Given" />
+                              <TableColumn fx:id="colMedication" prefWidth="97.0" text="Medication" />
                           </columns>
                         </TableView>
                         <HBox layoutX="15.0" layoutY="255.0" prefHeight="60.0" prefWidth="721.0">
