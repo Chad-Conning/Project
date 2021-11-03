@@ -64,6 +64,14 @@ public class dailyReportsController {
 
         try {
             queries.connectDB();
+            dtpDailyLogReportDate.setValue(LocalDate.now());
+            dtpDailyLogReportDate.setDayCellFactory(param -> new DateCell() {
+                @Override
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
+                }
+            });
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
             doOnDateChange();
@@ -72,14 +80,7 @@ public class dailyReportsController {
             e.printStackTrace();
         }
 
-        dtpDailyLogReportDate.setValue(LocalDate.now());
-        dtpDailyLogReportDate.setDayCellFactory(param -> new DateCell() {
-            @Override
-            public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
-            }
-        });
+
         btnClose.setOnAction(ActionEvent -> showMainView());
         btnExport.setOnAction(ActionEvent -> ExportDailyLogs());
         btnNewLog.setOnAction(ActionEvent -> NewLog());
