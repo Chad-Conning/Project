@@ -385,11 +385,11 @@ public class Database {
         }
     }
 
-    public ResultSet getLogsPerDate(Date toFind)
+    public ResultSet getLogsPerDate(LocalDate date)
     {
         try {
             ResultSet RS ;
-            PreparedStatement selectStatement = connection.prepareStatement("SELECT Tag_No, Centre, Condition, Food_Code, Medication_ID WHERE Log_Date = # + toFind + #");
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT Tag_No, Animal_Name, Centre, Condition, Food_Code, Medication_ID FROM Logbook_Entry NATURAL JOIN Animal WHERE Log_Date = #" + date + "#");
             RS = selectStatement.executeQuery();
             return RS;
         }
