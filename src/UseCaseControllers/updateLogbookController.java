@@ -111,6 +111,69 @@ public class updateLogbookController {
 
     }
 
+    public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, String tagNo) {
+        this.loginManager = loginManager;
+        this.staffUser = staffUser;
+        this.scene = scene;
+
+        dateLog.setValue(LocalDate.now());
+        int foodCount = 0;
+        int MedCount = 0;
+
+        lblUserInformation.setText("Logged in Staff ID: " + staffUser.getStaffID() + ", " + staffUser.getfName() + " " + staffUser.getlName());
+
+        cbxCondition.getItems().addAll("Recovered", "Stable", "Critical");
+        try {
+            queries.connectDB();
+            menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
+                    btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
+
+            dateLog.setDayCellFactory(param -> new DateCell() {
+                @Override
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
+                }
+            });
+
+            menu.btnMenuAddUpdateL.setDisable(true);
+            ResultSet TagNoList = queries.getAliveAnimals();
+            ResultSet FoodDesc = queries.getFoodList();
+            ResultSet MedsDesc = queries.getMedsList();
+
+            while (TagNoList.next()) {
+                cbxTagNo.getItems().add(TagNoList.getString("Tag_No"));
+            }
+
+            while (FoodDesc.next()) {
+                cbxFood.getItems().add(FoodDesc.getString("Food_Description"));
+                foodCount++;
+                FoodGiven.put(FoodDesc.getString("Food_Description"), foodCount);
+            }
+            cbxFood.getSelectionModel().select(0);
+
+            while (MedsDesc.next()) {
+                cbxMedication.getItems().add(MedsDesc.getString("Med_Description"));
+                MedCount++;
+                Medications.put(MedsDesc.getString("Med_Description"), MedCount);
+            }
+            cbxMedication.getSelectionModel().select(0);
+            cbxCondition.getSelectionModel().select(1);
+
+            cbxTagNo.getSelectionModel().select(tagNo);
+            populateFields(cbxTagNo.getValue().toString());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        cbxTagNo.setOnAction(actionEvent -> populateFields(cbxTagNo.getValue().toString()));
+
+        btnUpdateLogbookSave.setOnAction(actionEvent -> AddLog());
+
+        btnUpdateLogbookCancel.setOnAction(actionEvent -> CancelLog());
+
+    }
+
     private void populateFields(String tagNo) {
         Animal temp = queries.getAnimalByTag(tagNo);
         if (temp == null)

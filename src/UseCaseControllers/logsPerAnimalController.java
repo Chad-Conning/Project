@@ -94,7 +94,7 @@ public class logsPerAnimalController {
             }
 
             btnClose.setOnAction(ActionEvent -> closeForm());
-            btnNewLog.setOnAction(ActionEvent -> viewNewLog());
+            btnNewLog.setOnAction(ActionEvent -> viewNewLog(Animals.get((String)cmbxTagNo.getValue())));
             btnExport.setOnAction(ActionEvent -> WriteToExcel());
             cmbxTagNo.setOnAction(ActionEvent -> {
                 try {
@@ -144,9 +144,8 @@ public class logsPerAnimalController {
             cmbxTagNo.getSelectionModel().select(tagNo + " - " + animal.getName());
             AnimalTagChanged();
 
-
             btnClose.setOnAction(ActionEvent -> closeForm());
-            btnNewLog.setOnAction(ActionEvent -> viewNewLog());
+            btnNewLog.setOnAction(ActionEvent -> viewNewLog(Animals.get((String)cmbxTagNo.getValue())));
             btnExport.setOnAction(ActionEvent -> WriteToExcel());
             cmbxTagNo.setOnAction(ActionEvent -> {
                 try {
@@ -235,7 +234,7 @@ public class logsPerAnimalController {
         return ret;
     }
 
-    private void viewNewLog() {
+    private void viewNewLog(String tagNo) {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/updateLogbook.fxml")   // load fxml
@@ -244,7 +243,7 @@ public class logsPerAnimalController {
             updateLogbookController controller =
                     loader.getController();   // gets the controller specified in the fxml
             queries.connection.close();
-            controller.initSessionID(loginManager, scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser, tagNo);
 
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
