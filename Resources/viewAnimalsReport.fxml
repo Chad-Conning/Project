@@ -93,7 +93,7 @@
                <children>
                   <BorderPane prefHeight="528.0" prefWidth="1109.0">
                      <top>
-                        <HBox fx:id="btnSearch" prefHeight="51.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
+                        <HBox prefHeight="51.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
                               <Label alignment="CENTER" prefHeight="54.0" prefWidth="107.0" text="Search Animal">
                                  <font>
@@ -110,7 +110,7 @@
                                     <Insets left="10.0" top="10.0" />
                                  </HBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0">
+                              <Button fx:id="btnSearchAnimal" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0">
                                  <HBox.margin>
                                     <Insets left="10.0" top="10.0" />
                                  </HBox.margin>
@@ -126,6 +126,14 @@
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
+                              <Button fx:id="btnViewAll" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="View All">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                              </Button>
                               <Button fx:id="btnVARExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Export">
                                  <HBox.margin>
                                     <Insets right="30.0" />
@@ -136,7 +144,7 @@
                               </Button>
                               <Button fx:id="btnVARClose" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Close">
                                  <HBox.margin>
-                                    <Insets right="50.0" />
+                                    <Insets right="30.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="15.0" />

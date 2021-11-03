@@ -37,7 +37,8 @@ public class viewAnimalsController {
     @FXML public Menu menuLogout;
     @FXML public Button btnVARClose;
     @FXML public Button btnVARExport;
-    @FXML private Button btnSearch;
+    @FXML private Button btnSearchAnimal;
+    @FXML private Button btnViewAll;
     @FXML private TextField tfieldFilter;
     @FXML public TableView<ViewAnimal> animalsTable;
     @FXML private TableColumn<ViewAnimal, String> colTagNo;
@@ -88,7 +89,12 @@ public class viewAnimalsController {
         }
         btnVARClose.setOnAction(actionEvent -> showMainView());
 
-        btnSearch.setOnAction(actionEvent -> displaySearch(tfieldFilter.getText()));
+        btnSearchAnimal.setOnAction(actionEvent -> displaySearch(tfieldFilter.getText()));
+
+        btnViewAll.setOnAction(actionEvent -> {
+            ResultSet rs = queries.getAnimalList();
+            populateTableView(rs);
+        });
 
         btnVARExport.setOnAction(actionEvent -> {
             try {
