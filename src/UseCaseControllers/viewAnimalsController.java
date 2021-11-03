@@ -52,7 +52,6 @@ public class viewAnimalsController {
     @FXML private TableColumn<ViewAnimal, String> colGender;
     @FXML private TableColumn<ViewAnimal, String> colStatus;
     @FXML private TableColumn<ViewAnimal, String> colSpecies;
-    @FXML private TableColumn<ViewAnimal, String> colAction;
 
     ObservableList<ViewAnimal> tableData = FXCollections.observableArrayList();
     ObservableList<ViewAnimal> excelData = FXCollections.observableArrayList();

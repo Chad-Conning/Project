@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-style: solid; -fx-border-width: 2; -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.MainViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-style: solid; -fx-border-width: 2; -fx-border-color: black;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.MainViewController">
     <top>
         <VBox prefHeight="104.0" prefWidth="1209.0" BorderPane.alignment="TOP_CENTER">
             <children>
@@ -298,7 +298,10 @@
                                     <ImageView fx:id="imgReAdmitAnimal" fitHeight="110.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </HBox.margin></ImageView>
+                                       </HBox.margin>
+                                       <image>
+                                          <Image url="@Images/Images/ReadmitAnimal.png" />
+                                       </image></ImageView>
                                     <Label fx:id="lblReAdmitAnimal" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="Readmit Animal">
                                        <font>
                                           <Font name="Roboto Light" size="20.0" />
