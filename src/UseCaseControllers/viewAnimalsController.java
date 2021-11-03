@@ -12,6 +12,8 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import sample.*;
+
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -122,7 +124,7 @@ public class viewAnimalsController {
 
                     {
                         btnEdit.setOnAction((ActionEvent event) -> {
-                            showModifyAnimalStatus();
+                            showModifyAnimalStatus(getTableView().getItems().get(getIndex()).getTagNo());
                         });
                     }
 
@@ -248,7 +250,7 @@ public class viewAnimalsController {
         }*/
     }
 
-    private void showModifyAnimalStatus() {
+    private void showModifyAnimalStatus(String tagNo) {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/modifyAnimalStatus.fxml")   // load fxml
@@ -257,7 +259,7 @@ public class viewAnimalsController {
             modifyAnimalStatusController controller =
                     loader.getController();   // gets the controller specified in the fxml
             queries.connection.close();
-            controller.initSessionID(loginManager, scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser, tagNo);
 
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);

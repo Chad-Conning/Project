@@ -1,5 +1,6 @@
 package UseCaseControllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,6 +52,8 @@ public class viewStaffController {
     @FXML private TableColumn<Staff, String> Staff_TaxNumber;
     @FXML private TableColumn<Staff, String> Staff_Type;
     @FXML private TableColumn<Staff, Boolean> isEmployed;
+    @FXML private TableColumn editAction;
+    Button editButton = new Button("Edit");
 
     Staff staffUser;
     Scene scene;
@@ -79,6 +82,11 @@ public class viewStaffController {
             Staff_Type.setCellValueFactory(cellData -> cellData.getValue().staffTypeProperty());
             isEmployed.setCellValueFactory(cellData -> cellData.getValue().boolEmpProperty());
             isEmployed.setCellFactory(column -> new CheckBoxTableCell<>());
+            editAction.setCellFactory(column -> editButton);
+
+            editButton.setOnAction((ActionEvent event) -> {
+                showModifyStaff(Staff_ID.getId());
+            });
 
             ResultSet rs = queries.getStaffList();
             populateTableView(rs);
@@ -169,6 +177,22 @@ public class viewStaffController {
                     loader.getController();   // gets the controller specified in the fxml
             queries.connection.close();
             controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showModifyStaff(String staffID) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/modifyStaff.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            modifyStaffController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser, staffID);
 
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
