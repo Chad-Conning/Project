@@ -110,10 +110,11 @@ public class dailyReportsController {
 
         dtpDailyLogReportDate.setOnAction(ActionEvent -> {
             try {
+                queries.connectDB();
                 LocalDate date = dtpDailyLogReportDate.getValue();
                 ResultSet rs = queries.getLogsPerDate(date);
                 doOnDateChange(rs);
-            } catch (SQLException throwables) {
+            } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
         });
@@ -218,7 +219,6 @@ public class dailyReportsController {
         }
     }
 
-
     private void showMainView() {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -259,7 +259,7 @@ public class dailyReportsController {
     public void doOnDateChange(ResultSet rs) throws SQLException {
         ObservableList<AnimalForDailyLogs> dailyLogs = populateList(rs);
         tblDailyLogs.setItems(dailyLogs);
-        //queries.connection.close();
+        queries.connection.close();
 
 //When date is changed (selected)
 
