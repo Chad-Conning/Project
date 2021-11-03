@@ -1,11 +1,15 @@
 package UseCaseControllers;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import sample.*;
 
+import javax.swing.text.html.HTML;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.Connection;
@@ -38,17 +42,19 @@ public class logsPerAnimalController {
 
     @FXML private ComboBox cmbxTagNo;
 
-    @FXML private TableView<Animal> AnimalLogs;
-    @FXML private TableColumn<Animal, String> colName;
-    @FXML private TableColumn<Animal, Date> colDate;
-    @FXML private TableColumn<Animal, String> colCentre;
-    @FXML private TableColumn<Animal, String> colCondition;
-    @FXML private TableColumn<Animal, String> colFoodGiven;
-    @FXML private TableColumn<Animal, String> colMedication;
+    @FXML private TableView<AnimalForAnimalLog> AnimalLogs;
+    @FXML private TableColumn<AnimalForAnimalLog, String> colName;
+    @FXML private TableColumn<AnimalForAnimalLog, Date> colDate;
+    @FXML private TableColumn<AnimalForAnimalLog, String> colCentre;
+    @FXML private TableColumn<AnimalForAnimalLog, String> colCondition;
+    @FXML private TableColumn<AnimalForAnimalLog, String> colFoodGiven;
+    @FXML private TableColumn<AnimalForAnimalLog, String> colMedication;
 
     @FXML private Button btnNewLog;
     @FXML private Button btnExport;
     @FXML private Button btnClose;
+
+    private HashMap<String, String> Animals = new HashMap<>();
 
     Staff staffUser;
     Scene scene;
@@ -75,25 +81,69 @@ public class logsPerAnimalController {
                 String Name = TagNoList.getString("Animal_Name");
                 String ListAdd = TagNo + " - " + Name;
                 cmbxTagNo.getItems().add(ListAdd);
+                Animals.put(ListAdd, TagNo);
             }
 
             btnClose.setOnAction(ActionEvent -> closeForm());
             btnNewLog.setOnAction(ActionEvent -> viewNewLog());
             btnExport.setOnAction(ActionEvent -> ExportToExcel());
-            cmbxTagNo.setOnAction(ActionEvent -> AnimalTagChanged());
+            cmbxTagNo.setOnAction(ActionEvent -> {
+                try {
+                    AnimalTagChanged();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            });
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void AnimalTagChanged() {
-        
+    private void AnimalTagChanged() throws SQLException {
+        String TagNo = Animals.get((String)cmbxTagNo.getValue()); //Gets the tagNo from the display for Select Statement
+        ResultSet Anims = queries.getAnimalLogs(TagNo);
+
+        ObservableList<AnimalForAnimalLog> Disp = populateList(Anims, TagNo);
+        AnimalLogs.setItems(Disp);
+
 
     }
 
     private void ExportToExcel() {
         //Add export to excel
+    }
+
+    private ObservableList<AnimalForAnimalLog> populateList(ResultSet Anims, String TagNo) throws SQLException {
+        AnimalForAnimalLog toDisp = new AnimalForAnimalLog();
+        ObservableList<AnimalForAnimalLog> ret = FXCollections.observableArrayList();
+
+        while (Anims.next())
+        {
+            //There are still animals in the list
+            String Name = queries.getAnimalByTag(TagNo).getName();
+            toDisp.setName(Name);
+
+            Date logDate = Anims.getDate("Log_Date");
+            String date = logDate.toString();
+            toDisp.setDate(date);
+
+            String Centre = Anims.getString("Centre");
+            toDisp.setCentre(Centre);
+
+            String Cond = Anims.getString("Condition");
+            toDisp.setCondition(Cond);
+
+            String FoodCode = Anims.getString("Food_Code");
+            toDisp.setFoodGiven(FoodCode);
+
+            String MedCode = Anims.getString("Medication_ID");
+            toDisp.setMedicationGiven(MedCode);
+
+            ret.add(toDisp);
+        }
+
+        return ret;
     }
 
     private void viewNewLog() {
@@ -128,8 +178,86 @@ public class logsPerAnimalController {
 
             LoginManager loginManager = new LoginManager(scene);
             controller.initSessionID(loginManager, this.scene, staffUser);
-        } catch (IOException ex) {
+            queries.connection.close();
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+}
+
+class AnimalForAnimalLog
+{
+    private final SimpleStringProperty Name = new SimpleStringProperty();
+    private final SimpleStringProperty Date = new SimpleStringProperty();
+    private final SimpleStringProperty Centre = new SimpleStringProperty();
+    private final SimpleStringProperty Condition = new SimpleStringProperty();
+
+    public String getCondition() {
+        return Condition.get();
+    }
+
+    public SimpleStringProperty conditionProperty() {
+        return Condition;
+    }
+
+    public void setCondition(String condition) {
+        this.Condition.set(condition);
+    }
+
+    private final SimpleStringProperty FoodGiven = new SimpleStringProperty();
+    private final SimpleStringProperty MedicationGiven = new SimpleStringProperty();
+
+    public String getName() {return Name.get();}
+
+    public SimpleStringProperty nameProperty() {return Name;}
+
+    public void setName(String name) {this.Name.set(name); }
+
+    public String getDate() {
+        return Date.get();
+    }
+
+    public SimpleStringProperty dateProperty() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        this.Date.set(date);
+    }
+
+    public String getCentre() {
+        return Centre.get();
+    }
+
+    public SimpleStringProperty centreProperty() {
+        return Centre;
+    }
+
+    public void setCentre(String centre) {
+        this.Centre.set(centre);
+    }
+
+    public String getFoodGiven() {
+        return FoodGiven.get();
+    }
+
+    public SimpleStringProperty foodGivenProperty() {
+        return FoodGiven;
+    }
+
+    public void setFoodGiven(String foodGiven) {
+        this.FoodGiven.set(foodGiven);
+    }
+
+    public String getMedicationGiven() {
+        return MedicationGiven.get();
+    }
+
+    public SimpleStringProperty medicationGivenProperty() {
+        return MedicationGiven;
+    }
+
+    public void setMedicationGiven(String medicationGiven) {
+        this.MedicationGiven.set(medicationGiven);
     }
 }
