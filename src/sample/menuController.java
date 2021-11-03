@@ -59,26 +59,25 @@ public class menuController {
         menuLogout.setOnAction(event -> logout());
 
         btnMenuEditModA.setOnAction(event -> showUpdateAnimalStatus());
+        btnMenuDisplayAdmis.setOnAction(event -> showViewAdmissionsReport());
+        btnMenuDisplayAR.setOnAction(event -> showViewAnimalsReport());
+        btnMenuDisplayLog.setOnAction(event -> showViewDailyReports());
+        btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
 
         if (staffUser.getStaffType().equals("Administrator")) {
             btnMenuAddAddS.setOnAction(event -> showAddStaff());
             btnMenuEditModS.setOnAction(event -> showModifyStaff());
             btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
-            btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
             btnMenuDisplayS.setOnAction(event -> showViewStaffReport());
-            btnMenuDisplayAdmis.setOnAction(event -> showViewAdmissionsReport());
             btnMenuAddReadmitA.setOnAction(event -> showReadmitAnimals());
         } else if (staffUser.getStaffType().equals("Handler")) {
-            btnMenuAddUpdateL.setOnAction(event -> showUpdateLogbook());
             btnMenuAddRegisterA.setDisable(true);
             btnMenuAddAddS.setDisable(true);
             btnMenuEditModS.setDisable(true);
             btnMenuDisplayS.setDisable(true);
         } else if (staffUser.getStaffType().equals("Admission")) {
             btnMenuAddRegisterA.setOnAction(event -> showRegAnimals());
-            btnMenuDisplayAdmis.setOnAction(event -> showViewAdmissionsReport());
             btnMenuAddReadmitA.setOnAction(event -> showReadmitAnimals());
-            btnMenuAddUpdateL.setDisable(true);
             btnMenuAddAddS.setDisable(true);
             btnMenuEditModS.setDisable(true);
             btnMenuDisplayS.setDisable(true);
@@ -261,6 +260,54 @@ public class menuController {
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
             dailyAdmissionsController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewAnimalsReport() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewAnimalsReport.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            viewAnimalsController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewLogsPerAnimal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewLogsPerAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            logsPerAnimalController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewDailyReports() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewDailyReports.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            dailyReportsController controller =
                     loader.getController();   // gets the controller specified in the fxml
             connection.close();
             controller.initSessionID(loginManager, scene, staffUser);
