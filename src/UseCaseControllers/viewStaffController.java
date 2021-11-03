@@ -82,10 +82,6 @@ public class viewStaffController {
             isEmployed.setCellFactory(column -> new CheckBoxTableCell<>());
             addButtonToTable();
 
-            editButton.setOnAction((ActionEvent event) -> {
-                showModifyStaff(Staff_ID.getId());
-            });
-
             ResultSet rs = queries.getStaffList();
             populateTableView(rs);
 

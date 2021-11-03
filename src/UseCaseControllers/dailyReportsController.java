@@ -128,7 +128,7 @@ public class dailyReportsController {
 
                     {
                         btnLogs.setOnAction((ActionEvent event) -> {
-                            showViewLogsPerAnimal();
+                            showViewLogsPerAnimal(getTableView().getItems().get(getIndex()).getTagNo());
                         });
                     }
 
@@ -150,7 +150,7 @@ public class dailyReportsController {
         tblDailyLogs.getColumns().add(colBtn);
     }
 
-    private void showViewLogsPerAnimal() {
+    private void showViewLogsPerAnimal(String tagNo) {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/viewLogsPerAnimal.fxml")   // load fxml
@@ -159,7 +159,7 @@ public class dailyReportsController {
             logsPerAnimalController controller =
                     loader.getController();   // gets the controller specified in the fxml
             queries.connection.close();
-            controller.initSessionID(loginManager, scene, staffUser);
+            controller.initSessionID(loginManager, scene, staffUser, tagNo);
 
         } catch (IOException | SQLException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
