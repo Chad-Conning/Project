@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import sample.*;
 import java.io.*;
@@ -121,8 +122,7 @@ public class viewAnimalsController {
 
                     {
                         btnEdit.setOnAction((ActionEvent event) -> {
-                            ViewAnimal data = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + data);
+                            showModifyAnimalStatus();
                         });
                     }
 
@@ -130,8 +130,7 @@ public class viewAnimalsController {
 
                     {
                         btnLogs.setOnAction((ActionEvent event) -> {
-                            ViewAnimal data = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + data);
+                            showViewLogsPerAnimal();
                         });
                     }
 
@@ -141,7 +140,8 @@ public class viewAnimalsController {
                         if (empty) {
                             setGraphic(null);
                         } else {
-                            setGraphic(btnEdit);
+                            HBox pane = new HBox(btnEdit, btnLogs);
+                            setGraphic(pane);
                         }
                     }
                 };
@@ -248,6 +248,37 @@ public class viewAnimalsController {
         }*/
     }
 
+    private void showModifyAnimalStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/modifyAnimalStatus.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            modifyAnimalStatusController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewLogsPerAnimal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewLogsPerAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            logsPerAnimalController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     //    public void writeExcel() throws Exception {
 //        Writer writer = null;
