@@ -98,7 +98,6 @@ public class dailyReportsController {
             e.printStackTrace();
         }
 
-
         btnClose.setOnAction(ActionEvent -> showMainView());
         btnExport.setOnAction(ActionEvent -> ExportDailyLogs());
         btnNewLog.setOnAction(ActionEvent -> NewLog());

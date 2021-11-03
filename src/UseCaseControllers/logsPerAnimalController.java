@@ -44,7 +44,7 @@ public class logsPerAnimalController {
 
     @FXML private TableView<AnimalForAnimalLog> AnimalLogs;
     @FXML private TableColumn<AnimalForAnimalLog, String> colName;
-    @FXML private TableColumn<AnimalForAnimalLog, Date> colDate;
+    @FXML private TableColumn<AnimalForAnimalLog, String> colDate;
     @FXML private TableColumn<AnimalForAnimalLog, String> colCentre;
     @FXML private TableColumn<AnimalForAnimalLog, String> colCondition;
     @FXML private TableColumn<AnimalForAnimalLog, String> colFoodGiven;
@@ -72,6 +72,13 @@ public class logsPerAnimalController {
             queries.connectDB();
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
+
+            colName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+            colDate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+            colCentre.setCellValueFactory(cellData -> cellData.getValue().centreProperty());
+            colCondition.setCellValueFactory(cellData -> cellData.getValue().conditionProperty());
+            colFoodGiven.setCellValueFactory(cellData -> cellData.getValue().foodProperty());
+            colMedication.setCellValueFactory(cellData -> cellData.getValue().medicationProperty());
 
             ResultSet TagNoList = queries.getAnimalList();
 
@@ -191,6 +198,32 @@ class AnimalForAnimalLog
     private final SimpleStringProperty Date = new SimpleStringProperty();
     private final SimpleStringProperty Centre = new SimpleStringProperty();
     private final SimpleStringProperty Condition = new SimpleStringProperty();
+    private final SimpleStringProperty Food = new SimpleStringProperty();
+    private final SimpleStringProperty Medication = new SimpleStringProperty();
+
+    public String getFood() {
+        return Food.get();
+    }
+
+    public SimpleStringProperty foodProperty() {
+        return Food;
+    }
+
+    public void setFood(String food) {
+        this.Food.set(food);
+    }
+
+    public String getMedication() {
+        return Medication.get();
+    }
+
+    public SimpleStringProperty medicationProperty() {
+        return Medication;
+    }
+
+    public void setMedication(String medication) {
+        this.Medication.set(medication);
+    }
 
     public String getCondition() {
         return Condition.get();
