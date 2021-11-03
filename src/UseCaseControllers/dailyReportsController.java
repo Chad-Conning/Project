@@ -259,7 +259,7 @@ public class dailyReportsController {
     public void doOnDateChange(ResultSet rs) throws SQLException {
         ObservableList<AnimalForDailyLogs> dailyLogs = populateList(rs);
         tblDailyLogs.setItems(dailyLogs);
-        queries.connection.close();
+        //queries.connection.close();
 
 //When date is changed (selected)
 
