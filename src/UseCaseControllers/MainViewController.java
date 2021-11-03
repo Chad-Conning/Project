@@ -38,6 +38,10 @@ public class MainViewController {
     @FXML private Label lblViewStaffReports;
     @FXML private ImageView imgReAdmitAnimal;
     @FXML private Label lblReAdmitAnimal;
+    @FXML private ImageView imgViewLogsPerAnimal;
+    @FXML private Label lblViewLogsPerAnimal;
+    @FXML private ImageView imgViewDailyLogs;
+    @FXML private Label lblViewDailyLogs;
 
     @FXML private Pane addStaffPane;
     @FXML private Pane modifyStaffPane;
@@ -76,8 +80,6 @@ public class MainViewController {
             if (staffUser.getStaffType().equals("Handler")) {
                 registerAnimalPane.setOpacity(0.4);
                 registerAnimalPane.setDisable(true);
-
-
 
             } else if (staffUser.getStaffType().equals("Admission")) {
                 updateLogbookPane.setOpacity(0.4);
@@ -159,6 +161,54 @@ public class MainViewController {
         lblReAdmitAnimal.setOnMouseClicked(actionEvent -> {
             showReadmitAnimals();
         });
+
+        imgViewDailyLogs.setOnMouseClicked(actionEvent -> {
+            showViewDailyReports();
+        });
+        lblViewDailyLogs.setOnMouseClicked(actionEvent -> {
+            showViewDailyReports();
+        });
+
+        imgViewLogsPerAnimal.setOnMouseClicked(actionEvent -> {
+            showViewLogsPerAnimal();
+        });
+        lblViewLogsPerAnimal.setOnMouseClicked(actionEvent -> {
+            showViewLogsPerAnimal();
+        });
+
+
+    }
+
+    private void showViewLogsPerAnimal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewLogsPerAnimal.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            logsPerAnimalController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void showViewDailyReports() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/viewDailyReports.fxml")   // load fxml
+            );
+            scene.setRoot(loader.load());   // create scene for mainView screen
+            dailyReportsController controller =
+                    loader.getController();   // gets the controller specified in the fxml
+            queries.connection.close();
+            controller.initSessionID(loginManager, scene, staffUser);
+
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void showAddStaff() {

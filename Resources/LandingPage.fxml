@@ -247,7 +247,7 @@
                               <Button fx:id="btnUpdateLogbook" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="380.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
                               <HBox layoutX="12.0" layoutY="12.0" prefHeight="135.0" prefWidth="380.0">
                                  <children>
-                                    <ImageView fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="imgViewLogsPerAnimal" fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
@@ -255,7 +255,7 @@
                                           <Image url="@Images/Images/viewLogs.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Logs Per Animal">
+                                    <Label fx:id="lblViewLogsPerAnimal" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Logs Per Animal">
                                        <font>
                                           <Font name="Roboto Light" size="20.0" />
                                        </font>
@@ -269,7 +269,7 @@
                               <Button fx:id="btnViewDailyLogs" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="380.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
                               <HBox layoutX="12.0" layoutY="12.0" prefHeight="135.0" prefWidth="380.0">
                                  <children>
-                                    <ImageView fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="imgViewDailyLogs" fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
@@ -277,7 +277,7 @@
                                           <Image url="@Images/Images/viewDailyLogs.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Daily Logs">
+                                    <Label fx:id="lblViewDailyLogs" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="283.0" text="View Daily Logs">
                                        <font>
                                           <Font name="Roboto Light" size="20.0" />
                                        </font>
