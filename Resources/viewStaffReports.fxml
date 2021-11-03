@@ -81,7 +81,7 @@
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="688.0" prefWidth="1205.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="369.0" text="Staff Report" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="500.0" text="Staff Report" textAlignment="CENTER">
                <font>
                   <Font size="40.0" />
                </font>
