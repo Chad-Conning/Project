@@ -37,7 +37,6 @@ public class viewStaffController {
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
     @FXML public Menu menuLogout;
-
     @FXML private Button btnClose;
     @FXML private Button btnAddStaff;
     @FXML private Button btnSearch;

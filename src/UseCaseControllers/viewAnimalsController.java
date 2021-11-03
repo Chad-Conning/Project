@@ -13,6 +13,8 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +37,8 @@ public class viewAnimalsController {
     @FXML public Menu menuLogout;
     @FXML public Button btnVARClose;
     @FXML public Button btnVARExport;
+    @FXML private Button btnSearch;
+    @FXML private TextField tfieldFilter;
     @FXML public TableView<ViewAnimal> animalsTable;
     @FXML private TableColumn<ViewAnimal, String> colTagNo;
     @FXML private TableColumn<ViewAnimal, String> colName;
@@ -84,6 +88,8 @@ public class viewAnimalsController {
         }
         btnVARClose.setOnAction(actionEvent -> showMainView());
 
+        btnSearch.setOnAction(actionEvent -> displaySearch(tfieldFilter.getText()));
+
         btnVARExport.setOnAction(actionEvent -> {
             try {
                 writeExcel();
@@ -91,6 +97,18 @@ public class viewAnimalsController {
                 e.printStackTrace();
             }
         });
+    }
+
+    private void displaySearch(String searchString) {
+        ResultSet rs = queries.getAnimalList();
+        List<ViewAnimal> animalData = populateList(rs);
+
+        List<ViewAnimal> searchAnimal = new ArrayList<>();
+        for (int i = 0; i <= animalData.size() - 1; i++) {
+            if (animalData.get(i).getTagNo().equals(searchString) || animalData.get(i).getName().equalsIgnoreCase(searchString))
+                searchAnimal.add(animalData.get(i));
+        }
+        animalsTable.getItems().setAll(searchAnimal);
     }
 
     private void showMainView() {
