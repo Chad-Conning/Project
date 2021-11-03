@@ -40,6 +40,10 @@ public class updateLogbookController {
     @FXML public MenuItem btnMenuDisplayS;
     @FXML public Menu menuLogout;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
+
     private HashMap FoodGiven = new HashMap();
     private HashMap Medications = new HashMap();
 
@@ -106,6 +110,9 @@ public class updateLogbookController {
         cbxTagNo.setOnAction(actionEvent -> populateFields(cbxTagNo.getValue().toString()));
 
         btnUpdateLogbookSave.setOnAction(actionEvent -> AddLog());
+        btnUpdateLogbookSave.setStyle(IDLE_BUTTON_STYLE);
+        btnUpdateLogbookSave.setOnMouseEntered(e -> btnUpdateLogbookSave.setStyle(HOVERED_BUTTON_STYLE));
+        btnUpdateLogbookSave.setOnMouseExited(e -> btnUpdateLogbookSave.setStyle(IDLE_BUTTON_STYLE));
 
         btnUpdateLogbookCancel.setOnAction(actionEvent -> CancelLog());
 
