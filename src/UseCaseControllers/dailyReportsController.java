@@ -1,5 +1,9 @@
 package UseCaseControllers;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +42,7 @@ public class dailyReportsController {
 
     @FXML private DatePicker dtpDailyLogReportDate;
 
-    @FXML private TableView<AnimalForDailyLogs> tblDailyReports;
+    @FXML private TableView<AnimalForDailyLogs> tblDailyLogs;
     @FXML private TableColumn<AnimalForDailyLogs, String> colTagNo;
     @FXML private TableColumn<AnimalForDailyLogs, String> colName;
     @FXML private TableColumn<AnimalForDailyLogs, String> colCentre;
@@ -64,7 +68,9 @@ public class dailyReportsController {
 
         try {
             queries.connectDB();
+
             dtpDailyLogReportDate.setValue(LocalDate.now());
+
             dtpDailyLogReportDate.setDayCellFactory(param -> new DateCell() {
                 @Override
                 public void updateItem(LocalDate date, boolean empty) {
@@ -72,9 +78,21 @@ public class dailyReportsController {
                     setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
                 }
             });
+
             menuController menu = new menuController(queries.connection, menuLogout, loginManager, scene, staffUser, btnMenuAddRegisterA, btnMenuAddAddS, btnMenuAddUpdateL, btnMenuEditModA, btnMenuEditModS,
                     btnMenuDisplayAdmis, btnMenuDisplayLog, btnMenuDisplayAR, btnMenuDisplayLogsA, btnMenuDisplayS, btnMenuAddReadmitA);
-            doOnDateChange();
+
+            colTagNo.setCellValueFactory(cellData -> cellData.getValue().tagNoProperty());
+            colName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+            colCentre.setCellValueFactory(cellData -> cellData.getValue().centreProperty());
+            colCondition.setCellValueFactory(cellData -> cellData.getValue().conditionProperty());
+            colFoodGiven.setCellValueFactory(cellData -> cellData.getValue().foodProperty());
+            colMedication.setCellValueFactory(cellData -> cellData.getValue().medicationProperty());
+            //colTagNo.setCellValueFactory(cellData -> cellData.getValue().tagNoProperty());
+
+            LocalDate date = dtpDailyLogReportDate.getValue();
+            ResultSet rs = queries.getLogsPerDate(date);
+            doOnDateChange(rs);
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -85,6 +103,15 @@ public class dailyReportsController {
         btnExport.setOnAction(ActionEvent -> ExportDailyLogs());
         btnNewLog.setOnAction(ActionEvent -> NewLog());
 
+        dtpDailyLogReportDate.setOnAction(ActionEvent -> {
+            try {
+                LocalDate date = dtpDailyLogReportDate.getValue();
+                ResultSet rs = queries.getLogsPerDate(date);
+                doOnDateChange(rs);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
     }
 
     private void NewLog() {
@@ -93,7 +120,7 @@ public class dailyReportsController {
                     getClass().getResource("/updateLogbook.fxml")   // load fxml
             );
             scene.setRoot(loader.load());   // create scene for mainView screen
-            addStaffController controller =
+            updateLogbookController controller =
                     loader.getController();   // gets the controller specified in the fxml
             queries.connection.close();
             controller.initSessionID(loginManager, scene, staffUser);
@@ -102,8 +129,6 @@ public class dailyReportsController {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-
 
     private void ExportDailyLogs() {
         //Add code for export daily logs
@@ -126,17 +151,38 @@ public class dailyReportsController {
         }
     }
 
-    public void DateChanged(ActionEvent actionEvent) throws SQLException {
-        doOnDateChange();
+    private ObservableList<AnimalForDailyLogs> populateList(ResultSet rs) {
+        ObservableList<AnimalForDailyLogs> dailyLogs = FXCollections.observableArrayList();
+        try {
+            AnimalForDailyLogs temp;
+            while (rs.next()) {
+                temp = new AnimalForDailyLogs();
+                temp.setTagNo(rs.getString("Tag_No"));
+                temp.setName(rs.getString("Animal_Name"));
+                temp.setCentre(rs.getString("Centre"));
+                temp.setCondition(rs.getString("Condition"));
+                temp.setFood(rs.getString("Food_Code"));
+                temp.setMedication(rs.getString("Medication_ID"));
+                dailyLogs.add(temp);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return dailyLogs;
     }
 
-    public void doOnDateChange() throws SQLException {
+    public void doOnDateChange(ResultSet rs) throws SQLException {
+        ObservableList<AnimalForDailyLogs> dailyLogs = populateList(rs);
+        tblDailyLogs.setItems(dailyLogs);
+
 //When date is changed (selected)
-        LocalDate toFind = dtpDailyLogReportDate.getValue();
+
+        /*LocalDate toFind = dtpDailyLogReportDate.getValue();
         Date ToFind = Date.valueOf(toFind);
+        String dateForQuery = ToFind.toString();
 
         //Call the select statement
-        ResultSet Animals = queries.getLogsPerDate(ToFind);
+        ResultSet Animals = queries.getLogsPerDate(dateForQuery);
 
         List<AnimalForDailyLogs> AnimalsLogs = new ArrayList<>();
         while (Animals.next())
@@ -164,14 +210,138 @@ public class dailyReportsController {
         for (int i = 0; i < AnimalsLogs.size(); i++)
         {
             tblDailyReports.getItems().add(AnimalsLogs.get(i));
-        }
+        }*/
     }
 }
 
-
-
 class AnimalForDailyLogs{
-    String TagNo, Name, Centre, Condition, Food, Medication;
+    private final SimpleStringProperty TagNo = new SimpleStringProperty();
+    private final SimpleStringProperty Name = new SimpleStringProperty();
+    private final SimpleStringProperty Centre = new SimpleStringProperty();
+    private final SimpleStringProperty Condition = new SimpleStringProperty();
+    private final SimpleStringProperty Food = new SimpleStringProperty();
+    private final SimpleStringProperty Medication = new SimpleStringProperty();
+
+    public String getTagNo() {
+        return TagNo.get();
+    }
+
+    public SimpleStringProperty tagNoProperty() {
+        return TagNo;
+    }
+
+    public void setTagNo(String tagNo) {
+        this.TagNo.set(tagNo);
+    }
+
+    public String getName() {
+        return Name.get();
+    }
+
+    public SimpleStringProperty nameProperty() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        this.Name.set(name);
+    }
+
+    public String getCentre() {
+        return Centre.get();
+    }
+
+    public SimpleStringProperty centreProperty() {
+        return Centre;
+    }
+
+    public void setCentre(String centre) {
+        this.Centre.set(centre);
+    }
+
+    public String getCondition() {
+        return Condition.get();
+    }
+
+    public SimpleStringProperty conditionProperty() {
+        return Condition;
+    }
+
+    public void setCondition(String condition) {
+        this.Condition.set(condition);
+    }
+
+    public String getFood() {
+        return Food.get();
+    }
+
+    public SimpleStringProperty foodProperty() {
+        return Food;
+    }
+
+    public void setFood(String food) {
+        this.Food.set(food);
+    }
+
+    public String getMedication() {
+        return Medication.get();
+    }
+
+    public SimpleStringProperty medicationProperty() {
+        return Medication;
+    }
+
+    public void setMedication(String medication) {
+        this.Medication.set(medication);
+    }
+
+    //String TagNo, Name, Centre, Condition, Food, Medication;
+    /*public String getTagNo() {
+        return TagNo;
+    }
+
+    public void setTagNo(String tagNo) {
+        TagNo = tagNo;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getCentre() {
+        return Centre;
+    }
+
+    public void setCentre(String centre) {
+        Centre = centre;
+    }
+
+    public String getCondition() {
+        return Condition;
+    }
+
+    public void setCondition(String condition) {
+        Condition = condition;
+    }
+
+    public String getFood() {
+        return Food;
+    }
+
+    public void setFood(String food) {
+        Food = food;
+    }
+
+    public String getMedication() {
+        return Medication;
+    }
+
+    public void setMedication(String medication) {
+        Medication = medication;
+    }
 
     public AnimalForDailyLogs(String tagNo, String name, String centre, String condition, String food, String medication) {
         TagNo = tagNo;
@@ -180,5 +350,7 @@ class AnimalForDailyLogs{
         Condition = condition;
         Food = food;
         Medication = medication;
-    }
+
+
+    }*/
 }
