@@ -218,10 +218,10 @@ public class dailyAdmissionsController {
 
     public void writeExcel() throws Exception {
         excelData = admissionsTable.getItems();
-        try (PrintWriter writer = new PrintWriter("C:\\Users\\user pc\\Desktop\\AnimalReport.csv.")) {
+        try (PrintWriter writer = new PrintWriter("C:\\Users\\user pc\\Documents\\GitHub\\Project\\out\\AdmissionsReport.csv.")) {
             StringBuilder sb = new StringBuilder();
-            String columns = "Tag No,Name,Gender,Adult,Species,Location Retrieved,Date,\n";
-            sb.append(columns);
+            //String columns = "Tag No,Name,Gender,Adult,Species,Location Retrieved,Date,\n";
+            //sb.append(columns);
             for (AnimalAdmission animal : excelData) {
                 sb.append(animal.getTagNo());
                 sb.append(',');
@@ -246,9 +246,5 @@ public class dailyAdmissionsController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-       /* finally {
-            writer.flush();
-            writer.close();
-        }*/
     }
 }
