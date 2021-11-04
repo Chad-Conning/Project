@@ -188,7 +188,9 @@ public class updateLogbookController {
         btnUpdateLogbookSave.setStyle(IDLE_BUTTON_STYLE);
         btnUpdateLogbookSave.setOnMouseEntered(e -> btnUpdateLogbookSave.setStyle(HOVERED_BUTTON_STYLE));
         btnUpdateLogbookSave.setOnMouseExited(e -> btnUpdateLogbookSave.setStyle(IDLE_BUTTON_STYLE));
-        btn
+        btnUpdateLogbookCancel.setStyle(IDLE_BUTTON_STYLE);
+        btnUpdateLogbookCancel.setOnMouseEntered(e -> btnUpdateLogbookCancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnUpdateLogbookCancel.setOnMouseExited(e -> btnUpdateLogbookCancel.setStyle(IDLE_BUTTON_STYLE));
 
     }
 
