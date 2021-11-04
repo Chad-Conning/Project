@@ -61,6 +61,9 @@ public class logsPerAnimalController {
     Staff staffUser;
     Scene scene;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
@@ -107,6 +110,16 @@ public class logsPerAnimalController {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+
+        btnNewLog.setStyle(IDLE_BUTTON_STYLE);
+        btnNewLog.setOnMouseEntered(e -> btnNewLog.setStyle(HOVERED_BUTTON_STYLE));
+        btnNewLog.setOnMouseExited(e -> btnNewLog.setStyle(IDLE_BUTTON_STYLE));
+        btnExport.setStyle(IDLE_BUTTON_STYLE);
+        btnExport.setOnMouseEntered(e -> btnExport.setStyle(HOVERED_BUTTON_STYLE));
+        btnExport.setOnMouseExited(e -> btnExport.setStyle(IDLE_BUTTON_STYLE));
+        btnClose.setStyle(IDLE_BUTTON_STYLE);
+        btnClose.setOnMouseEntered(e -> btnClose.setStyle(HOVERED_BUTTON_STYLE));
+        btnClose.setOnMouseExited(e -> btnClose.setStyle(IDLE_BUTTON_STYLE));
     }
 
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, String tagNo) {
@@ -158,6 +171,16 @@ public class logsPerAnimalController {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+
+        btnNewLog.setStyle(IDLE_BUTTON_STYLE);
+        btnNewLog.setOnMouseEntered(e -> btnNewLog.setStyle(HOVERED_BUTTON_STYLE));
+        btnNewLog.setOnMouseExited(e -> btnNewLog.setStyle(IDLE_BUTTON_STYLE));
+        btnExport.setStyle(IDLE_BUTTON_STYLE);
+        btnExport.setOnMouseEntered(e -> btnExport.setStyle(HOVERED_BUTTON_STYLE));
+        btnExport.setOnMouseExited(e -> btnExport.setStyle(IDLE_BUTTON_STYLE));
+        btnClose.setStyle(IDLE_BUTTON_STYLE);
+        btnClose.setOnMouseEntered(e -> btnClose.setStyle(HOVERED_BUTTON_STYLE));
+        btnClose.setOnMouseExited(e -> btnClose.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void AnimalTagChanged() throws SQLException {

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-style: solid; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-style: solid; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.LoginController">
    <top>
       <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
          <children>
@@ -88,7 +88,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="loginButton" alignment="TOP_CENTER" minHeight="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 2;" text="Sign In">
+                        <Button fx:id="loginButton" alignment="TOP_CENTER" minHeight="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 2;" text="Sign In" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="35.0" />
                            </HBox.margin>

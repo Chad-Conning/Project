@@ -148,7 +148,7 @@
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button fx:id="btnViewAll" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2;" text="View All">
+                              <Button fx:id="btnViewAll" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2;" text="View All" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -156,7 +156,7 @@
                                     <Insets right="30.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="Export">
+                              <Button fx:id="btnExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="Export" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -164,7 +164,7 @@
                                     <Insets right="30.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnClose" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="Close">
+                              <Button fx:id="btnClose" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 3;" text="Close" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

@@ -115,6 +115,9 @@ public class updateLogbookController {
         btnUpdateLogbookSave.setStyle(IDLE_BUTTON_STYLE);
         btnUpdateLogbookSave.setOnMouseEntered(e -> btnUpdateLogbookSave.setStyle(HOVERED_BUTTON_STYLE));
         btnUpdateLogbookSave.setOnMouseExited(e -> btnUpdateLogbookSave.setStyle(IDLE_BUTTON_STYLE));
+        btnUpdateLogbookCancel.setStyle(IDLE_BUTTON_STYLE);
+        btnUpdateLogbookCancel.setOnMouseEntered(e -> btnUpdateLogbookCancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnUpdateLogbookCancel.setOnMouseExited(e -> btnUpdateLogbookCancel.setStyle(IDLE_BUTTON_STYLE));
 
         btnUpdateLogbookCancel.setOnAction(actionEvent -> CancelLog());
 
@@ -181,6 +184,14 @@ public class updateLogbookController {
 
         btnUpdateLogbookCancel.setOnAction(actionEvent -> CancelLog());
 
+        //button idle and hover effects
+        btnUpdateLogbookSave.setStyle(IDLE_BUTTON_STYLE);
+        btnUpdateLogbookSave.setOnMouseEntered(e -> btnUpdateLogbookSave.setStyle(HOVERED_BUTTON_STYLE));
+        btnUpdateLogbookSave.setOnMouseExited(e -> btnUpdateLogbookSave.setStyle(IDLE_BUTTON_STYLE));
+        btnUpdateLogbookCancel.setStyle(IDLE_BUTTON_STYLE);
+        btnUpdateLogbookCancel.setOnMouseEntered(e -> btnUpdateLogbookCancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnUpdateLogbookCancel.setOnMouseExited(e -> btnUpdateLogbookCancel.setStyle(IDLE_BUTTON_STYLE));
+
     }
 
     private void populateFields(String tagNo) {
@@ -196,6 +207,12 @@ public class updateLogbookController {
     public void AddLog() {
         connection = queries.connection;
         String TagNo = (String) cbxTagNo.getValue();
+        if (tfieldSpecies.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Please select a tag number.", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
         String Centre;
         if (rbtRehab.isSelected()) {
             Centre = "Rehab";

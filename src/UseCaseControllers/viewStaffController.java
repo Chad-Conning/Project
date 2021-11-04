@@ -1,5 +1,7 @@
 package UseCaseControllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.util.Callback;
 import sample.*;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,6 +43,7 @@ public class viewStaffController {
     @FXML private Button btnClose;
     @FXML private Button btnAddStaff;
     @FXML private Button btnSearch;
+    @FXML private Button btnExport;
     @FXML private Button btnViewAll;
     @FXML private TextField tfieldFilter;
     @FXML private TableView<Staff> staffTable;
@@ -53,8 +57,13 @@ public class viewStaffController {
     @FXML private TableColumn<Staff, Boolean> isEmployed;
     Button editButton = new Button("Edit");
 
+    ObservableList<Staff> excelData = FXCollections.observableArrayList();
+
     Staff staffUser;
     Scene scene;
+
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
 
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
@@ -100,6 +109,59 @@ public class viewStaffController {
             ResultSet rs = queries.getStaffList();
             populateTableView(rs);
         });
+
+        btnExport.setOnAction(actionEvent -> WriteToExcel());
+
+        btnViewAll.setStyle(IDLE_BUTTON_STYLE);
+        btnViewAll.setOnMouseEntered(e -> btnViewAll.setStyle(HOVERED_BUTTON_STYLE));
+        btnViewAll.setOnMouseExited(e -> btnViewAll.setStyle(IDLE_BUTTON_STYLE));
+        btnSearch.setStyle(IDLE_BUTTON_STYLE);
+        btnSearch.setOnMouseEntered(e -> btnSearch.setStyle(HOVERED_BUTTON_STYLE));
+        btnSearch.setOnMouseExited(e -> btnSearch.setStyle(IDLE_BUTTON_STYLE));
+        btnAddStaff.setStyle(IDLE_BUTTON_STYLE);
+        btnAddStaff.setOnMouseEntered(e -> btnAddStaff.setStyle(HOVERED_BUTTON_STYLE));
+        btnAddStaff.setOnMouseExited(e -> btnAddStaff.setStyle(IDLE_BUTTON_STYLE));
+        btnClose.setStyle(IDLE_BUTTON_STYLE);
+        btnClose.setOnMouseEntered(e -> btnClose.setStyle(HOVERED_BUTTON_STYLE));
+        btnClose.setOnMouseExited(e -> btnClose.setStyle(IDLE_BUTTON_STYLE));
+        btnExport.setStyle(IDLE_BUTTON_STYLE);
+        btnExport.setOnMouseEntered(e -> btnExport.setStyle(HOVERED_BUTTON_STYLE));
+        btnExport.setOnMouseExited(e -> btnExport.setStyle(IDLE_BUTTON_STYLE));
+    }
+
+    private void WriteToExcel() {
+        //Add export to excel
+        excelData = staffTable.getItems();
+        try (PrintWriter writer = new PrintWriter("out/Reports/StaffReports.csv.")) {
+            StringBuilder sb = new StringBuilder();
+            //String columns = "Tag No,Name,Gender,Adult,Species,Location Retrieved,Date,\n";
+            //sb.append(columns);
+            for (Staff staff : excelData) {
+                sb.append(staff.getStaffID());
+                sb.append(',');
+                sb.append(staff.getfName());
+                sb.append(',');
+                sb.append(staff.getlName());
+                sb.append(',');
+                sb.append(staff.getEmail());
+                sb.append(',');
+                sb.append(staff.getTaxNum());
+                sb.append(',');
+                sb.append(staff.getStaffType());
+                sb.append(',');
+                sb.append(staff.isBoolEmp());
+                sb.append("\n");
+                /*String text = animal.getTagNo() + "," + animal.getAnimalName() + "," + animal.getAnimalGender() + "," + animal.getIsAdult() + ","
+                        + animal.getAnimalSpecies() + animal.getLocationRetrieved() + animal.getAdmissionDate() + "\n";*/
+            }
+            writer.write(sb.toString());
+            writer.close();
+            System.out.println("File saved!");
+            Alert added = new Alert(Alert.AlertType.INFORMATION, "The file has been saved.");
+            added.showAndWait();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void addButtonToTable() {

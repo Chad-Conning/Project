@@ -55,6 +55,9 @@ public class addStaffController {
     Staff staffUser;
     Scene scene;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
@@ -92,6 +95,13 @@ public class addStaffController {
                 showMainView();
             }
         });
+
+        btnSRegister.setStyle(IDLE_BUTTON_STYLE);
+        btnSRegister.setOnMouseEntered(e -> btnSRegister.setStyle(HOVERED_BUTTON_STYLE));
+        btnSRegister.setOnMouseExited(e -> btnSRegister.setStyle(IDLE_BUTTON_STYLE));
+        btnSCancel.setStyle(IDLE_BUTTON_STYLE);
+        btnSCancel.setOnMouseEntered(e -> btnSCancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnSCancel.setOnMouseExited(e -> btnSCancel.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void addStaff() {

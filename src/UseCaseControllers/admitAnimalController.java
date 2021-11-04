@@ -40,6 +40,9 @@ public class admitAnimalController {
     @FXML public MenuItem btnMenuDisplayLogsA;
     @FXML public MenuItem btnMenuDisplayS;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, Animal newAnimal) {
         this.loginManager = loginManager;
@@ -72,6 +75,13 @@ public class admitAnimalController {
         btnAdmit.setOnAction(actionEvent -> admitAnimal());
 
         btnACancel.setOnAction(actionEvent -> cancelReg());
+
+        btnAdmit.setStyle(IDLE_BUTTON_STYLE);
+        btnAdmit.setOnMouseEntered(e -> btnAdmit.setStyle(HOVERED_BUTTON_STYLE));
+        btnAdmit.setOnMouseExited(e -> btnAdmit.setStyle(IDLE_BUTTON_STYLE));
+        btnACancel.setStyle(IDLE_BUTTON_STYLE);
+        btnACancel.setOnMouseEntered(e -> btnACancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnACancel.setOnMouseExited(e -> btnACancel.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void admitAnimal() {

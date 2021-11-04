@@ -45,6 +45,9 @@ public class regAnimalController {
 
     @FXML private Label vLabelName;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         comboSpecies.getItems().addAll("Seal", "Penguin", "Turtle", "Seagull", "Sting ray", "Unknown");
@@ -104,6 +107,13 @@ public class regAnimalController {
                 showMainView();
             }
         });
+
+        btnACancel.setStyle(IDLE_BUTTON_STYLE);
+        btnACancel.setOnMouseEntered(e -> btnACancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnACancel.setOnMouseExited(e -> btnACancel.setStyle(IDLE_BUTTON_STYLE));
+        btnARegister.setStyle(IDLE_BUTTON_STYLE);
+        btnARegister.setOnMouseEntered(e -> btnARegister.setStyle(HOVERED_BUTTON_STYLE));
+        btnARegister.setOnMouseExited(e -> btnARegister.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void regAnimal(){
