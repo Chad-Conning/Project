@@ -42,6 +42,9 @@ public class readmitAnimalController {
     @FXML public MenuItem btnMenuDisplayS;
     @FXML public Menu menuLogout;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
@@ -83,10 +86,24 @@ public class readmitAnimalController {
                 showMainView();
             }
         });
+
+        btnAdmit.setStyle(IDLE_BUTTON_STYLE);
+        btnAdmit.setOnMouseEntered(e -> btnAdmit.setStyle(HOVERED_BUTTON_STYLE));
+        btnAdmit.setOnMouseExited(e -> btnAdmit.setStyle(IDLE_BUTTON_STYLE));
+        btnACancel.setStyle(IDLE_BUTTON_STYLE);
+        btnACancel.setOnMouseEntered(e -> btnACancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnACancel.setOnMouseExited(e -> btnACancel.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void readmitAnimal() {
         connection = queries.connection;
+
+        if (comboTagNumber.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Please select a tag number.", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
         String txtTag = comboTagNumber.getValue().toString();
         String txtLocation = comboLocation.getValue();
         String admissionNotes = txtNotes.getText();

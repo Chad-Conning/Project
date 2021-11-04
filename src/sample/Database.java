@@ -106,14 +106,14 @@ public class Database {
             query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
                     "NATURAL JOIN Admission " +
                     "WHERE Animal_Species = '" + species.toLowerCase() +
-                    " 'AND Location_Retrieved = '" + location.toLowerCase() + "'" +
+                    " 'AND Location_Retrieved LIKE '%" + location.toLowerCase() + "%'" +
                     " ORDER BY Admission_Date DESC";
         }
         else if (species.equals("")) {
             query = "SELECT Tag_No, Animal_Name, Animal_Gender, is_Adult, Animal_Species, Location_Retrieved, Admission_Date FROM Animal " +
                     "NATURAL JOIN Admission " +
-                    "WHERE Location_Retrieved = '" + location.toLowerCase() +
-                    " 'AND Admission_Date = '" + date + "'" +
+                    "WHERE Location_Retrieved LIKE '%" + location.toLowerCase() +
+                    "% ' AND Admission_Date = '" + date + "'" +
                     " ORDER BY Admission_Date DESC";
         }
         else if (location.equals("")) {

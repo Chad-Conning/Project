@@ -43,6 +43,9 @@ public class modifyAnimalStatusController {
     @FXML private Label lblUserInformation;
     @FXML private TextField tfieldName;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
@@ -77,6 +80,13 @@ public class modifyAnimalStatusController {
                 showMainView();
             }
         });
+
+        btnSave.setStyle(IDLE_BUTTON_STYLE);
+        btnSave.setOnMouseEntered(e -> btnSave.setStyle(HOVERED_BUTTON_STYLE));
+        btnSave.setOnMouseExited(e -> btnSave.setStyle(IDLE_BUTTON_STYLE));
+        btnCancel.setStyle(IDLE_BUTTON_STYLE);
+        btnCancel.setOnMouseEntered(e -> btnCancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnCancel.setOnMouseExited(e -> btnCancel.setStyle(IDLE_BUTTON_STYLE));
     }
 
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, String tagNo) {
@@ -124,6 +134,13 @@ public class modifyAnimalStatusController {
                 showMainView();
             }
         });
+
+        btnSave.setStyle(IDLE_BUTTON_STYLE);
+        btnSave.setOnMouseEntered(e -> btnSave.setStyle(HOVERED_BUTTON_STYLE));
+        btnSave.setOnMouseExited(e -> btnSave.setStyle(IDLE_BUTTON_STYLE));
+        btnCancel.setStyle(IDLE_BUTTON_STYLE);
+        btnCancel.setOnMouseEntered(e -> btnCancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnCancel.setOnMouseExited(e -> btnCancel.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void populateFields(String tagNo) {
@@ -139,6 +156,13 @@ public class modifyAnimalStatusController {
 
     private void updateStatus() {
         connection = queries.connection;
+
+        if (tfieldName.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Please select a tag number.", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
         String tagNo = selectTag.getValue().toString();
 
         if (toggleReleased.isSelected())

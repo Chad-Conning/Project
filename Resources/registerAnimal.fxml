@@ -157,7 +157,7 @@
                         <Font size="15.0" />
                      </font>
                   </RadioButton>
-                  <Label fx:id="vLabelName" layoutX="233.0" layoutY="72.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
+                  <Label fx:id="vLabelName" layoutX="234.0" layoutY="60.0" prefHeight="17.0" prefWidth="184.0" textFill="RED" />
                </children></Pane>
          </children>
       </VBox>

@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.input.KeyCode;
 import sample.*;
 
 import java.io.*;
@@ -68,6 +69,9 @@ public class dailyAdmissionsController {
     ObservableList<AnimalAdmission> excelData = FXCollections.observableArrayList();
     FilteredList<AnimalAdmission> adults = new FilteredList<>(tableData, p -> true);
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
@@ -123,6 +127,19 @@ public class dailyAdmissionsController {
 
         btnFilter.setOnAction(actionEvent -> filterAdmissions());
 
+        txtFieldLocationFilter.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode().equals(KeyCode.ENTER))
+                filterAdmissions();
+        });
+        txtFieldSpeciesFilter.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode().equals(KeyCode.ENTER))
+                filterAdmissions();
+        });
+        dateFilter.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode().equals(KeyCode.ENTER))
+                filterAdmissions();
+        });
+
         /////////////////
         changeData();
 
@@ -149,6 +166,19 @@ public class dailyAdmissionsController {
                 e.printStackTrace();
             }
         });
+
+        btnExport.setStyle(IDLE_BUTTON_STYLE);
+        btnExport.setOnMouseEntered(e -> btnExport.setStyle(HOVERED_BUTTON_STYLE));
+        btnExport.setOnMouseExited(e -> btnExport.setStyle(IDLE_BUTTON_STYLE));
+        btnFilter.setStyle(IDLE_BUTTON_STYLE);
+        btnFilter.setOnMouseEntered(e -> btnFilter.setStyle(HOVERED_BUTTON_STYLE));
+        btnFilter.setOnMouseExited(e -> btnFilter.setStyle(IDLE_BUTTON_STYLE));
+        btnViewAll.setStyle(IDLE_BUTTON_STYLE);
+        btnViewAll.setOnMouseEntered(e -> btnViewAll.setStyle(HOVERED_BUTTON_STYLE));
+        btnViewAll.setOnMouseExited(e -> btnViewAll.setStyle(IDLE_BUTTON_STYLE));
+        btnClose.setStyle(IDLE_BUTTON_STYLE);
+        btnClose.setOnMouseEntered(e -> btnClose.setStyle(HOVERED_BUTTON_STYLE));
+        btnClose.setOnMouseExited(e -> btnClose.setStyle(IDLE_BUTTON_STYLE));
 
     }
 

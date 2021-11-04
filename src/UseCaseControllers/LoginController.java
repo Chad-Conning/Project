@@ -26,6 +26,9 @@ public class LoginController {
     @FXML private Label errorLbl;
     Staff staffUser;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     public void initManager(final LoginManager loginManager) throws SQLException, ClassNotFoundException {
         errorLbl.setText("");
         queries.connectDB();
@@ -38,6 +41,10 @@ public class LoginController {
             if (keyEvent.getCode().equals(KeyCode.ENTER))
                 login(loginManager);
         });
+
+        loginButton.setStyle(IDLE_BUTTON_STYLE);
+        loginButton.setOnMouseEntered(e -> loginButton.setStyle(HOVERED_BUTTON_STYLE));
+        loginButton.setOnMouseExited(e -> loginButton.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void login(final LoginManager loginManager) {

@@ -145,7 +145,7 @@
                      <Insets left="40.0" />
                   </padding>
                </Label>
-               <TextField fx:id="tfieldName" layoutX="233.0" layoutY="81.0" prefHeight="25.0" prefWidth="185.0" style="-fx-border-color: black; -fx-border-width: 2;" />
+               <TextField fx:id="tfieldName" editable="false" layoutX="233.0" layoutY="81.0" prefHeight="25.0" prefWidth="185.0" style="-fx-border-color: black; -fx-border-width: 2;" />
                 </Pane>
             </children>
         </VBox>

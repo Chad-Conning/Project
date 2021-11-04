@@ -56,6 +56,9 @@ public class viewStaffController {
     Staff staffUser;
     Scene scene;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
@@ -100,6 +103,19 @@ public class viewStaffController {
             ResultSet rs = queries.getStaffList();
             populateTableView(rs);
         });
+
+        btnViewAll.setStyle(IDLE_BUTTON_STYLE);
+        btnViewAll.setOnMouseEntered(e -> btnViewAll.setStyle(HOVERED_BUTTON_STYLE));
+        btnViewAll.setOnMouseExited(e -> btnViewAll.setStyle(IDLE_BUTTON_STYLE));
+        btnSearch.setStyle(IDLE_BUTTON_STYLE);
+        btnSearch.setOnMouseEntered(e -> btnSearch.setStyle(HOVERED_BUTTON_STYLE));
+        btnSearch.setOnMouseExited(e -> btnSearch.setStyle(IDLE_BUTTON_STYLE));
+        btnAddStaff.setStyle(IDLE_BUTTON_STYLE);
+        btnAddStaff.setOnMouseEntered(e -> btnAddStaff.setStyle(HOVERED_BUTTON_STYLE));
+        btnAddStaff.setOnMouseExited(e -> btnAddStaff.setStyle(IDLE_BUTTON_STYLE));
+        btnClose.setStyle(IDLE_BUTTON_STYLE);
+        btnClose.setOnMouseEntered(e -> btnClose.setStyle(HOVERED_BUTTON_STYLE));
+        btnClose.setOnMouseExited(e -> btnClose.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void addButtonToTable() {

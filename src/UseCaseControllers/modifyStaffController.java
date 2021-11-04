@@ -58,6 +58,9 @@ public class modifyStaffController {
     Staff staffUser;
     Scene scene;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
     LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
@@ -102,6 +105,16 @@ public class modifyStaffController {
         comboSelectStaff.setOnAction(actionEvent -> populateFields(comboSelectStaff.getValue()));
 
         btnSearch.setOnAction(actionEvent -> populateFromSurname(tfieldMSSurname.getText()));
+
+        btnMSCancel.setStyle(IDLE_BUTTON_STYLE);
+        btnMSCancel.setOnMouseEntered(e -> btnMSCancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnMSCancel.setOnMouseExited(e -> btnMSCancel.setStyle(IDLE_BUTTON_STYLE));
+        btnMSRegister.setStyle(IDLE_BUTTON_STYLE);
+        btnMSRegister.setOnMouseEntered(e -> btnMSRegister.setStyle(HOVERED_BUTTON_STYLE));
+        btnMSRegister.setOnMouseExited(e -> btnMSRegister.setStyle(IDLE_BUTTON_STYLE));
+        btnSearch.setStyle(IDLE_BUTTON_STYLE);
+        btnSearch.setOnMouseEntered(e -> btnSearch.setStyle(HOVERED_BUTTON_STYLE));
+        btnSearch.setOnMouseExited(e -> btnSearch.setStyle(IDLE_BUTTON_STYLE));
     }
 
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser, String staffID) {
@@ -152,6 +165,16 @@ public class modifyStaffController {
         comboSelectStaff.setOnAction(actionEvent -> populateFields(comboSelectStaff.getValue()));
 
         btnSearch.setOnAction(actionEvent -> populateFromSurname(tfieldMSSurname.getText()));
+
+        btnMSCancel.setStyle(IDLE_BUTTON_STYLE);
+        btnMSCancel.setOnMouseEntered(e -> btnMSCancel.setStyle(HOVERED_BUTTON_STYLE));
+        btnMSCancel.setOnMouseExited(e -> btnMSCancel.setStyle(IDLE_BUTTON_STYLE));
+        btnMSRegister.setStyle(IDLE_BUTTON_STYLE);
+        btnMSRegister.setOnMouseEntered(e -> btnMSRegister.setStyle(HOVERED_BUTTON_STYLE));
+        btnMSRegister.setOnMouseExited(e -> btnMSRegister.setStyle(IDLE_BUTTON_STYLE));
+        btnSearch.setStyle(IDLE_BUTTON_STYLE);
+        btnSearch.setOnMouseEntered(e -> btnSearch.setStyle(HOVERED_BUTTON_STYLE));
+        btnSearch.setOnMouseExited(e -> btnSearch.setStyle(IDLE_BUTTON_STYLE));
     }
 
     private void populateFromSurname(String surname) {

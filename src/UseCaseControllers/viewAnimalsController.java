@@ -60,8 +60,11 @@ public class viewAnimalsController {
 
     Staff staffUser;
     Scene scene;
-    LoginManager loginManager;
 
+    private static final String IDLE_BUTTON_STYLE = "-fx-border-color: #78c2ad; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #78c2ad;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-border-color: #609b8a; -fx-border-radius: 3; -fx-border-style: solid; -fx-border-width: 2; -fx-background-color: #66a593;";
+
+    LoginManager loginManager;
     public void initSessionID(final LoginManager loginManager, Scene scene, Staff staffUser) {
         this.loginManager = loginManager;
         this.staffUser = staffUser;
@@ -109,6 +112,19 @@ public class viewAnimalsController {
                 e.printStackTrace();
             }
         });
+
+        btnViewAll.setStyle(IDLE_BUTTON_STYLE);
+        btnViewAll.setOnMouseEntered(e -> btnViewAll.setStyle(HOVERED_BUTTON_STYLE));
+        btnViewAll.setOnMouseExited(e -> btnViewAll.setStyle(IDLE_BUTTON_STYLE));
+        btnSearchAnimal.setStyle(IDLE_BUTTON_STYLE);
+        btnSearchAnimal.setOnMouseEntered(e -> btnSearchAnimal.setStyle(HOVERED_BUTTON_STYLE));
+        btnSearchAnimal.setOnMouseExited(e -> btnSearchAnimal.setStyle(IDLE_BUTTON_STYLE));
+        btnVARExport.setStyle(IDLE_BUTTON_STYLE);
+        btnVARExport.setOnMouseEntered(e -> btnVARExport.setStyle(HOVERED_BUTTON_STYLE));
+        btnVARExport.setOnMouseExited(e -> btnVARExport.setStyle(IDLE_BUTTON_STYLE));
+        btnVARClose.setStyle(IDLE_BUTTON_STYLE);
+        btnVARClose.setOnMouseEntered(e -> btnVARClose.setStyle(HOVERED_BUTTON_STYLE));
+        btnVARClose.setOnMouseExited(e -> btnVARClose.setStyle(IDLE_BUTTON_STYLE));
     }
     
     private void addButtonToTable() {
@@ -189,11 +205,11 @@ public class viewAnimalsController {
         //admissionsTable.getItems().setAll(admissionData);
         animalsTable.setItems(viewData);
         changeData();
-        try {
+       /* try {
             queries.connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
+        }*/
     }
 
     private ObservableList<ViewAnimal> populateList(ResultSet rs) {
@@ -245,7 +261,7 @@ public class viewAnimalsController {
             writer.write(sb.toString());
             writer.close();
             System.out.println("File saved!");
-            queries.connection.close();
+            //queries.connection.close();
             Alert added = new Alert(Alert.AlertType.INFORMATION, "The file has been saved.");
             added.showAndWait();
         } catch (Exception ex) {
