@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.modifyAnimalStatusController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1209.0" style="-fx-background-color: #AAF2E4; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UseCaseControllers.modifyAnimalStatusController">
     <top>
         <VBox prefHeight="149.0" prefWidth="1209.0" BorderPane.alignment="CENTER">
             <children>
@@ -128,11 +128,11 @@
                             </RadioButton>
                         </children>
                     </VBox>
-                    <Button fx:id="btnSave" layoutX="36.0" layoutY="267.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Save">
+                    <Button fx:id="btnSave" layoutX="36.0" layoutY="267.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Save" textFill="WHITE">
                         <font>
                             <Font size="15.0" />
                         </font></Button>
-                    <Button fx:id="btnCancel" layoutX="308.0" layoutY="267.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel">
+                    <Button fx:id="btnCancel" layoutX="308.0" layoutY="267.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #F3F3F3; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-border-style: solid;" text="Cancel" textFill="WHITE">
                         <font>
                             <Font size="15.0" />
                         </font>

@@ -126,7 +126,7 @@
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button fx:id="btnViewAll" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="View All">
+                              <Button fx:id="btnViewAll" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="View All" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -134,7 +134,7 @@
                                     <Insets right="30.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnVARExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Export">
+                              <Button fx:id="btnVARExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Export" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -142,7 +142,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnVARClose" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Close">
+                              <Button fx:id="btnVARClose" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-width: 2; -fx-border-color: black; -fx-border-style: solid; -fx-border-radius: 3;" text="Close" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>

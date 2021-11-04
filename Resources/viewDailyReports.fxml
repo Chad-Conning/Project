@@ -131,14 +131,14 @@
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1109.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button fx:id="btnNewLog" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid; -fx-border-radius: 3;" text="New Log">
+                              <Button fx:id="btnNewLog" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid; -fx-border-radius: 3;" text="New Log" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets right="690.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="15.0" />
                                  </font></Button>
-                              <Button fx:id="btnExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid; -fx-border-radius: 3;" text="Export">
+                              <Button fx:id="btnExport" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid; -fx-border-radius: 3;" text="Export" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
@@ -146,7 +146,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnClose" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid; -fx-border-radius: 3;" text="Close">
+                              <Button fx:id="btnClose" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid; -fx-border-radius: 3;" text="Close" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets right="30.0" />
                                  </HBox.margin>
